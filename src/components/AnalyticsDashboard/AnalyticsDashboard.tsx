@@ -47,7 +47,8 @@ const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
   useEffect(() => {
     loadAnalytics();
     loadWeather();
-  }, [activities, loadAnalytics]); // Added missing dependency
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activities]); // Disabled exhaustive-deps rule for this effect
 
   const loadAnalytics = () => {
     setLoading(true);
