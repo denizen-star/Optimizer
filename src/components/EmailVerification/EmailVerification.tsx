@@ -48,9 +48,13 @@ const EmailVerification: React.FC = () => {
         setStatus('error');
         setErrorMessage('Verification failed. The link may be expired or invalid.');
       }
-    } catch (error) {
+    } catch (error: unknown) {
       setStatus('error');
-      setErrorMessage(error instanceof Error ? error.message : 'Verification failed');
+      if (error instanceof Error) {
+        setErrorMessage((error as Error).message);
+      } else {
+        setErrorMessage('Verification failed');
+      }
     }
   };
 
@@ -68,7 +72,8 @@ const EmailVerification: React.FC = () => {
       } else {
         setErrorMessage('Failed to resend verification email');
       }
-    } catch (error) {
+    } catch (error: unknown) {
+      console.error('Resend email error:', error);
       setErrorMessage('Failed to resend verification email');
     }
   };

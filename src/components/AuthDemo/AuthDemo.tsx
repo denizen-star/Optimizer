@@ -248,7 +248,7 @@ const AuthDemo: React.FC = () => {
               </Typography>
               
               <Grid container spacing={2}>
-                <Grid xs={12} sm={6} md={3}>
+                <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                   <Typography variant="subtitle2" gutterBottom>
                     Timestamp Information
                   </Typography>
@@ -259,7 +259,7 @@ const AuthDemo: React.FC = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid xs={12} sm={6} md={3}>
+                <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                   <Typography variant="subtitle2" gutterBottom>
                     User Information
                   </Typography>
@@ -270,7 +270,7 @@ const AuthDemo: React.FC = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid xs={12} sm={6} md={3}>
+                <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                   <Typography variant="subtitle2" gutterBottom>
                     Device & Location
                   </Typography>
@@ -283,7 +283,7 @@ const AuthDemo: React.FC = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid xs={12} sm={6} md={3}>
+                <Grid size={{ xs: 12, sm: 6, md: 3 }}>
                   <Typography variant="subtitle2" gutterBottom>
                     Security Monitoring
                   </Typography>
