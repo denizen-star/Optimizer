@@ -46,6 +46,7 @@ export interface AuthHookReturn extends AuthState {
   changePassword: (currentPassword: string, newPassword: string) => Promise<boolean>;
   updateProfile: (updates: Partial<User>) => Promise<boolean>;
   verifyEmail: (token: string) => Promise<boolean>;
+  resendVerificationEmail: (email: string) => Promise<boolean>;
   enableTwoFactor: () => Promise<boolean>;
   disableTwoFactor: (password: string) => Promise<boolean>;
   refreshToken: () => Promise<boolean>;
@@ -379,31 +380,71 @@ export const useAuth = (): AuthHookReturn => {
   }, [authState.user]);
 
   const verifyEmail = useCallback(async (token: string): Promise<boolean> => {
-    if (!authState.user) return false;
-
     try {
       const response = await simulateAuthAPI('verifyEmail', { token });
       
       if (response.success) {
-        const updatedUser = { ...authState.user, emailVerified: true };
-        localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
-        setAuthState(prev => ({ ...prev, user: updatedUser }));
+        // Update user if logged in, otherwise just track the verification
+        if (authState.user && response.userId === authState.user.id) {
+          const updatedUser = { ...authState.user, emailVerified: true };
+          localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
+          setAuthState(prev => ({ ...prev, user: updatedUser }));
+        }
 
         await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SUCCESS, {
-          userId: authState.user.id,
-          email: authState.user.email,
-          success: true
+          userId: response.userId,
+          email: response.email,
+          success: true,
+          metadata: { loggedIn: !!authState.user }
         });
 
         return true;
+      } else {
+        await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SUCCESS, {
+          email: response.email || 'unknown',
+          success: false,
+          errorReason: response.error || 'verification_failed',
+          metadata: { token: token.substring(0, 8) + '...' }
+        });
+        
+        return false;
       }
-      
-      return false;
     } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Email verification failed';
+      
+      await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SUCCESS, {
+        success: false,
+        errorReason: errorMessage,
+        metadata: { token: token.substring(0, 8) + '...' }
+      });
+      
       console.error('Email verification failed:', error);
       return false;
     }
   }, [authState.user]);
+
+  const resendVerificationEmail = useCallback(async (email: string): Promise<boolean> => {
+    try {
+      // Track email verification sent
+      await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SENT, {
+        email,
+        success: true,
+        metadata: { type: 'resend' }
+      });
+
+      const response = await simulateAuthAPI('resendVerification', { email });
+      return response.success;
+    } catch (error) {
+      await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SENT, {
+        email,
+        success: false,
+        errorReason: error instanceof Error ? error.message : 'Failed to resend verification email'
+      });
+      
+      console.error('Resend verification failed:', error);
+      return false;
+    }
+  }, []);
 
   const enableTwoFactor = useCallback(async (): Promise<boolean> => {
     if (!authState.user) return false;
@@ -498,6 +539,7 @@ export const useAuth = (): AuthHookReturn => {
     changePassword,
     updateProfile,
     verifyEmail,
+    resendVerificationEmail,
     enableTwoFactor,
     disableTwoFactor,
     refreshToken,
@@ -551,9 +593,30 @@ async function simulateAuthAPI(endpoint: string, data: any): Promise<any> {
     case 'resetPassword':
       return { success: true };
 
+    case 'verifyEmail':
+      // Simulate different verification scenarios for testing
+      if (data.token === 'expired_token') {
+        return { success: false, error: 'expired', email: 'demo@optimizer.com' };
+      }
+      if (data.token === 'invalid_token') {
+        return { success: false, error: 'invalid', email: 'demo@optimizer.com' };
+      }
+      if (data.token === 'used_token') {
+        return { success: false, error: 'used', email: 'demo@optimizer.com' };
+      }
+      
+      // Valid token
+      return { 
+        success: true, 
+        userId: 'user_demo_123',
+        email: 'demo@optimizer.com'
+      };
+
+    case 'resendVerification':
+      return { success: true };
+
     case 'changePassword':
     case 'updateProfile':
-    case 'verifyEmail':
     case 'enableTwoFactor':
     case 'disableTwoFactor':
     case 'refreshToken':
