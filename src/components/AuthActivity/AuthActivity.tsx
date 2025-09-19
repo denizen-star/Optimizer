@@ -239,7 +239,7 @@ const AuthActivity: React.FC<AuthActivityProps> = ({
       {/* Statistics Cards */}
       {showStats && (
         <Grid container spacing={2} sx={{ mb: 3 }}>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -254,7 +254,7 @@ const AuthActivity: React.FC<AuthActivityProps> = ({
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -269,7 +269,7 @@ const AuthActivity: React.FC<AuthActivityProps> = ({
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -284,7 +284,7 @@ const AuthActivity: React.FC<AuthActivityProps> = ({
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={6} md={3}>
+          <Grid size={{ xs: 12, sm: 6, md: 3 }}>
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
@@ -411,7 +411,7 @@ const AuthActivity: React.FC<AuthActivityProps> = ({
           {selectedEvent && (
             <Box>
               <Grid container spacing={2}>
-                <Grid item xs={12} md={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <List dense>
                     <ListItem>
                       <ListItemIcon><Schedule /></ListItemIcon>
@@ -447,7 +447,7 @@ const AuthActivity: React.FC<AuthActivityProps> = ({
                     )}
                   </List>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid size={{ xs: 12, md: 6 }}>
                   <List dense>
                     <ListItem>
                       <ListItemIcon><LocationOn /></ListItemIcon>

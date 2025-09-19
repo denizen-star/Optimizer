@@ -108,7 +108,7 @@ const AuthDemo: React.FC = () => {
 
       <Grid container spacing={3}>
         {/* Current User Status */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -152,7 +152,7 @@ const AuthDemo: React.FC = () => {
         </Grid>
 
         {/* Authentication Actions */}
-        <Grid item xs={12} md={6}>
+        <Grid size={{ xs: 12, md: 6 }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -237,7 +237,7 @@ const AuthDemo: React.FC = () => {
         </Grid>
 
         {/* Tracking Information */}
-        <Grid item xs={12}>
+        <Grid size={{ xs: 12 }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -248,7 +248,7 @@ const AuthDemo: React.FC = () => {
               </Typography>
               
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid xs={12} sm={6} md={3}>
                   <Typography variant="subtitle2" gutterBottom>
                     Timestamp Information
                   </Typography>
@@ -259,7 +259,7 @@ const AuthDemo: React.FC = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid xs={12} sm={6} md={3}>
                   <Typography variant="subtitle2" gutterBottom>
                     User Information
                   </Typography>
@@ -270,7 +270,7 @@ const AuthDemo: React.FC = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid xs={12} sm={6} md={3}>
                   <Typography variant="subtitle2" gutterBottom>
                     Device & Location
                   </Typography>
@@ -283,7 +283,7 @@ const AuthDemo: React.FC = () => {
                   </Typography>
                 </Grid>
                 
-                <Grid item xs={12} sm={6} md={3}>
+                <Grid xs={12} sm={6} md={3}>
                   <Typography variant="subtitle2" gutterBottom>
                     Security Monitoring
                   </Typography>
