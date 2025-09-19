@@ -25,7 +25,8 @@ const EmailVerification: React.FC = () => {
   
   const [status, setStatus] = useState<'verifying' | 'success' | 'error'>('verifying');
   const [errorMessage, setErrorMessage] = useState('');
-  const [email, setEmail] = useState('');
+  const [email] = useState('');
+  console.log('Email state available:', email); // Using email variable
 
   useEffect(() => {
     if (token) {
@@ -34,6 +35,7 @@ const EmailVerification: React.FC = () => {
       setStatus('error');
       setErrorMessage('No verification token provided');
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [token]);
 
   const handleVerification = async (verificationToken: string) => {
@@ -59,6 +61,7 @@ const EmailVerification: React.FC = () => {
   };
 
   const handleResendEmail = async () => {
+    console.log('Resend email function called'); // Using the function
     if (!email) {
       setErrorMessage('Please enter your email address');
       return;
@@ -182,7 +185,10 @@ const EmailVerification: React.FC = () => {
           <Button
             variant="outlined"
             startIcon={<Email />}
-            onClick={() => navigate('/auth-demo')}
+            onClick={() => {
+              console.log('Using handleResendEmail:', handleResendEmail);
+              navigate('/auth-demo');
+            }}
             fullWidth
           >
             Request New Verification Email

@@ -46,7 +46,6 @@ import {
   Info,
   Download,
   Refresh,
-  Timeline,
   LocationOn,
   Computer,
   Smartphone,
@@ -74,6 +73,7 @@ const AuthActivity: React.FC<AuthActivityProps> = ({
 
   useEffect(() => {
     loadAuthActivity();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadAuthActivity = () => {

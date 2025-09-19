@@ -5,7 +5,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { authTrackingService, AuthAction } from '../services/authTrackingService';
-import { UrlService } from '../services/urlService';
+// import { UrlService } from '../services/urlService'; // Will be used for email URL generation
 
 export interface User {
   id: string;
@@ -66,6 +66,7 @@ export const useAuth = (): AuthHookReturn => {
   // Initialize authentication state
   useEffect(() => {
     initializeAuth();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const initializeAuth = useCallback(async () => {
