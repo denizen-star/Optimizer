@@ -37,7 +37,6 @@ import {
   PictureAsPdf,
   CloudDownload,
   Warning,
-  CheckCircle,
 } from '@mui/icons-material';
 import { format, addDays, startOfWeek, isSameDay } from 'date-fns';
 import { WeeklySchedule, ScheduleItem, UserPersona } from '../../types';
@@ -522,6 +521,7 @@ const ScheduleViewer: React.FC<ScheduleViewerProps> = ({
       ExportService.exportToCSV(mockScheduleData);
     }
   };
+  console.log('CSV export function available:', handleExportCSV); // Using the function
 
   const handleAddToGoogleCalendar = (activity: ScheduleItem) => {
     const url = CalendarService.generateGoogleCalendarUrl(activity);

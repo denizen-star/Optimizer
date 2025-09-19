@@ -1,4 +1,4 @@
-import axios from 'axios';
+// import axios from 'axios'; // Commented out until needed
 
 export interface WeatherData {
   temperature: number;

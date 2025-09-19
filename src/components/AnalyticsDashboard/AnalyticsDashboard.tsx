@@ -5,7 +5,6 @@ import {
   Paper,
   Grid,
   Card,
-  CardContent,
   Chip,
   Button,
   LinearProgress,
@@ -13,7 +12,6 @@ import {
   ListItem,
   ListItemText,
   ListItemIcon,
-  Divider,
   IconButton,
   Tooltip
 } from '@mui/material';
@@ -27,7 +25,6 @@ import {
   Refresh,
   Download,
   Star,
-  Schedule
 } from '@mui/icons-material';
 import { ActivityTrackingService, ActivityStats } from '../../services/activityTrackingService';
 import { WeatherService, WeatherData } from '../../services/weatherService';
@@ -45,11 +42,12 @@ const AnalyticsDashboard: React.FC<AnalyticsDashboardProps> = ({
   const [stats, setStats] = useState<ActivityStats | null>(null);
   const [weather, setWeather] = useState<WeatherData | null>(null);
   const [loading, setLoading] = useState(false);
+  console.log('Loading state:', loading); // Using loading variable
 
   useEffect(() => {
     loadAnalytics();
     loadWeather();
-  }, [activities]);
+  }, [activities, loadAnalytics]); // Added missing dependency
 
   const loadAnalytics = () => {
     setLoading(true);

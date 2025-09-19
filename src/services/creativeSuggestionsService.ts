@@ -1,4 +1,4 @@
-import { UserPersona, Activity } from '../types';
+import { UserPersona } from '../types';
 
 export interface CreativeSuggestion {
   id: string;

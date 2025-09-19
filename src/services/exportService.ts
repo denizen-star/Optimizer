@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { saveAs } from 'file-saver';
-import { WeeklySchedule, ScheduleItem } from '../types';
+import { WeeklySchedule } from '../types';
 import { format } from 'date-fns';
 
 export class ExportService {
