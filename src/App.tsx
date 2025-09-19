@@ -9,6 +9,7 @@ import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
 import AnalyticsDashboard from './components/AnalyticsDashboard/AnalyticsDashboard';
 import AuthActivity from './components/AuthActivity/AuthActivity';
 import AuthDemo from './components/AuthDemo/AuthDemo';
+import EmailVerification from './components/EmailVerification/EmailVerification';
 import { useStore } from './store/useStore';
 import './App.css';
 
@@ -262,6 +263,10 @@ function AppContent() {
               <Route 
                 path="/auth-demo" 
                 element={<AuthDemo />} 
+              />
+              <Route 
+                path="/verify-email/:token" 
+                element={<EmailVerification />} 
               />
               <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

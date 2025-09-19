@@ -5,6 +5,7 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { authTrackingService, AuthAction } from '../services/authTrackingService';
+import { UrlService } from '../services/urlService';
 
 export interface User {
   id: string;
