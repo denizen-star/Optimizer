@@ -2,7 +2,7 @@
   "name": "optimizer",
   "version": "1.0.0",
   "private": true,
-  "homepage": "/",
+  "homepage": "https://optimizer.kervinapps.com",
   "description": "Optimizer - Advanced personal time management and schedule optimization application",
   "author": "Kevin Leacock",
   "dependencies": {
