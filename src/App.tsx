@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { Home, Person, Tune, Schedule, Analytics, Security } from '@mui/icons-material';
+import { Home, Person, Tune, Schedule, Analytics, Security, AdminPanelSettings } from '@mui/icons-material';
 import PersonaSelector from './components/PersonaSelector/PersonaSelector';
 import TimeAllocationTuner from './components/TimeAllocationTuner/TimeAllocationTuner';
 import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
@@ -10,6 +10,7 @@ import AnalyticsDashboard from './components/AnalyticsDashboard/AnalyticsDashboa
 import AuthActivity from './components/AuthActivity/AuthActivity';
 import AuthDemo from './components/AuthDemo/AuthDemo';
 import EmailVerification from './components/EmailVerification/EmailVerification';
+import UserManagement from './components/UserManagement/UserManagement';
 import { useStore } from './store/useStore';
 import './App.css';
 
@@ -179,11 +180,22 @@ function AppContent() {
                     startIcon={<Security />}
                     onClick={() => navigate('/auth-activity')}
                     sx={{ 
-                      mr: 2,
+                      mr: 1,
                       backgroundColor: location.pathname === '/auth-activity' ? 'rgba(255,255,255,0.1)' : 'transparent'
                     }}
                   >
                     Security
+                  </Button>
+                  <Button
+                    color="inherit"
+                    startIcon={<AdminPanelSettings />}
+                    onClick={() => navigate('/users')}
+                    sx={{ 
+                      mr: 2,
+                      backgroundColor: location.pathname === '/users' ? 'rgba(255,255,255,0.1)' : 'transparent'
+                    }}
+                  >
+                    Users
                   </Button>
             </>
           )}
@@ -267,6 +279,16 @@ function AppContent() {
               <Route 
                 path="/verify-email/:token" 
                 element={<EmailVerification />} 
+              />
+              <Route 
+                path="/users" 
+                element={
+                  selectedPersona ? (
+                    <UserManagement />
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                } 
               />
               <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
