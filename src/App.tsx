@@ -2,11 +2,13 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { Home, Person, Tune, Schedule, Analytics } from '@mui/icons-material';
+import { Home, Person, Tune, Schedule, Analytics, Security } from '@mui/icons-material';
 import PersonaSelector from './components/PersonaSelector/PersonaSelector';
 import TimeAllocationTuner from './components/TimeAllocationTuner/TimeAllocationTuner';
 import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
 import AnalyticsDashboard from './components/AnalyticsDashboard/AnalyticsDashboard';
+import AuthActivity from './components/AuthActivity/AuthActivity';
+import AuthDemo from './components/AuthDemo/AuthDemo';
 import { useStore } from './store/useStore';
 import './App.css';
 
@@ -165,11 +167,22 @@ function AppContent() {
                     startIcon={<Analytics />}
                     onClick={() => navigate('/analytics')}
                     sx={{ 
-                      mr: 2,
+                      mr: 1,
                       backgroundColor: location.pathname === '/analytics' ? 'rgba(255,255,255,0.1)' : 'transparent'
                     }}
                   >
                     Analytics
+                  </Button>
+                  <Button
+                    color="inherit"
+                    startIcon={<Security />}
+                    onClick={() => navigate('/auth-activity')}
+                    sx={{ 
+                      mr: 2,
+                      backgroundColor: location.pathname === '/auth-activity' ? 'rgba(255,255,255,0.1)' : 'transparent'
+                    }}
+                  >
+                    Security
                   </Button>
             </>
           )}
@@ -235,6 +248,20 @@ function AppContent() {
                     <Navigate to="/" replace />
                   )
                 } 
+              />
+              <Route 
+                path="/auth-activity" 
+                element={
+                  selectedPersona ? (
+                    <AuthActivity showStats={true} maxEvents={100} />
+                  ) : (
+                    <Navigate to="/" replace />
+                  )
+                } 
+              />
+              <Route 
+                path="/auth-demo" 
+                element={<AuthDemo />} 
               />
               <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
