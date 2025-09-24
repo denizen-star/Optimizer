@@ -44,6 +44,15 @@ exports.handler = async (event, context) => {
       dynamicTemplateData,
     };
 
+    console.log('Sending email with data:', {
+      to,
+      from: msg.from,
+      subject,
+      templateId,
+      hasHtml: !!html,
+      hasTemplateData: !!dynamicTemplateData
+    });
+
     // Send email via SendGrid
     await sgMail.send(msg);
 
@@ -59,6 +68,11 @@ exports.handler = async (event, context) => {
 
   } catch (error) {
     console.error('SendGrid Error:', error);
+    console.error('Error details:', {
+      message: error.message,
+      code: error.code,
+      response: error.response ? error.response.body : null
+    });
     
     return {
       statusCode: 500,
@@ -70,7 +84,8 @@ exports.handler = async (event, context) => {
       body: JSON.stringify({ 
         success: false, 
         error: 'Failed to send email',
-        details: error.message 
+        details: error.message,
+        code: error.code
       })
     };
   }
