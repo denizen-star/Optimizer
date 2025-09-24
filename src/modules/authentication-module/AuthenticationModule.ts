@@ -6,7 +6,6 @@
 import { useAuth } from './hooks/useAuth';
 import { AuthTrackingService } from './services/authTrackingService';
 import { SimpleEmailService } from './services/simpleEmailService';
-import { User, LoginCredentials, SignupData } from './types';
 
 export class AuthenticationModule {
   private isInitialized = false;
