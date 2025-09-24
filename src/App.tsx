@@ -8,6 +8,7 @@ import TimeAllocationTuner from './components/TimeAllocationTuner/TimeAllocation
 import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
 import AnalyticsDashboard from './components/AnalyticsDashboard/AnalyticsDashboard';
 import { AuthDemo, EnhancedSignup, EmailTest, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
+import DatabaseQuery from './modules/authentication-module/components/DatabaseQuery/DatabaseQuery';
 import { useStore } from './store/useStore';
 import './App.css';
 
@@ -202,6 +203,17 @@ function AppContent() {
                   >
                     Users
                   </Button>
+                  <Button
+                    color="inherit"
+                    startIcon={<MenuBook />}
+                    onClick={() => navigate('/database-query')}
+                    sx={{ 
+                      mr: 2,
+                      backgroundColor: location.pathname === '/database-query' ? 'rgba(255,255,255,0.1)' : 'transparent'
+                    }}
+                  >
+                    Database
+                  </Button>
             </>
           )}
         </Toolbar>
@@ -302,6 +314,10 @@ function AppContent() {
                     <Navigate to="/" replace />
                   )
                 } 
+              />
+              <Route 
+                path="/database-query" 
+                element={<DatabaseQuery />} 
               />
               <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

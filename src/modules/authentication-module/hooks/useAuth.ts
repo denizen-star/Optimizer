@@ -453,7 +453,8 @@ export const useAuth = (): AuthHookReturn => {
           // Update current user if logged in
           if (authState.user && authState.user.id === tokenData.userId) {
             const updatedUser = { ...authState.user, emailVerified: true };
-            UserDatabase.setCurrentUser(updatedUser);
+            // Don't use UserDatabase.setCurrentUser here as it expects StoredUser type
+            localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
             setAuthState(prev => ({ ...prev, user: updatedUser }));
           }
         }
@@ -655,7 +656,8 @@ export const useAuth = (): AuthHookReturn => {
           lastLoginAt: new Date(freshUser.lastLoginAt)
         };
         
-        UserDatabase.setCurrentUser(updatedUser);
+        // Store in localStorage for current user session
+        localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
         setAuthState(prev => ({ ...prev, user: updatedUser }));
       }
     } catch (error) {
