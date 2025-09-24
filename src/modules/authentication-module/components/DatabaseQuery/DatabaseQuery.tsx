@@ -21,7 +21,6 @@ import {
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  Grid,
   Card,
   CardContent
 } from '@mui/material';
@@ -135,7 +134,7 @@ const DatabaseQuery: React.FC = () => {
         Query the user database and authentication events. This interface provides access to all stored data.
       </Typography>
 
-      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3, mb: 3 }}>
         {/* Query Input */}
         <Box sx={{ flex: 1 }}>
           <Card>
@@ -218,169 +217,167 @@ const DatabaseQuery: React.FC = () => {
             </CardContent>
           </Card>
         </Box>
-
       </Box>
 
       {/* Results */}
       <Box sx={{ mt: 3 }}>
-          <Card>
-            <CardContent>
-              <Typography variant="h6" gutterBottom>
-                Query Results
-                {isLoading && <Chip label="Loading..." color="primary" sx={{ ml: 2 }} />}
-              </Typography>
+        <Card>
+          <CardContent>
+            <Typography variant="h6" gutterBottom>
+              Query Results
+              {isLoading && <Chip label="Loading..." color="primary" sx={{ ml: 2 }} />}
+            </Typography>
 
-              {results && (
-                <>
-                  {/* User Statistics */}
-                  {results.stats && Object.keys(results.stats).length > 0 && (
-                    <Box sx={{ mb: 3 }}>
-                      <Typography variant="h6" gutterBottom>
-                        User Statistics
-                      </Typography>
-                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
-                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                          <Paper sx={{ p: 2, textAlign: 'center' }}>
-                            <Typography variant="h4" color="primary">
-                              {results.stats.totalUsers || 0}
-                            </Typography>
-                            <Typography variant="body2">Total Users</Typography>
-                          </Paper>
-                        </Box>
-                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                          <Paper sx={{ p: 2, textAlign: 'center' }}>
-                            <Typography variant="h4" color="success.main">
-                              {results.stats.verifiedUsers || 0}
-                            </Typography>
-                            <Typography variant="body2">Verified</Typography>
-                          </Paper>
-                        </Box>
-                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                          <Paper sx={{ p: 2, textAlign: 'center' }}>
-                            <Typography variant="h4" color="warning.main">
-                              {results.stats.unverifiedUsers || 0}
-                            </Typography>
-                            <Typography variant="body2">Unverified</Typography>
-                          </Paper>
-                        </Box>
-                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
-                          <Paper sx={{ p: 2, textAlign: 'center' }}>
-                            <Typography variant="h4" color="info.main">
-                              {results.stats.adminUsers || 0}
-                            </Typography>
-                            <Typography variant="body2">Admins</Typography>
-                          </Paper>
-                        </Box>
+            {results && (
+              <>
+                {/* User Statistics */}
+                {results.stats && Object.keys(results.stats).length > 0 && (
+                  <Box sx={{ mb: 3 }}>
+                    <Typography variant="h6" gutterBottom>
+                      User Statistics
+                    </Typography>
+                    <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                      <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                        <Paper sx={{ p: 2, textAlign: 'center' }}>
+                          <Typography variant="h4" color="primary">
+                            {results.stats.totalUsers || 0}
+                          </Typography>
+                          <Typography variant="body2">Total Users</Typography>
+                        </Paper>
+                      </Box>
+                      <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                        <Paper sx={{ p: 2, textAlign: 'center' }}>
+                          <Typography variant="h4" color="success.main">
+                            {results.stats.verifiedUsers || 0}
+                          </Typography>
+                          <Typography variant="body2">Verified</Typography>
+                        </Paper>
+                      </Box>
+                      <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                        <Paper sx={{ p: 2, textAlign: 'center' }}>
+                          <Typography variant="h4" color="warning.main">
+                            {results.stats.unverifiedUsers || 0}
+                          </Typography>
+                          <Typography variant="body2">Unverified</Typography>
+                        </Paper>
+                      </Box>
+                      <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
+                        <Paper sx={{ p: 2, textAlign: 'center' }}>
+                          <Typography variant="h4" color="info.main">
+                            {results.stats.adminUsers || 0}
+                          </Typography>
+                          <Typography variant="body2">Admins</Typography>
+                        </Paper>
                       </Box>
                     </Box>
-                  )}
+                  </Box>
+                )}
 
-                  {/* Users Table */}
-                  {results.users && results.users.length > 0 && (
-                    <Box sx={{ mb: 3 }}>
-                      <Typography variant="h6" gutterBottom>
-                        Users ({results.users.length})
-                      </Typography>
-                      <TableContainer component={Paper}>
-                        <Table>
-                          <TableHead>
-                            <TableRow>
-                              <TableCell>ID</TableCell>
-                              <TableCell>Name</TableCell>
-                              <TableCell>Email</TableCell>
-                              <TableCell>Verified</TableCell>
-                              <TableCell>Role</TableCell>
-                              <TableCell>Created</TableCell>
+                {/* Users Table */}
+                {results.users && results.users.length > 0 && (
+                  <Box sx={{ mb: 3 }}>
+                    <Typography variant="h6" gutterBottom>
+                      Users ({results.users.length})
+                    </Typography>
+                    <TableContainer component={Paper}>
+                      <Table>
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>ID</TableCell>
+                            <TableCell>Name</TableCell>
+                            <TableCell>Email</TableCell>
+                            <TableCell>Verified</TableCell>
+                            <TableCell>Role</TableCell>
+                            <TableCell>Created</TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {results.users.map((user, index) => (
+                            <TableRow key={user.id || index}>
+                              <TableCell>{user.id}</TableCell>
+                              <TableCell>{user.name}</TableCell>
+                              <TableCell>{user.email}</TableCell>
+                              <TableCell>
+                                <Chip
+                                  label={user.emailVerified ? 'Yes' : 'No'}
+                                  color={user.emailVerified ? 'success' : 'warning'}
+                                  size="small"
+                                />
+                              </TableCell>
+                              <TableCell>
+                                <Chip
+                                  label={user.role || 'user'}
+                                  color={user.role === 'admin' ? 'primary' : 'default'}
+                                  size="small"
+                                />
+                              </TableCell>
+                              <TableCell>
+                                {new Date(user.createdAt).toLocaleDateString()}
+                              </TableCell>
                             </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            {results.users.map((user, index) => (
-                              <TableRow key={user.id || index}>
-                                <TableCell>{user.id}</TableCell>
-                                <TableCell>{user.name}</TableCell>
-                                <TableCell>{user.email}</TableCell>
-                                <TableCell>
-                                  <Chip
-                                    label={user.emailVerified ? 'Yes' : 'No'}
-                                    color={user.emailVerified ? 'success' : 'warning'}
-                                    size="small"
-                                  />
-                                </TableCell>
-                                <TableCell>
-                                  <Chip
-                                    label={user.role || 'user'}
-                                    color={user.role === 'admin' ? 'primary' : 'default'}
-                                    size="small"
-                                  />
-                                </TableCell>
-                                <TableCell>
-                                  {new Date(user.createdAt).toLocaleDateString()}
-                                </TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
-                    </Box>
-                  )}
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </Box>
+                )}
 
-                  {/* Events Table */}
-                  {results.events && results.events.length > 0 && (
-                    <Box>
-                      <Typography variant="h6" gutterBottom>
-                        Authentication Events ({results.events.length})
-                      </Typography>
-                      <TableContainer component={Paper}>
-                        <Table>
-                          <TableHead>
-                            <TableRow>
-                              <TableCell>Action</TableCell>
-                              <TableCell>Email</TableCell>
-                              <TableCell>Success</TableCell>
-                              <TableCell>Timestamp</TableCell>
-                              <TableCell>Error</TableCell>
+                {/* Events Table */}
+                {results.events && results.events.length > 0 && (
+                  <Box>
+                    <Typography variant="h6" gutterBottom>
+                      Authentication Events ({results.events.length})
+                    </Typography>
+                    <TableContainer component={Paper}>
+                      <Table>
+                        <TableHead>
+                          <TableRow>
+                            <TableCell>Action</TableCell>
+                            <TableCell>Email</TableCell>
+                            <TableCell>Success</TableCell>
+                            <TableCell>Timestamp</TableCell>
+                            <TableCell>Error</TableCell>
+                          </TableRow>
+                        </TableHead>
+                        <TableBody>
+                          {results.events.slice(0, 20).map((event, index) => (
+                            <TableRow key={event.id || index}>
+                              <TableCell>
+                                <Chip
+                                  label={event.action}
+                                  color={event.success ? 'success' : 'error'}
+                                  size="small"
+                                />
+                              </TableCell>
+                              <TableCell>{event.email || '-'}</TableCell>
+                              <TableCell>
+                                <Chip
+                                  label={event.success ? 'Yes' : 'No'}
+                                  color={event.success ? 'success' : 'error'}
+                                  size="small"
+                                />
+                              </TableCell>
+                              <TableCell>
+                                {new Date(event.timestamp).toLocaleString()}
+                              </TableCell>
+                              <TableCell>{event.errorReason || '-'}</TableCell>
                             </TableRow>
-                          </TableHead>
-                          <TableBody>
-                            {results.events.slice(0, 20).map((event, index) => (
-                              <TableRow key={event.id || index}>
-                                <TableCell>
-                                  <Chip
-                                    label={event.action}
-                                    color={event.success ? 'success' : 'error'}
-                                    size="small"
-                                  />
-                                </TableCell>
-                                <TableCell>{event.email || '-'}</TableCell>
-                                <TableCell>
-                                  <Chip
-                                    label={event.success ? 'Yes' : 'No'}
-                                    color={event.success ? 'success' : 'error'}
-                                    size="small"
-                                  />
-                                </TableCell>
-                                <TableCell>
-                                  {new Date(event.timestamp).toLocaleString()}
-                                </TableCell>
-                                <TableCell>{event.errorReason || '-'}</TableCell>
-                              </TableRow>
-                            ))}
-                          </TableBody>
-                        </Table>
-                      </TableContainer>
-                    </Box>
-                  )}
+                          ))}
+                        </TableBody>
+                      </Table>
+                    </TableContainer>
+                  </Box>
+                )}
 
-                  {!results.users?.length && !results.events?.length && !results.stats && (
-                    <Alert severity="info">
-                      No results found. Try a different query.
-                    </Alert>
-                  )}
-                </>
-              )}
-            </CardContent>
-          </Card>
-        </Box>
+                {!results.users?.length && !results.events?.length && !results.stats && (
+                  <Alert severity="info">
+                    No results found. Try a different query.
+                  </Alert>
+                )}
+              </>
+            )}
+          </CardContent>
+        </Card>
       </Box>
     </Box>
   );
