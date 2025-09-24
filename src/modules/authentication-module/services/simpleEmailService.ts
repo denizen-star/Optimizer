@@ -1,15 +1,16 @@
 /**
  * Simple Email Service
- * Handles email sending using a backend API endpoint
- * This avoids SendGrid webpack issues in React
+ * Handles email sending using SendGrid API with fallback to console logging
  */
 
 import { UrlService } from './urlService';
+import { TokenService } from './tokenService';
+import { SendGridEmailService } from './sendGridEmailService';
 
 export interface EmailVerificationData {
   email: string;
   name: string;
-  verificationToken: string;
+  userId: string;
 }
 
 export interface PasswordResetData {
@@ -20,31 +21,12 @@ export interface PasswordResetData {
 
 export class SimpleEmailService {
   /**
-   * Send email verification
+   * Send email verification using SendGrid
    */
   static async sendVerificationEmail(data: EmailVerificationData): Promise<boolean> {
     try {
-      const verificationUrl = UrlService.generateEmailVerificationUrl(data.verificationToken);
-      
-      // In a real implementation, this would call your backend API
-      // For now, we'll simulate the email sending
-      console.log('📧 Email Verification Request:');
-      console.log('To:', data.email);
-      console.log('Name:', data.name);
-      console.log('Verification URL:', verificationUrl);
-      console.log('Subject: Verify Your Email - Optimizer');
-      
-      // Simulate email sending delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // In development, show the verification URL in console
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🔗 Click this link to verify your email:');
-        console.log(verificationUrl);
-        console.log('📝 Copy this URL and paste it in your browser to complete verification');
-      }
-      
-      return true;
+      // Use SendGrid service for real email sending
+      return await SendGridEmailService.sendVerificationEmail(data);
     } catch (error) {
       console.error('Failed to send verification email:', error);
       return false;
@@ -52,29 +34,12 @@ export class SimpleEmailService {
   }
 
   /**
-   * Send password reset email
+   * Send password reset email using SendGrid
    */
   static async sendPasswordResetEmail(data: PasswordResetData): Promise<boolean> {
     try {
-      const resetUrl = UrlService.generatePasswordResetUrl(data.resetToken);
-      
-      console.log('📧 Password Reset Request:');
-      console.log('To:', data.email);
-      console.log('Name:', data.name);
-      console.log('Reset URL:', resetUrl);
-      console.log('Subject: Reset Your Password - Optimizer');
-      
-      // Simulate email sending delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // In development, show the reset URL in console
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🔗 Click this link to reset your password:');
-        console.log(resetUrl);
-        console.log('📝 Copy this URL and paste it in your browser to reset your password');
-      }
-      
-      return true;
+      // Use SendGrid service for real email sending
+      return await SendGridEmailService.sendPasswordResetEmail(data);
     } catch (error) {
       console.error('Failed to send password reset email:', error);
       return false;
@@ -82,20 +47,12 @@ export class SimpleEmailService {
   }
 
   /**
-   * Send welcome email
+   * Send welcome email using SendGrid
    */
   static async sendWelcomeEmail(email: string, name: string): Promise<boolean> {
     try {
-      console.log('📧 Welcome Email Sent:');
-      console.log('To:', email);
-      console.log('Name:', name);
-      console.log('Subject: Welcome to Optimizer!');
-      console.log('Message: Your email has been verified successfully!');
-      
-      // Simulate email sending delay
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      return true;
+      // Use SendGrid service for real email sending
+      return await SendGridEmailService.sendWelcomeEmail(email, name);
     } catch (error) {
       console.error('Failed to send welcome email:', error);
       return false;

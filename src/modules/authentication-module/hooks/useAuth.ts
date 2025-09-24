@@ -7,6 +7,9 @@ import { useState, useEffect, useCallback } from 'react';
 import { authTrackingService, AuthAction } from '../services/authTrackingService';
 import { SimpleEmailService } from '../services/simpleEmailService';
 import { User, LoginCredentials, SignupData, AuthState, AuthHookReturn } from '../types';
+import { PasswordUtils } from '../utils/passwordUtils';
+import { ValidationUtils } from '../utils/validationUtils';
+import { TokenService } from '../services/tokenService';
 // import { UrlService } from '../services/urlService'; // Will be used for email URL generation
 
 // User interface is now imported from ../types
@@ -67,6 +70,25 @@ export const useAuth = (): AuthHookReturn => {
 
   const login = useCallback(async (credentials: LoginCredentials): Promise<boolean> => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }));
+
+    // Validate input
+    const validation = ValidationUtils.validateLoginCredentials(credentials);
+    if (!validation.isValid) {
+      const errorMessage = validation.errors.join(', ');
+      setAuthState(prev => ({ 
+        ...prev, 
+        isLoading: false, 
+        error: errorMessage 
+      }));
+      
+      await authTrackingService.trackAuthEvent(AuthAction.LOGIN_FAILURE, {
+        email: credentials.email,
+        success: false,
+        errorReason: errorMessage
+      });
+      
+      return false;
+    }
 
     // Track login attempt
     await authTrackingService.trackAuthEvent(AuthAction.LOGIN_ATTEMPT, {
@@ -166,6 +188,43 @@ export const useAuth = (): AuthHookReturn => {
   const signup = useCallback(async (data: SignupData): Promise<boolean> => {
     setAuthState(prev => ({ ...prev, isLoading: true, error: null }));
 
+    // Comprehensive validation
+    const validation = ValidationUtils.validateSignupData(data);
+    if (!validation.isValid) {
+      const errorMessage = validation.errors.join(', ');
+      setAuthState(prev => ({ 
+        ...prev, 
+        isLoading: false, 
+        error: errorMessage 
+      }));
+      
+      await authTrackingService.trackAuthEvent(AuthAction.SIGNUP_FAILURE, {
+        email: data.email,
+        success: false,
+        errorReason: errorMessage
+      });
+      
+      return false;
+    }
+
+    // Check for weak passwords
+    if (ValidationUtils.isWeakPassword(data.password)) {
+      const errorMessage = 'Password is too common. Please choose a stronger password.';
+      setAuthState(prev => ({ 
+        ...prev, 
+        isLoading: false, 
+        error: errorMessage 
+      }));
+      
+      await authTrackingService.trackAuthEvent(AuthAction.SIGNUP_FAILURE, {
+        email: data.email,
+        success: false,
+        errorReason: errorMessage
+      });
+      
+      return false;
+    }
+
     // Track signup attempt
     await authTrackingService.trackAuthEvent(AuthAction.SIGNUP_ATTEMPT, {
       email: data.email,
@@ -191,17 +250,13 @@ export const useAuth = (): AuthHookReturn => {
         });
 
         // Send verification email using Simple Email Service
-        const verificationToken = 'verify_' + Math.random().toString(36).substr(2, 9);
         const emailSent = await SimpleEmailService.sendVerificationEmail({
           email: user.email,
           name: user.name,
-          verificationToken: verificationToken
+          userId: user.id
         });
 
         if (emailSent) {
-          // Store verification token and user ID for later verification
-          localStorage.setItem('optimizer_verification_token', verificationToken);
-          localStorage.setItem('optimizer_current_user_id', user.id);
           console.log('Verification email sent successfully');
         } else {
           console.warn('Failed to send verification email, but user account created');
@@ -358,38 +413,40 @@ export const useAuth = (): AuthHookReturn => {
 
   const verifyEmail = useCallback(async (token: string): Promise<boolean> => {
     try {
-      // Check if token matches the stored verification token
-      const storedToken = localStorage.getItem('optimizer_verification_token');
+      // Verify token using TokenService
+      const tokenResult = TokenService.verifyToken(token, 'email_verification');
       
-      if (!storedToken || storedToken !== token) {
+      if (!tokenResult.isValid) {
         await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SUCCESS, {
           success: false,
-          errorReason: 'Invalid or expired token'
+          errorReason: tokenResult.error || 'Invalid or expired token'
         });
         return false;
       }
 
-      const response = await simulateAuthAPI('verifyEmail', { token });
+      const tokenData = tokenResult.tokenData!;
       
-      if (response.success) {
-        // Update user if logged in, otherwise just track the verification
-        if (authState.user && response.userId === authState.user.id) {
+      // Update user verification status
+      const users = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
+      const userToVerify = users.find((u: any) => u.id === tokenData.userId);
+      
+      if (userToVerify) {
+        userToVerify.emailVerified = true;
+        localStorage.setItem('optimizer_users_registry', JSON.stringify(users));
+        
+        // Update current user if logged in
+        if (authState.user && authState.user.id === tokenData.userId) {
           const updatedUser = { ...authState.user, emailVerified: true };
           localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
           setAuthState(prev => ({ ...prev, user: updatedUser }));
         }
 
-        // Clear the verification token
-        localStorage.removeItem('optimizer_verification_token');
-
         // Send welcome email
-        if (authState.user) {
-          await SimpleEmailService.sendWelcomeEmail(authState.user.email, authState.user.name);
-        }
+        await SimpleEmailService.sendWelcomeEmail(tokenData.email, userToVerify.name);
 
         await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SUCCESS, {
-          userId: response.userId,
-          email: response.email,
+          userId: tokenData.userId,
+          email: tokenData.email,
           success: true,
           metadata: { loggedIn: !!authState.user }
         });
@@ -397,9 +454,9 @@ export const useAuth = (): AuthHookReturn => {
         return true;
       } else {
         await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SUCCESS, {
-          email: response.email || 'unknown',
+          email: tokenData.email,
           success: false,
-          errorReason: response.error || 'verification_failed',
+          errorReason: 'User not found',
           metadata: { token: token.substring(0, 8) + '...' }
         });
         
@@ -421,25 +478,32 @@ export const useAuth = (): AuthHookReturn => {
 
   const resendVerificationEmail = useCallback(async (email: string): Promise<boolean> => {
     try {
-      // Generate new verification token
-      const verificationToken = 'verify_' + Math.random().toString(36).substr(2, 9);
+      // Find user by email
+      const users = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
+      const user = users.find((u: any) => u.email === email);
+      
+      if (!user) {
+        await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SENT, {
+          email,
+          success: false,
+          errorReason: 'User not found'
+        });
+        return false;
+      }
       
       // Send verification email using Simple Email Service
       const emailSent = await SimpleEmailService.sendVerificationEmail({
         email,
-        name: authState.user?.name || 'User',
-        verificationToken: verificationToken
+        name: user.name,
+        userId: user.id
       });
 
       if (emailSent) {
-        // Store new verification token
-        localStorage.setItem('optimizer_verification_token', verificationToken);
-        
         // Track email verification sent
         await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SENT, {
           email,
           success: true,
-          metadata: { type: 'resend' }
+          metadata: { type: 'resend', userId: user.id }
         });
         
         return true;
@@ -462,7 +526,7 @@ export const useAuth = (): AuthHookReturn => {
       console.error('Resend verification failed:', error);
       return false;
     }
-  }, [authState.user]);
+  }, []);
 
   const enableTwoFactor = useCallback(async (): Promise<boolean> => {
     if (!authState.user) return false;
@@ -575,9 +639,9 @@ async function simulateAuthAPI(endpoint: string, data: any): Promise<any> {
     case 'login':
       // Check against stored users
       const storedUsers = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
-      const user = storedUsers.find((u: any) => u.email === data.email && u.password === data.password);
+      const user = storedUsers.find((u: any) => u.email === data.email);
       
-      if (user) {
+      if (user && PasswordUtils.verifyPassword(data.password, user.passwordHash)) {
         // Update last login
         user.lastLoginAt = new Date();
         localStorage.setItem('optimizer_users_registry', JSON.stringify(storedUsers));
@@ -608,12 +672,12 @@ async function simulateAuthAPI(endpoint: string, data: any): Promise<any> {
         return { success: false, error: 'User already exists with this email' };
       }
 
-      // Create new user
+      // Create new user with hashed password
       const newUser = {
         id: 'user_' + Math.random().toString(36).substr(2, 9),
         email: data.email,
         name: data.name,
-        password: data.password, // In real app, this would be hashed
+        passwordHash: PasswordUtils.hashPassword(data.password), // Store hashed password
         emailVerified: false,
         twoFactorEnabled: false,
         createdAt: new Date().toISOString(),

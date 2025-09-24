@@ -7,7 +7,7 @@ import PersonaSelector from './components/PersonaSelector/PersonaSelector';
 import TimeAllocationTuner from './components/TimeAllocationTuner/TimeAllocationTuner';
 import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
 import AnalyticsDashboard from './components/AnalyticsDashboard/AnalyticsDashboard';
-import { AuthDemo, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
+import { AuthDemo, EnhancedSignup, EmailTest, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
 import { useStore } from './store/useStore';
 import './App.css';
 
@@ -280,6 +280,14 @@ function AppContent() {
               <Route 
                 path="/auth-demo" 
                 element={<AuthDemo />} 
+              />
+              <Route 
+                path="/signup" 
+                element={<EnhancedSignup />} 
+              />
+              <Route 
+                path="/email-test" 
+                element={<EmailTest />} 
               />
               <Route 
                 path="/verify-email/:token" 

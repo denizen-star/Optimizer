@@ -3,6 +3,9 @@
  * Common utility functions for the authentication system
  */
 
+export { PasswordUtils } from './passwordUtils';
+export { ValidationUtils } from './validationUtils';
+
 /**
  * Generate a secure random token
  */

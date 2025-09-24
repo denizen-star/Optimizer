@@ -21,6 +21,8 @@ export { useAuth } from './hooks/useAuth';
 
 // Export authentication components
 export { default as AuthDemo } from './components/AuthDemo/AuthDemo';
+export { default as EnhancedSignup } from './components/EnhancedSignup/EnhancedSignup';
+export { default as EmailTest } from './components/EmailTest/EmailTest';
 export { default as EmailVerification } from './components/EmailVerification/EmailVerification';
 export { default as UserManagement } from './components/UserManagement/UserManagement';
 export { default as AuthActivity } from './components/AuthActivity/AuthActivity';

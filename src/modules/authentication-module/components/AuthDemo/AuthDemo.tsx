@@ -17,13 +17,15 @@ import {
 } from '@mui/material';
 import { Login, PersonAdd, Lock, Logout } from '@mui/icons-material';
 import { useAuth } from '../../hooks/useAuth';
+import { ValidationUtils } from '../../utils/validationUtils';
 
 const AuthDemo: React.FC = () => {
   const [email, setEmail] = useState('demo@optimizer.com');
-  const [password, setPassword] = useState('demo123');
+  const [password, setPassword] = useState('Demo123!');
   const [name, setName] = useState('Demo User');
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState<'success' | 'error' | 'info'>('info');
+  const [validationErrors, setValidationErrors] = useState<{[key: string]: string[]}>({});
 
   const {
     user,
@@ -42,6 +44,40 @@ const AuthDemo: React.FC = () => {
     setTimeout(() => setMessage(''), 5000);
   };
 
+  const validateField = (field: string, value: string) => {
+    let errors: string[] = [];
+    
+    switch (field) {
+      case 'email':
+        const emailValidation = ValidationUtils.validateEmail(value);
+        errors = emailValidation.errors;
+        break;
+      case 'password':
+        const passwordValidation = ValidationUtils.validatePassword(value);
+        errors = passwordValidation.errors;
+        break;
+      case 'name':
+        const nameValidation = ValidationUtils.validateName(value);
+        errors = nameValidation.errors;
+        break;
+    }
+    
+    setValidationErrors(prev => ({
+      ...prev,
+      [field]: errors
+    }));
+    
+    return errors.length === 0;
+  };
+
+  const validateAllFields = () => {
+    const emailValid = validateField('email', email);
+    const passwordValid = validateField('password', password);
+    const nameValid = validateField('name', name);
+    
+    return emailValid && passwordValid && nameValid;
+  };
+
   const handleLogin = async () => {
     const success = await login({ email, password, rememberMe: true });
     if (success) {
@@ -52,6 +88,11 @@ const AuthDemo: React.FC = () => {
   };
 
   const handleSignup = async () => {
+    if (!validateAllFields()) {
+      showMessage('Please fix the validation errors before signing up.', 'error');
+      return;
+    }
+    
     const success = await signup({ 
       email, 
       password, 
@@ -163,26 +204,41 @@ const AuthDemo: React.FC = () => {
                   fullWidth
                   label="Email"
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    validateField('email', e.target.value);
+                  }}
                   margin="dense"
                   size="small"
+                  error={validationErrors.email && validationErrors.email.length > 0}
+                  helperText={validationErrors.email && validationErrors.email[0]}
                 />
                 <TextField
                   fullWidth
                   label="Password"
                   type="password"
                   value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    validateField('password', e.target.value);
+                  }}
                   margin="dense"
                   size="small"
+                  error={validationErrors.password && validationErrors.password.length > 0}
+                  helperText={validationErrors.password && validationErrors.password[0]}
                 />
                 <TextField
                   fullWidth
                   label="Name"
                   value={name}
-                  onChange={(e) => setName(e.target.value)}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                    validateField('name', e.target.value);
+                  }}
                   margin="dense"
                   size="small"
+                  error={validationErrors.name && validationErrors.name.length > 0}
+                  helperText={validationErrors.name && validationErrors.name[0]}
                 />
               </Box>
 
