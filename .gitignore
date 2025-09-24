@@ -87,3 +87,16 @@ pids
 
 # OS generated files
 Thumbs.db
+
+# Node.js installations (should use nvm or system Node.js)
+node-v*/
+node.tar.gz
+
+# Deprecated files and modules
+src/hooks/
+src/services/authTrackingService.ts
+src/services/simpleEmailService.ts
+src/services/urlService.ts
+
+# Temporary documentation
+MODULE_INTEGRATION_STATUS.md
