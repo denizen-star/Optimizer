@@ -16,7 +16,6 @@ import {
   Tooltip
 } from '@mui/material';
 import {
-  Analytics,
   TrendingUp,
   TrendingDown,
   AttachMoney,

@@ -19,7 +19,6 @@ import {
   AccordionDetails,
 } from '@mui/material';
 import {
-  CalendarToday,
   ChevronLeft,
   ChevronRight,
   AccessTime,

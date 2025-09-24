@@ -10,9 +10,7 @@ import {
   Typography,
   Menu,
   MenuItem,
-  Box,
-  IconButton,
-  Divider
+  Box
 } from '@mui/material';
 import {
   Home
@@ -23,10 +21,10 @@ import { useDesignSystem } from './hooks';
 interface MenuCategory {
   id: string;
   label: string;
-  items: MenuItem[];
+  items: MenuItemData[];
 }
 
-interface MenuItem {
+interface MenuItemData {
   id: string;
   label: string;
   path: string;
@@ -92,7 +90,7 @@ const DropdownMenu: React.FC = () => {
     }));
   };
 
-  const handleMenuItemClick = (item: MenuItem) => {
+          const handleMenuItemClick = (item: MenuItemData) => {
     handleMenuClose(item.id.split('_')[0]); // Close menu based on category
     navigate(item.path);
   };

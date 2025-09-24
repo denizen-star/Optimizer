@@ -16,9 +16,7 @@ import {
   Button,
   List,
   ListItem,
-  ListItemText,
-  Divider,
-  Link
+  ListItemText
 } from '@mui/material';
 import { useDesignSystem } from '../../design-system';
 
@@ -1795,6 +1793,90 @@ const NavigationGuide: React.FC = () => {
               Back to Optimizer App
             </Button>
           </Box>
+        </CardContent>
+      </Card>
+
+      {/* Recent Git Commits */}
+      <Card sx={{ mb: 3, ...helpers.getCardStyles() }}>
+        <CardContent>
+          <Typography variant="h2" sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>
+            Recent Git Commits
+          </Typography>
+          
+          {/* Commit 1 - Latest */}
+          <Paper sx={{ p: 2, mb: 2, backgroundColor: colors.background.light, borderRadius: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>
+                5cffdea
+              </Typography>
+              <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
+                denizen-star, 73 seconds ago
+              </Typography>
+            </Box>
+            <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>
+              🚀 MAJOR RELEASE: Complete Navigation Guide & Design System Overhaul
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
+              ✨ NEW FEATURES: Complete React Navigation Guide with all HTML content migrated, Usage Workflow (5-step process), Development Hub Status with real-time indicators, Design System Backlog with reusable component roadmap, Core Modules & Components with detailed descriptions, Services Overview with 10 service cards, Module Integration Status with progress tracking, Testing Results & Demo Links, Quick Start Commands with monospace styling, Project Structure & File Analysis
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
+              🎨 DESIGN SYSTEM: Centralized design system with theme, hooks, and provider, DropdownMenu component with 4 categories, Standardized typography (Plus Jakarta Sans), Consistent color palette with soft blues, Reusable component architecture
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
+              🔧 TECHNICAL IMPROVEMENTS: TypeScript errors fixed, Optimizer logo now links to auth page, Standardized page titles and subtitles across all pages, Break lines after subtitles, Removed icons from titles and buttons, Consistent navigation across all pages
+            </Typography>
+          </Paper>
+
+          {/* Commit 2 */}
+          <Paper sx={{ p: 2, mb: 2, backgroundColor: colors.background.light, borderRadius: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>
+                ab7ca30
+              </Typography>
+              <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
+                denizen-star, 2 hours ago
+              </Typography>
+            </Box>
+            <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>
+              Fix ESLint warning: remove unused useEffect import
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
+              - Removed unused useEffect import from DatabaseQuery component
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
+              - This fixes the CI build failure where ESLint warnings are treated as errors
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
+              - Component is now ready for production deployment
+            </Typography>
+          </Paper>
+
+          {/* Commit 3 */}
+          <Paper sx={{ p: 2, mb: 2, backgroundColor: colors.background.light, borderRadius: 1 }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+              <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>
+                551e7b2
+              </Typography>
+              <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
+                denizen-star, 2 hours ago
+              </Typography>
+            </Box>
+            <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>
+              Fix JSX structure errors in DatabaseQuery component
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
+              - Completely rewrote component with proper JSX structure
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
+              - Fixed adjacent JSX elements error, removed problematic Grid components
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
+              - Simplified layout using Box components, component now has correct nesting and closing tags
+            </Typography>
+            <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
+              - Ready for production deployment
+            </Typography>
+          </Paper>
         </CardContent>
       </Card>
 

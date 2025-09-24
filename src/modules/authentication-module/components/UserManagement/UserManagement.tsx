@@ -29,7 +29,6 @@ import {
   Delete,
   Search,
   Person,
-  AdminPanelSettings,
   Warning
 } from '@mui/icons-material';
 import { format } from 'date-fns';

@@ -38,7 +38,6 @@ const TimeAllocationTuner: React.FC<TimeAllocationTunerProps> = ({
   onResetDefaults,
   loading = false
 }) => {
-  const { colors, helpers } = useDesignSystem();
   const totalPercentage = 
     timeAllocation.individual_activities_percent +
     timeAllocation.networking_social_percent +

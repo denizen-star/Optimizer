@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { Home, Person, Tune, Schedule, Analytics, Security, AdminPanelSettings, MenuBook } from '@mui/icons-material';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Box } from '@mui/material';
 import PersonaSelector from './components/PersonaSelector/PersonaSelector';
 import TimeAllocationTuner from './components/TimeAllocationTuner/TimeAllocationTuner';
 import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
@@ -10,15 +9,12 @@ import NavigationGuide from './components/NavigationGuide/NavigationGuide';
 import { AuthDemo, EnhancedSignup, EmailTest, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
 import DatabaseQuery from './modules/authentication-module/components/DatabaseQuery/DatabaseQuery';
 import { useStore } from './store/useStore';
-import { DesignSystemProvider, useDesignSystem, DropdownMenu } from './design-system';
+import { DesignSystemProvider, DropdownMenu } from './design-system';
 import './App.css';
 
 // Design system theme is now imported from design-system/theme.ts
 
 function AppContent() {
-  const navigate = useNavigate();
-  const location = useLocation();
-  const { colors, helpers } = useDesignSystem();
   
   const {
     selectedPersona,
