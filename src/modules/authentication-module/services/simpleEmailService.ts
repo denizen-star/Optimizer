@@ -3,8 +3,8 @@
  * Handles email sending using SendGrid API with fallback to console logging
  */
 
-import { UrlService } from './urlService';
-import { TokenService } from './tokenService';
+// import { UrlService } from './urlService';
+// import { TokenService } from './tokenService';
 import { SendGridEmailService } from './sendGridEmailService';
 
 export interface EmailVerificationData {

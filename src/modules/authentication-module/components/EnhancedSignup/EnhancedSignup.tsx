@@ -3,7 +3,7 @@
  * Improved user creation process with better UX
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Typography,
@@ -20,7 +20,7 @@ import {
   Chip,
   FormControlLabel,
   Checkbox,
-  Divider
+  // Divider
 } from '@mui/material';
 import { 
   PersonAdd, 
@@ -59,28 +59,27 @@ const EnhancedSignup: React.FC = () => {
 
   const { signup } = useAuth();
 
-  const steps = [
-    {
-      label: 'Personal Information',
-      icon: <Person />,
-      description: 'Tell us about yourself'
-    },
-    {
-      label: 'Account Security',
-      icon: <Security />,
-      description: 'Create a secure password'
-    },
-    {
-      label: 'Email Verification',
-      icon: <Email />,
-      description: 'Verify your email address'
-    },
-    {
-      label: 'Complete',
-      icon: <CheckCircle />,
-      description: 'Welcome to Optimizer!'
-    }
-  ];
+  // const steps = [
+  //   {
+  //     label: 'Personal Information',
+  //     icon: <Person />,
+  //     description: 'Tell us about yourself'
+  //   },
+  //     label: 'Account Security',
+  //     icon: <Security />,
+  //     description: 'Create a secure password'
+  //   },
+  //   {
+  //     label: 'Email Verification',
+  //     icon: <Email />,
+  //     description: 'Verify your email address'
+  //   },
+  //   {
+  //     label: 'Complete',
+  //     icon: <CheckCircle />,
+  //     description: 'Welcome to Optimizer!'
+  //   }
+  // ];
 
   const validateField = (field: string, value: string) => {
     let errors: string[] = [];
