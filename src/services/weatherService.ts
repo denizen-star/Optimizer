@@ -1,4 +1,4 @@
-// import axios from 'axios'; // Commented out until needed
+import axios from 'axios';
 
 export interface WeatherData {
   temperature: number;
@@ -14,38 +14,72 @@ export class WeatherService {
 
   static async getCurrentWeather(city: string = 'Toronto'): Promise<WeatherData> {
     try {
-      // For demo purposes, return mock weather data
-      // In production, uncomment the API call below
-      
-      /*
-      const response = await axios.get(`${this.BASE_URL}/weather`, {
-        params: {
-          q: city,
-          appid: this.API_KEY,
-          units: 'metric'
-        }
-      });
+      // Try to use real API if key is available
+      if (this.API_KEY && this.API_KEY !== 'demo_key') {
+        const response = await axios.get(`${this.BASE_URL}/weather`, {
+          params: {
+            q: city,
+            appid: this.API_KEY,
+            units: 'metric'
+          }
+        });
 
-      const data = response.data;
-      return {
-        temperature: Math.round(data.main.temp),
-        condition: this.mapWeatherCondition(data.weather[0].main),
-        humidity: data.main.humidity,
-        windSpeed: data.wind.speed,
-        description: data.weather[0].description
-      };
-      */
+        const data = response.data;
+        return {
+          temperature: Math.round(data.main.temp),
+          condition: this.mapWeatherCondition(data.weather[0].main),
+          humidity: data.main.humidity,
+          windSpeed: data.wind.speed,
+          description: data.weather[0].description
+        };
+      }
 
-      // Mock weather data for demo
-      const mockConditions = ['sunny', 'cloudy', 'rainy', 'snowy', 'stormy'] as const;
-      const randomCondition = mockConditions[Math.floor(Math.random() * mockConditions.length)];
+      // Fallback to realistic mock data based on time of day and season
+      const now = new Date();
+      const hour = now.getHours();
+      const month = now.getMonth();
+      
+      // Seasonal temperature adjustments
+      let baseTemp = 20;
+      if (month >= 11 || month <= 2) baseTemp = 0; // Winter
+      else if (month >= 3 && month <= 5) baseTemp = 15; // Spring
+      else if (month >= 6 && month <= 8) baseTemp = 25; // Summer
+      else baseTemp = 10; // Fall
+      
+      // Time of day adjustments
+      if (hour >= 6 && hour <= 10) baseTemp -= 2; // Morning
+      else if (hour >= 11 && hour <= 16) baseTemp += 3; // Afternoon
+      else if (hour >= 17 && hour <= 21) baseTemp += 1; // Evening
+      else baseTemp -= 4; // Night
+      
+      // Add some realistic variation
+      const variation = Math.floor(Math.random() * 6) - 3; // -3 to +3
+      const temperature = Math.max(-10, Math.min(35, baseTemp + variation));
+      
+      // Realistic weather conditions based on temperature
+      let condition: WeatherData['condition'];
+      if (temperature < 0) {
+        condition = Math.random() > 0.7 ? 'snowy' : 'cloudy';
+      } else if (temperature < 10) {
+        condition = Math.random() > 0.6 ? 'cloudy' : 'rainy';
+      } else if (temperature < 20) {
+        const rand = Math.random();
+        if (rand > 0.7) condition = 'sunny';
+        else if (rand > 0.4) condition = 'cloudy';
+        else condition = 'rainy';
+      } else {
+        const rand = Math.random();
+        if (rand > 0.8) condition = 'stormy';
+        else if (rand > 0.3) condition = 'sunny';
+        else condition = 'cloudy';
+      }
       
       return {
-        temperature: Math.floor(Math.random() * 30) - 5, // -5 to 25°C
-        condition: randomCondition,
-        humidity: Math.floor(Math.random() * 50) + 30, // 30-80%
-        windSpeed: Math.floor(Math.random() * 20), // 0-20 km/h
-        description: this.getWeatherDescription(randomCondition)
+        temperature,
+        condition,
+        humidity: Math.floor(Math.random() * 40) + 40, // 40-80%
+        windSpeed: Math.floor(Math.random() * 15) + 5, // 5-20 km/h
+        description: this.getWeatherDescription(condition)
       };
     } catch (error) {
       console.error('Weather service error:', error);

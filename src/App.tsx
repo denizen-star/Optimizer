@@ -2,15 +2,12 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import { CssBaseline, Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
-import { Home, Person, Tune, Schedule, Analytics, Security, AdminPanelSettings } from '@mui/icons-material';
+import { Home, Person, Tune, Schedule, Analytics, Security, AdminPanelSettings, MenuBook } from '@mui/icons-material';
 import PersonaSelector from './components/PersonaSelector/PersonaSelector';
 import TimeAllocationTuner from './components/TimeAllocationTuner/TimeAllocationTuner';
 import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
 import AnalyticsDashboard from './components/AnalyticsDashboard/AnalyticsDashboard';
-import AuthActivity from './components/AuthActivity/AuthActivity';
-import AuthDemo from './components/AuthDemo/AuthDemo';
-import EmailVerification from './components/EmailVerification/EmailVerification';
-import UserManagement from './components/UserManagement/UserManagement';
+import { AuthDemo, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
 import { useStore } from './store/useStore';
 import './App.css';
 
@@ -132,6 +129,14 @@ function AppContent() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Optimizer
           </Typography>
+          <Button
+            color="inherit"
+            startIcon={<MenuBook />}
+            onClick={() => window.open('/navigation-guide.html', '_blank')}
+            sx={{ mr: 2 }}
+          >
+            Dev Guide
+          </Button>
           {selectedPersona && (
             <>
               <Button

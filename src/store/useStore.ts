@@ -1,5 +1,6 @@
 import { create } from 'zustand';
-import { AppState, UserPersona, TimeAllocation, Activity, WeeklySchedule } from '../types';
+import { AppState, UserPersona, TimeAllocation, Activity, WeeklySchedule, ScheduleItem } from '../types';
+import { format } from 'date-fns';
 
 interface AppStore extends AppState {
   // Actions
@@ -308,21 +309,42 @@ export const useStore = create<AppStore>((set, get) => ({
 
     set({ isLoading: true, error: null });
     try {
-      // Mock schedule generation - in real app this would call an API
-      const mockSchedule: WeeklySchedule = {
-        week_start: new Date().toISOString().split('T')[0],
-        week_end: new Date(Date.now() + 6 * 24 * 60 * 60 * 1000).toISOString().split('T')[0],
+      // Generate realistic schedule based on persona preferences
+      const weekStart = new Date();
+      const weekEnd = new Date(Date.now() + 6 * 24 * 60 * 60 * 1000);
+      
+      const schedule: WeeklySchedule = {
+        week_start: weekStart.toISOString().split('T')[0],
+        week_end: weekEnd.toISOString().split('T')[0],
         days: [],
         weekly_summary: {
-          total_cost: 450,
-          total_activities: 28,
-          networking_activities: 8,
-          couple_activities: 12,
-          individual_activities: 8
+          total_cost: 0,
+          total_activities: 0,
+          networking_activities: 0,
+          couple_activities: 0,
+          individual_activities: 0
         }
       };
 
-      set({ currentSchedule: mockSchedule, isLoading: false });
+      // Generate activities for each day based on persona
+      for (let i = 0; i < 7; i++) {
+        const currentDate = new Date(weekStart);
+        currentDate.setDate(currentDate.getDate() + i);
+        const dayName = currentDate.toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
+        const isWeekend = dayName === 'saturday' || dayName === 'sunday';
+        
+        const daySchedule = generateDaySchedule(selectedPersona, currentDate, isWeekend);
+        schedule.days.push(daySchedule);
+        
+        // Update weekly summary
+        schedule.weekly_summary.total_activities += daySchedule.activities.length;
+        schedule.weekly_summary.total_cost += daySchedule.activities.reduce((sum: number, activity: any) => sum + (activity.activity.cost_cad || 0), 0);
+        schedule.weekly_summary.networking_activities += daySchedule.activities.filter((a: any) => a.type === 'networking').length;
+        schedule.weekly_summary.couple_activities += daySchedule.activities.filter((a: any) => a.type === 'couple').length;
+        schedule.weekly_summary.individual_activities += daySchedule.activities.filter((a: any) => a.type === 'individual').length;
+      }
+
+      set({ currentSchedule: schedule, isLoading: false });
     } catch (error) {
       set({ error: 'Failed to generate schedule', isLoading: false });
     }
@@ -338,3 +360,209 @@ export const useStore = create<AppStore>((set, get) => ({
     return `schedule_${currentSchedule.week_start}.md`;
   }
 }));
+
+// Helper function to generate realistic daily schedules
+function generateDaySchedule(persona: UserPersona, date: Date, isWeekend: boolean): any {
+  const activities: ScheduleItem[] = [];
+  const dayName = format(date, 'EEEE').toLowerCase();
+  
+  // Base activities based on persona preferences
+  if (persona.persona_id === 'kevin_job_search') {
+    // Kevin's job search schedule
+    if (!isWeekend) {
+      // Weekday activities
+      activities.push({
+        start_time: '07:00',
+        end_time: '08:00',
+        date: format(date, 'yyyy-MM-dd'),
+        type: 'individual',
+        activity: {
+          id: 'morning_exercise',
+          name: 'Morning Exercise',
+          category: 'fitness',
+          subcategory: 'cardio',
+          description: 'Running or gym workout to start the day energized',
+          cost_cad: 0,
+          duration_minutes: 60,
+          networking_potential: 2,
+          location: 'Local Park / Gym',
+          tags: ['fitness', 'running', 'energy'],
+          requirements: ['workout clothes'],
+          best_time: ['morning'],
+          frequency: 'daily'
+        }
+      });
+
+      activities.push({
+        start_time: '09:00',
+        end_time: '12:00',
+        date: format(date, 'yyyy-MM-dd'),
+        type: 'individual',
+        activity: {
+          id: 'job_search',
+          name: 'Job Search & Applications',
+          category: 'career',
+          subcategory: 'job_search',
+          description: 'Researching companies, tailoring resumes, submitting applications',
+          cost_cad: 0,
+          duration_minutes: 180,
+          networking_potential: 0,
+          location: 'Home Office',
+          tags: ['career', 'job_search', 'applications'],
+          requirements: ['computer', 'internet'],
+          best_time: ['morning'],
+          frequency: 'daily'
+        }
+      });
+
+      activities.push({
+        start_time: '14:00',
+        end_time: '16:00',
+        date: format(date, 'yyyy-MM-dd'),
+        type: 'networking',
+        activity: {
+          id: 'networking_event',
+          name: 'Networking Event',
+          category: 'networking',
+          subcategory: 'professional',
+          description: 'Industry meetup, conference, or professional event',
+          cost_cad: 25,
+          duration_minutes: 120,
+          networking_potential: 8,
+          location: 'Downtown Venue',
+          tags: ['networking', 'professional', 'career'],
+          requirements: ['business cards', 'elevator pitch'],
+          best_time: ['afternoon'],
+          frequency: 'weekly'
+        }
+      });
+
+      activities.push({
+        start_time: '18:00',
+        end_time: '19:30',
+        date: format(date, 'yyyy-MM-dd'),
+        type: 'couple',
+        activity: {
+          id: 'dinner_with_peter',
+          name: 'Dinner with Peter',
+          category: 'couple',
+          subcategory: 'meals',
+          description: 'Quality time over a shared meal',
+          cost_cad: 40,
+          duration_minutes: 90,
+          networking_potential: 0,
+          location: 'Home / Restaurant',
+          tags: ['couple', 'meal', 'connection'],
+          requirements: [],
+          best_time: ['evening'],
+          frequency: 'daily'
+        }
+      });
+    } else {
+      // Weekend activities
+      activities.push({
+        start_time: '10:00',
+        end_time: '12:00',
+        date: format(date, 'yyyy-MM-dd'),
+        type: 'couple',
+        activity: {
+          id: 'weekend_brunch',
+          name: 'Weekend Brunch',
+          category: 'couple',
+          subcategory: 'meals',
+          description: 'Relaxed weekend meal together',
+          cost_cad: 35,
+          duration_minutes: 120,
+          networking_potential: 0,
+          location: 'Local Cafe',
+          tags: ['couple', 'weekend', 'relaxation'],
+          requirements: [],
+          best_time: ['morning'],
+          frequency: 'weekly'
+        }
+      });
+
+      activities.push({
+        start_time: '14:00',
+        end_time: '16:00',
+        date: format(date, 'yyyy-MM-dd'),
+        type: 'individual',
+        activity: {
+          id: 'skill_development',
+          name: 'Skill Development',
+          category: 'learning',
+          subcategory: 'online_course',
+          description: 'Online course or skill building activity',
+          cost_cad: 0,
+          duration_minutes: 120,
+          networking_potential: 1,
+          location: 'Home',
+          tags: ['learning', 'skills', 'development'],
+          requirements: ['computer', 'internet'],
+          best_time: ['afternoon'],
+          frequency: 'weekly'
+        }
+      });
+    }
+  } else {
+    // Default schedule for other personas
+    activities.push({
+      start_time: '08:00',
+      end_time: '09:00',
+      date: format(date, 'yyyy-MM-dd'),
+      type: 'individual',
+      activity: {
+        id: 'morning_routine',
+        name: 'Morning Routine',
+        category: 'personal',
+        subcategory: 'wellness',
+        description: 'Personal morning routine and preparation',
+        cost_cad: 0,
+        duration_minutes: 60,
+        networking_potential: 0,
+        location: 'Home',
+        tags: ['personal', 'wellness', 'routine'],
+        requirements: [],
+        best_time: ['morning'],
+        frequency: 'daily'
+      }
+    });
+
+    if (!isWeekend) {
+      activities.push({
+        start_time: '09:00',
+        end_time: '17:00',
+        date: format(date, 'yyyy-MM-dd'),
+        type: 'individual',
+        activity: {
+          id: 'work_day',
+          name: 'Work Day',
+          category: 'career',
+          subcategory: 'work',
+          description: 'Regular work activities',
+          cost_cad: 0,
+          duration_minutes: 480,
+          networking_potential: 3,
+          location: 'Office / Remote',
+          tags: ['work', 'career', 'professional'],
+          requirements: [],
+          best_time: ['morning', 'afternoon'],
+          frequency: 'daily'
+        }
+      });
+    }
+  }
+
+  return {
+    date: format(date, 'yyyy-MM-dd'),
+    day_name: dayName,
+    activities: activities,
+    daily_summary: {
+      total_cost: activities.reduce((sum, activity) => sum + (activity.activity.cost_cad || 0), 0),
+      total_activities: activities.length,
+      networking_activities: activities.filter(a => a.type === 'networking').length,
+      couple_activities: activities.filter(a => a.type === 'couple').length,
+      individual_activities: activities.filter(a => a.type === 'individual').length
+    }
+  };
+}

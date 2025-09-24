@@ -6,55 +6,12 @@
 import { useState, useEffect, useCallback } from 'react';
 import { authTrackingService, AuthAction } from '../services/authTrackingService';
 import { SimpleEmailService } from '../services/simpleEmailService';
+import { User, LoginCredentials, SignupData, AuthState, AuthHookReturn } from '../types';
 // import { UrlService } from '../services/urlService'; // Will be used for email URL generation
 
-export interface User {
-  id: string;
-  email: string;
-  name: string;
-  avatar?: string;
-  emailVerified: boolean;
-  twoFactorEnabled: boolean;
-  createdAt: Date;
-  lastLoginAt: Date;
-  role: 'user' | 'admin';
-}
+// User interface is now imported from ../types
 
-export interface AuthState {
-  user: User | null;
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  error: string | null;
-}
-
-export interface LoginCredentials {
-  email: string;
-  password: string;
-  rememberMe?: boolean;
-}
-
-export interface SignupData {
-  email: string;
-  password: string;
-  name: string;
-  acceptTerms: boolean;
-}
-
-export interface AuthHookReturn extends AuthState {
-  login: (credentials: LoginCredentials) => Promise<boolean>;
-  signup: (data: SignupData) => Promise<boolean>;
-  logout: () => Promise<void>;
-  resetPassword: (email: string) => Promise<boolean>;
-  changePassword: (currentPassword: string, newPassword: string) => Promise<boolean>;
-  updateProfile: (updates: Partial<User>) => Promise<boolean>;
-  verifyEmail: (token: string) => Promise<boolean>;
-  resendVerificationEmail: (email: string) => Promise<boolean>;
-  enableTwoFactor: () => Promise<boolean>;
-  disableTwoFactor: (password: string) => Promise<boolean>;
-  refreshToken: () => Promise<boolean>;
-  getAuthEvents: () => any[];
-  getAuthStats: () => any;
-}
+// All interfaces are now imported from ../types
 
 export const useAuth = (): AuthHookReturn => {
   const [authState, setAuthState] = useState<AuthState>({
