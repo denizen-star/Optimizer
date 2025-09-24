@@ -21,7 +21,6 @@ import {
   Refresh
 } from '@mui/icons-material';
 import { TimeAllocation } from '../../types';
-import { useDesignSystem } from '../../design-system';
 
 interface TimeAllocationTunerProps {
   timeAllocation: TimeAllocation;
