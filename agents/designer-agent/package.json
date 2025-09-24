@@ -1,0 +1,29 @@
+{
+  "name": "designer-agent",
+  "version": "1.0.0",
+  "description": "Design compliance validation agent for the Optimizer application",
+  "main": "index.ts",
+  "scripts": {
+    "start": "npx ts-node index.ts",
+    "dev": "npx ts-node index.ts --watch src,public --interval 10000",
+    "validate": "npx ts-node index.ts --format json",
+    "auto-fix": "npx ts-node index.ts --auto-fix --format html"
+  },
+  "keywords": [
+    "design-system",
+    "validation",
+    "agent",
+    "compliance",
+    "typescript",
+    "react"
+  ],
+  "author": "Optimizer Team",
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.0"
+  }
+}

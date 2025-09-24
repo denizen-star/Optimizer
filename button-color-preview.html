@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Color Scheme Preview - Optimizer Development Hub</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #FFFFFF;
+            color: #212529;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #F8F9FA;
+            border-radius: 20px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            color: #212529;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            color: #6C757D;
+            font-size: 1.2rem;
+        }
+        
+        .color-scheme {
+            margin-bottom: 50px;
+            padding: 30px;
+            background: #F8F9FA;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .scheme-title {
+            font-size: 1.8rem;
+            color: #212529;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .scheme-description {
+            color: #6C757D;
+            text-align: center;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+        
+        .preview-section {
+            margin-bottom: 30px;
+        }
+        
+        .preview-title {
+            font-size: 1.2rem;
+            color: #212529;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .preview-button {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 25px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .preview-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .preview-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 10px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 5px;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .color-swatch {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: 2px solid #E9ECEF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        .current-scheme {
+            border: 3px solid #007BFF;
+            background: #F8F9FA;
+            margin-bottom: 50px;
+        }
+        
+        .current-scheme .scheme-title {
+            color: #007BFF;
+        }
+        
+        /* CURRENT SCHEME (Aggressive Blue/Green) */
+        .current .preview-button {
+            background: #007BFF;
+        }
+        
+        .current .preview-badge {
+            background: #28A745;
+        }
+        
+        /* OPTION 1: Warm Neutrals */
+        .option1 .preview-button {
+            background: #A8A29E;
+        }
+        
+        .option1 .preview-badge {
+            background: #6B7280;
+        }
+        
+        /* OPTION 2: Cool Pastels */
+        .option2 .preview-button {
+            background: #8B5CF6;
+        }
+        
+        .option2 .preview-badge {
+            background: #10B981;
+        }
+        
+        /* OPTION 3: Earth Tones */
+        .option3 .preview-button {
+            background: #78716C;
+        }
+        
+        .option3 .preview-badge {
+            background: #F59E0B;
+        }
+        
+        /* OPTION 4: Monochromatic */
+        .option4 .preview-button {
+            background: #6B7280;
+        }
+        
+        .option4 .preview-badge {
+            background: #374151;
+        }
+        
+        /* OPTION 5: Soft Blues */
+        .option5 .preview-button {
+            background: #93C5FD;
+            color: #1F2937;
+        }
+        
+        .option5 .preview-badge {
+            background: #14B8A6;
+        }
+        
+        .implementation-note {
+            background: #E7F3FF;
+            border: 1px solid #007BFF;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .implementation-note h3 {
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+        
+        .implementation-note p {
+            color: #6C757D;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎨 Button Color Scheme Preview</h1>
+            <p>Choose the most eye-friendly color scheme for your Development Hub</p>
+        </div>
+        
+        <!-- CURRENT SCHEME -->
+        <div class="color-scheme current-scheme current">
+            <div class="scheme-title">🔵 CURRENT: Aggressive Blue/Green</div>
+            <div class="scheme-description">Too bright and aggressive on the eyes</div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Buttons & Links:</div>
+                <div class="button-group">
+                    <a href="#" class="preview-button">🚀 Live Application</a>
+                    <a href="#" class="preview-button">🏠 Personas</a>
+                    <a href="#" class="preview-button">⚙️ Tuner</a>
+                    <a href="#" class="preview-button">📅 Schedule</a>
+                    <a href="#" class="preview-button">📊 Analytics</a>
+                    <a href="#" class="preview-button">🔧 Demo</a>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Badges & Status:</div>
+                <div>
+                    <span class="preview-badge">NEW</span>
+                    <span class="preview-badge">HIGH PRIORITY</span>
+                    <span class="preview-badge">LIVE ANALYSIS</span>
+                    <span class="preview-badge">PRIORITY ACTIONS</span>
+                </div>
+            </div>
+            
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #007BFF;">#007BFF</div>
+                <div class="color-swatch" style="background: #28A745;">#28A745</div>
+            </div>
+        </div>
+        
+        <!-- OPTION 1: Warm Neutrals -->
+        <div class="color-scheme option1">
+            <div class="scheme-title">🌿 OPTION 1: Warm Neutrals</div>
+            <div class="scheme-description">Gentle, professional, and easy on the eyes</div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Buttons & Links:</div>
+                <div class="button-group">
+                    <a href="#" class="preview-button">🚀 Live Application</a>
+                    <a href="#" class="preview-button">🏠 Personas</a>
+                    <a href="#" class="preview-button">⚙️ Tuner</a>
+                    <a href="#" class="preview-button">📅 Schedule</a>
+                    <a href="#" class="preview-button">📊 Analytics</a>
+                    <a href="#" class="preview-button">🔧 Demo</a>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Badges & Status:</div>
+                <div>
+                    <span class="preview-badge">NEW</span>
+                    <span class="preview-badge">HIGH PRIORITY</span>
+                    <span class="preview-badge">LIVE ANALYSIS</span>
+                    <span class="preview-badge">PRIORITY ACTIONS</span>
+                </div>
+            </div>
+            
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #A8A29E;">#A8A29E</div>
+                <div class="color-swatch" style="background: #6B7280;">#6B7280</div>
+            </div>
+        </div>
+        
+        <!-- OPTION 2: Cool Pastels -->
+        <div class="color-scheme option2">
+            <div class="scheme-title">💜 OPTION 2: Cool Pastels</div>
+            <div class="scheme-description">Soft purple and mint - calming and modern</div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Buttons & Links:</div>
+                <div class="button-group">
+                    <a href="#" class="preview-button">🚀 Live Application</a>
+                    <a href="#" class="preview-button">🏠 Personas</a>
+                    <a href="#" class="preview-button">⚙️ Tuner</a>
+                    <a href="#" class="preview-button">📅 Schedule</a>
+                    <a href="#" class="preview-button">📊 Analytics</a>
+                    <a href="#" class="preview-button">🔧 Demo</a>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Badges & Status:</div>
+                <div>
+                    <span class="preview-badge">NEW</span>
+                    <span class="preview-badge">HIGH PRIORITY</span>
+                    <span class="preview-badge">LIVE ANALYSIS</span>
+                    <span class="preview-badge">PRIORITY ACTIONS</span>
+                </div>
+            </div>
+            
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #8B5CF6;">#8B5CF6</div>
+                <div class="color-swatch" style="background: #10B981;">#10B981</div>
+            </div>
+        </div>
+        
+        <!-- OPTION 3: Earth Tones -->
+        <div class="color-scheme option3">
+            <div class="scheme-title">🏔️ OPTION 3: Earth Tones</div>
+            <div class="scheme-description">Natural taupe and terracotta - warm and grounding</div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Buttons & Links:</div>
+                <div class="button-group">
+                    <a href="#" class="preview-button">🚀 Live Application</a>
+                    <a href="#" class="preview-button">🏠 Personas</a>
+                    <a href="#" class="preview-button">⚙️ Tuner</a>
+                    <a href="#" class="preview-button">📅 Schedule</a>
+                    <a href="#" class="preview-button">📊 Analytics</a>
+                    <a href="#" class="preview-button">🔧 Demo</a>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Badges & Status:</div>
+                <div>
+                    <span class="preview-badge">NEW</span>
+                    <span class="preview-badge">HIGH PRIORITY</span>
+                    <span class="preview-badge">LIVE ANALYSIS</span>
+                    <span class="preview-badge">PRIORITY ACTIONS</span>
+                </div>
+            </div>
+            
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #78716C;">#78716C</div>
+                <div class="color-swatch" style="background: #F59E0B;">#F59E0B</div>
+            </div>
+        </div>
+        
+        <!-- OPTION 4: Monochromatic -->
+        <div class="color-scheme option4">
+            <div class="scheme-title">⚫ OPTION 4: Monochromatic</div>
+            <div class="scheme-description">Professional grays - clean and sophisticated</div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Buttons & Links:</div>
+                <div class="button-group">
+                    <a href="#" class="preview-button">🚀 Live Application</a>
+                    <a href="#" class="preview-button">🏠 Personas</a>
+                    <a href="#" class="preview-button">⚙️ Tuner</a>
+                    <a href="#" class="preview-button">📅 Schedule</a>
+                    <a href="#" class="preview-button">📊 Analytics</a>
+                    <a href="#" class="preview-button">🔧 Demo</a>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Badges & Status:</div>
+                <div>
+                    <span class="preview-badge">NEW</span>
+                    <span class="preview-badge">HIGH PRIORITY</span>
+                    <span class="preview-badge">LIVE ANALYSIS</span>
+                    <span class="preview-badge">PRIORITY ACTIONS</span>
+                </div>
+            </div>
+            
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #6B7280;">#6B7280</div>
+                <div class="color-swatch" style="background: #374151;">#374151</div>
+            </div>
+        </div>
+        
+        <!-- OPTION 5: Soft Blues -->
+        <div class="color-scheme option5">
+            <div class="scheme-title">🌊 OPTION 5: Soft Blues</div>
+            <div class="scheme-description">Very gentle blue and teal - calming and fresh</div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Buttons & Links:</div>
+                <div class="button-group">
+                    <a href="#" class="preview-button">🚀 Live Application</a>
+                    <a href="#" class="preview-button">🏠 Personas</a>
+                    <a href="#" class="preview-button">⚙️ Tuner</a>
+                    <a href="#" class="preview-button">📅 Schedule</a>
+                    <a href="#" class="preview-button">📊 Analytics</a>
+                    <a href="#" class="preview-button">🔧 Demo</a>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="preview-title">Badges & Status:</div>
+                <div>
+                    <span class="preview-badge">NEW</span>
+                    <span class="preview-badge">HIGH PRIORITY</span>
+                    <span class="preview-badge">LIVE ANALYSIS</span>
+                    <span class="preview-badge">PRIORITY ACTIONS</span>
+                </div>
+            </div>
+            
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #93C5FD; color: #1F2937;">#93C5FD</div>
+                <div class="color-swatch" style="background: #14B8A6;">#14B8A6</div>
+            </div>
+        </div>
+        
+        <div class="implementation-note">
+            <h3>💡 How to Choose</h3>
+            <p><strong>Look at each option and ask yourself:</strong></p>
+            <p>• Which colors are easiest on your eyes?</p>
+            <p>• Which feels most professional for a development hub?</p>
+            <p>• Which would you want to look at all day?</p>
+            <p><strong>Once you decide, I'll implement your chosen scheme!</strong></p>
+        </div>
+    </div>
+</body>
+</html>

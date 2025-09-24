@@ -131,9 +131,14 @@ const AuthDemo: React.FC = () => {
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h5" gutterBottom>
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontSize: '15px', fontWeight: 'normal' }}>
         Authentication Demo & Tracking
       </Typography>
+      
+      <Box sx={{ 
+        borderTop: '0.05px solid #2c3e50', 
+        margin: '30px 0' 
+      }} />
       
       <Typography variant="body1" paragraph color="text.secondary">
         This demo shows how all authentication actions are tracked with timestamps.

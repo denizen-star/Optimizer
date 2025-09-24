@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Scheme Wireframes - Optimizer Development Hub</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        .wireframe-container {
+            display: flex;
+            gap: 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .wireframe {
+            flex: 1;
+            min-height: 800px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .wireframe-header {
+            text-align: center;
+            padding: 20px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        /* MAXIMALIST SCHEME */
+        .maximalist {
+            background: #1B4332;
+        }
+        
+        .maximalist .page-bg {
+            background: #1B4332;
+        }
+        
+        .maximalist .card-bg {
+            background: #F5F5DC;
+        }
+        
+        .maximalist .primary-text {
+            color: #3E2723;
+        }
+        
+        .maximalist .secondary-text {
+            color: #722F37;
+        }
+        
+        .maximalist .accent-bg {
+            background: #D4AF37;
+        }
+        
+        .maximalist .link-bg {
+            background: #006466;
+        }
+        
+        .maximalist .border {
+            border-color: #722F37;
+        }
+        
+        /* MINIMALIST SCHEME */
+        .minimalist {
+            background: #FFFFFF;
+        }
+        
+        .minimalist .page-bg {
+            background: #FFFFFF;
+        }
+        
+        .minimalist .card-bg {
+            background: #F8F9FA;
+        }
+        
+        .minimalist .primary-text {
+            color: #212529;
+        }
+        
+        .minimalist .secondary-text {
+            color: #6C757D;
+        }
+        
+        .minimalist .accent-bg {
+            background: #28A745;
+        }
+        
+        .minimalist .link-bg {
+            background: #007BFF;
+        }
+        
+        .minimalist .border {
+            border-color: #6C757D;
+        }
+        
+        /* COMMON STYLES */
+        .page-bg {
+            padding: 20px;
+            min-height: 100%;
+        }
+        
+        .card {
+            background: inherit;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border: 2px solid;
+        }
+        
+        .card-header {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .card-content {
+            margin-bottom: 15px;
+        }
+        
+        .button {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            font-weight: bold;
+            margin: 5px;
+            text-decoration: none;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 10px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+        
+        .section {
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .section-content {
+            padding-left: 15px;
+        }
+        
+        .color-palette {
+            display: flex;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        
+        .color-swatch {
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        .maximalist .color-swatch:nth-child(1) { background: #1B4332; }
+        .maximalist .color-swatch:nth-child(2) { background: #F5F5DC; }
+        .maximalist .color-swatch:nth-child(3) { background: #3E2723; }
+        .maximalist .color-swatch:nth-child(4) { background: #D4AF37; }
+        .maximalist .color-swatch:nth-child(5) { background: #722F37; }
+        .maximalist .color-swatch:nth-child(6) { background: #006466; }
+        
+        .minimalist .color-swatch:nth-child(1) { background: #FFFFFF; }
+        .minimalist .color-swatch:nth-child(2) { background: #F8F9FA; }
+        .minimalist .color-swatch:nth-child(3) { background: #212529; }
+        .minimalist .color-swatch:nth-child(4) { background: #28A745; }
+        .minimalist .color-swatch:nth-child(5) { background: #6C757D; }
+        .minimalist .color-swatch:nth-child(6) { background: #007BFF; }
+    </style>
+</head>
+<body>
+    <div class="wireframe-header">
+        🎨 Optimizer Development Hub - Color Scheme Wireframes
+    </div>
+    
+    <div class="wireframe-container">
+        <!-- MAXIMALIST WIREFRAME -->
+        <div class="wireframe maximalist">
+            <div class="page-bg">
+                <div class="section">
+                    <div class="card-header primary-text">🧭 Optimizer Development Hub</div>
+                    <div class="card-content secondary-text">Central Hub for Development Progress</div>
+                    <div class="color-palette">
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                    </div>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">📊 Development Status Overview</div>
+                    <div class="card-content secondary-text">Module status and navigation</div>
+                    <div class="button link-bg">🚀 Live Application</div>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">🎯 Next Steps Recommendations</div>
+                    <div class="card-content secondary-text">Priority actions and development roadmap</div>
+                    <span class="badge accent-bg">NEW</span>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">⚠️ Current Development Issues</div>
+                    <div class="card-content secondary-text">Active issues and TypeScript errors</div>
+                    <span class="badge accent-bg">HIGH PRIORITY</span>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">🧪 Testing Results & Demo Links</div>
+                    <div class="card-content secondary-text">Functional testing and live demos</div>
+                    <div class="button link-bg">🔧 Open Demo</div>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">📁 Project Structure & File Analysis</div>
+                    <div class="card-content secondary-text">Complete file inventory with business value</div>
+                    <span class="badge accent-bg">LIVE ANALYSIS</span>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">🏠 Persona Selection</div>
+                    <div class="card-content secondary-text">Choose from available personas</div>
+                    <div class="button link-bg">🚀 Open Persona Selection</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- MINIMALIST WIREFRAME -->
+        <div class="wireframe minimalist">
+            <div class="page-bg">
+                <div class="section">
+                    <div class="card-header primary-text">🧭 Optimizer Development Hub</div>
+                    <div class="card-content secondary-text">Central Hub for Development Progress</div>
+                    <div class="color-palette">
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                        <div class="color-swatch"></div>
+                    </div>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">📊 Development Status Overview</div>
+                    <div class="card-content secondary-text">Module status and navigation</div>
+                    <div class="button link-bg">🚀 Live Application</div>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">🎯 Next Steps Recommendations</div>
+                    <div class="card-content secondary-text">Priority actions and development roadmap</div>
+                    <span class="badge accent-bg">NEW</span>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">⚠️ Current Development Issues</div>
+                    <div class="card-content secondary-text">Active issues and TypeScript errors</div>
+                    <span class="badge accent-bg">HIGH PRIORITY</span>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">🧪 Testing Results & Demo Links</div>
+                    <div class="card-content secondary-text">Functional testing and live demos</div>
+                    <div class="button link-bg">🔧 Open Demo</div>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">📁 Project Structure & File Analysis</div>
+                    <div class="card-content secondary-text">Complete file inventory with business value</div>
+                    <span class="badge accent-bg">LIVE ANALYSIS</span>
+                </div>
+                
+                <div class="card card-bg border">
+                    <div class="card-header primary-text">🏠 Persona Selection</div>
+                    <div class="card-content secondary-text">Choose from available personas</div>
+                    <div class="button link-bg">🚀 Open Persona Selection</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px; padding: 20px; background: white; border-radius: 10px;">
+        <h3>Color Scheme Details</h3>
+        <div style="display: flex; gap: 60px; justify-content: center; margin-top: 20px;">
+            <div>
+                <h4>🌿 MAXIMALIST</h4>
+                <ul style="text-align: left;">
+                    <li><strong>Background:</strong> Deep Forest Green (#1B4332)</li>
+                    <li><strong>Cards:</strong> Warm Cream (#F5F5DC)</li>
+                    <li><strong>Text:</strong> Rich Brown (#3E2723)</li>
+                    <li><strong>Accents:</strong> Gold (#D4AF37)</li>
+                    <li><strong>Links:</strong> Deep Teal (#006466)</li>
+                    <li><strong>Borders:</strong> Burgundy (#722F37)</li>
+                </ul>
+            </div>
+            <div>
+                <h4>⚪ MINIMALIST</h4>
+                <ul style="text-align: left;">
+                    <li><strong>Background:</strong> Pure White (#FFFFFF)</li>
+                    <li><strong>Cards:</strong> Light Gray (#F8F9FA)</li>
+                    <li><strong>Text:</strong> Charcoal (#212529)</li>
+                    <li><strong>Accents:</strong> Mint Green (#28A745)</li>
+                    <li><strong>Links:</strong> Ocean Blue (#007BFF)</li>
+                    <li><strong>Borders:</strong> Soft Blue (#6C757D)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

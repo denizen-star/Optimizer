@@ -111,9 +111,14 @@ const EmailTest: React.FC = () => {
 
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', p: 3 }}>
-      <Typography variant="h4" gutterBottom align="center">
-        📧 Email Test Center
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontSize: '15px', fontWeight: 'normal' }}>
+        Email Test Center
       </Typography>
+      
+      <Box sx={{ 
+        borderTop: '0.05px solid #2c3e50', 
+        margin: '30px 0' 
+      }} />
       
       <Typography variant="body1" color="text.secondary" align="center" paragraph>
         Test email functionality with SendGrid integration

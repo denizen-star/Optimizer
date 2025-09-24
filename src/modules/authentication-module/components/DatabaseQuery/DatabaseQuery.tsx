@@ -126,12 +126,20 @@ const DatabaseQuery: React.FC = () => {
 
   return (
     <Box sx={{ maxWidth: 1200, mx: 'auto', p: 3 }}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontSize: '15px', fontWeight: 'normal' }}>
         Database Query Interface
       </Typography>
+      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom sx={{ fontSize: '12px' }}>
+        Query the user database and authentication events
+      </Typography>
+      
+      <Box sx={{ 
+        borderTop: '0.05px solid #2c3e50', 
+        margin: '30px 0' 
+      }} />
       
       <Typography variant="body1" color="text.secondary" sx={{ mb: 3 }}>
-        Query the user database and authentication events. This interface provides access to all stored data.
+        This interface provides access to all stored data for advanced database operations.
       </Typography>
 
       <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3, mb: 3 }}>

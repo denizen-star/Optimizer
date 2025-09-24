@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🧭 Optimizer Navigation Guide</title>
+    <title>Optimizer Development Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,11 +15,123 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #8B4513 0%, #A0522D 100%);
+            color: #212529;
+            background: #FFFFFF;
             min-height: 100vh;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Optimizer Dropdown Menu - Standardized */
+        .optimizer-nav-bar {
+            background: #2c3e50;
+            color: #FFFFFF;
+            padding: 0;
+            box-shadow: none;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 16px;
+            min-height: 56px;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-icon {
+            font-size: 24px;
+            margin-right: 16px;
+            color: #FFFFFF;
+        }
+
+        .nav-title {
+            font-size: 20px;
+            font-weight: normal;
+            color: #FFFFFF;
+        }
+
+        .nav-categories {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .nav-category {
+            position: relative;
+        }
+
+        .nav-category-button {
+            display: flex;
+            align-items: center;
+            color: #FFFFFF;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 14px;
+            background: transparent;
+            border: none;
+            gap: 4px;
+        }
+
+        .nav-category-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #FFFFFF;
+            border: 1px solid #6C757D;
+            border-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            min-width: 200px;
+            display: none;
+            z-index: 1001;
+        }
+
+        .nav-category:hover .nav-dropdown {
+            display: block;
+        }
+
+        .nav-dropdown-item {
+            display: flex;
+            align-items: center;
+            color: #212529;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-size: 12px;
+            transition: background-color 0.3s ease;
+            gap: 8px;
+        }
+
+        .nav-dropdown-item:hover {
+            background-color: #93C5FD;
+            color: #FFFFFF;
+        }
+
+        .nav-dropdown-item.active {
+            background-color: #93C5FD;
+            color: #FFFFFF;
+        }
+
+        .nav-dropdown-divider {
+            height: 1px;
+            background-color: #6C757D;
+            margin: 0;
         }
 
         .container {
@@ -26,7 +141,7 @@
         }
 
         .header {
-            background: rgba(255, 255, 255, 0.95);
+            background: #F8F9FA;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
@@ -36,25 +151,32 @@
         }
 
         .header h1 {
-            font-size: 2.5rem;
-            color: #3E2723;
+            font-size: 15px;
+            color: #212529;
             margin-bottom: 10px;
+            font-weight: normal;
         }
 
         .header p {
-            font-size: 1.2rem;
-            color: #5D4037;
+            font-size: 12px;
+            color: #6C757D;
             margin-bottom: 20px;
+        }
+
+        .header-break {
+            border-top: 0.05px solid #2c3e50;
+            margin: 30px 0;
         }
 
         .live-url {
             display: inline-block;
-            background: linear-gradient(45deg, #8D6E63, #A1887F);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
+            background: #93C5FD;
+            color: #6C757D;
+            padding: 5px 12px;
+            border-radius: 15px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: normal;
+            font-size: 10px;
             transition: transform 0.3s ease;
         }
 
@@ -64,7 +186,7 @@
         }
 
         .nav-menu {
-            background: rgba(255, 255, 255, 0.95);
+            background: #F8F9FA;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
@@ -73,9 +195,10 @@
         }
 
         .nav-menu h2 {
-            color: #2c3e50;
+            color: #212529;
             margin-bottom: 20px;
-            font-size: 1.8rem;
+            font-size: 13px;
+            font-weight: normal;
         }
 
         .nav-grid {
@@ -85,16 +208,17 @@
         }
 
         .nav-section {
-            background: rgba(255, 255, 255, 0.7);
+            background: #FFFFFF;
             border-radius: 15px;
             padding: 20px;
-            border-left: 5px solid #3498db;
+            border-left: 5px solid #6C757D;
         }
 
         .nav-section h3 {
-            color: #2c3e50;
+            color: #212529;
             margin-bottom: 15px;
-            font-size: 1.3rem;
+            font-size: 12px;
+            font-weight: normal;
         }
 
         .nav-section ul {
@@ -106,19 +230,19 @@
         }
 
         .nav-section a {
-            color: #3498db;
+            color: #007BFF;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-section a:hover {
-            color: #2c3e50;
+            color: #212529;
             text-decoration: underline;
         }
 
         .module-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: #F8F9FA;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
@@ -143,18 +267,19 @@
         }
 
         .module-title {
-            font-size: 1.8rem;
-            color: #3E2723;
+            font-size: 13px;
+            color: #212529;
             margin-bottom: 5px;
+            font-weight: normal;
         }
 
         .module-route {
-            background: #ecf0f1;
-            color: #7f8c8d;
+            background: #E9ECEF;
+            color: #6C757D;
             padding: 5px 12px;
             border-radius: 15px;
             font-family: 'Courier New', monospace;
-            font-size: 0.9rem;
+            font-size: 10px;
         }
 
         .module-status {
@@ -167,22 +292,22 @@
         }
 
         .status-functional {
-            background: #d4edda;
-            color: #155724;
+            background: #D1ECF1;
+            color: #212529;
         }
 
         .status-partial {
-            background: #fff3cd;
-            color: #856404;
+            background: #F8D7DA;
+            color: #212529;
         }
 
         .new-badge {
-            background: linear-gradient(45deg, #D84315, #FF6F00);
-            color: white;
+            background: #14B8A6;
+            color: #6C757D;
             padding: 3px 8px;
             border-radius: 10px;
-            font-size: 0.7rem;
-            font-weight: bold;
+            font-size: 10px;
+            font-weight: normal;
             margin-left: 8px;
             animation: pulse 2s infinite;
         }
@@ -194,27 +319,29 @@
         }
 
         .new-section {
-            border-left: 4px solid #D84315;
-            background: rgba(216, 67, 21, 0.05);
+            border-left: 4px solid #6C757D;
+            background: rgba(108, 117, 125, 0.05);
         }
 
         .updated-item {
-            background: rgba(141, 110, 99, 0.1);
+            background: rgba(0, 123, 255, 0.1);
             border-radius: 5px;
             padding: 2px 6px;
             margin: 1px 0;
         }
 
         .features-list {
-            background: rgba(141, 110, 99, 0.1);
+            background: rgba(108, 117, 125, 0.05);
             border-radius: 10px;
             padding: 20px;
             margin-top: 15px;
         }
 
         .features-list h4 {
-            color: #3E2723;
+            color: #212529;
             margin-bottom: 10px;
+            font-size: 12px;
+            font-weight: normal;
         }
 
         .features-list ul {
@@ -241,38 +368,41 @@
         }
 
         .service-item {
-            background: rgba(141, 110, 99, 0.1);
+            background: rgba(108, 117, 125, 0.05);
             padding: 15px;
             border-radius: 10px;
-            border-left: 4px solid #8D6E63;
+            border-left: 4px solid #6C757D;
         }
 
         .service-name {
-            font-weight: bold;
-            color: #3E2723;
+            font-weight: normal;
+            color: #212529;
             margin-bottom: 5px;
+            font-size: 12px;
         }
 
         .service-description {
-            font-size: 0.9rem;
-            color: #666;
+            font-size: 10px;
+            color: #6C757D;
         }
 
         .quick-commands {
-            background: rgba(76, 175, 80, 0.1);
+            background: rgba(108, 117, 125, 0.05);
             border-radius: 15px;
             padding: 20px;
             margin-top: 15px;
         }
 
         .quick-commands h4 {
-            color: #4CAF50;
+            color: #6C757D;
             margin-bottom: 15px;
+            font-size: 12px;
+            font-weight: normal;
         }
 
         .command {
-            background: #3E2723;
-            color: #F5F5DC;
+            background: #212529;
+            color: #FFFFFF;
             padding: 10px 15px;
             border-radius: 8px;
             font-family: 'Courier New', monospace;
@@ -288,16 +418,16 @@
         }
 
         .workflow-step {
-            background: rgba(161, 136, 127, 0.1);
+            background: rgba(108, 117, 125, 0.05);
             padding: 20px;
             border-radius: 15px;
             text-align: center;
-            border-top: 4px solid #A1887F;
+            border-top: 4px solid #6C757D;
         }
 
         .step-number {
-            background: #8D6E63;
-            color: white;
+            background: #6C757D;
+            color: #FFFFFF;
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -309,7 +439,7 @@
         }
 
         .progress-bar {
-            background: rgba(255, 255, 255, 0.95);
+            background: #F8F9FA;
             border-radius: 20px;
             padding: 30px;
             margin-bottom: 30px;
@@ -322,7 +452,7 @@
             align-items: center;
             margin-bottom: 15px;
             padding: 10px 0;
-            border-bottom: 1px solid #ecf0f1;
+            border-bottom: 1px solid #E9ECEF;
         }
 
         .progress-item:last-child {
@@ -330,17 +460,18 @@
         }
 
         .progress-label {
-            font-weight: 500;
-            color: #3E2723;
+            font-weight: normal;
+            color: #212529;
+            font-size: 12px;
         }
 
         .progress-percentage {
-            font-weight: bold;
-            color: #4CAF50;
+            font-weight: normal;
+            color: #14B8A6;
         }
 
         .footer {
-            background: rgba(255, 255, 255, 0.95);
+            background: #F8F9FA;
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
@@ -349,18 +480,19 @@
         }
 
         .footer p {
-            color: #666;
+            color: #6C757D;
             margin-bottom: 10px;
         }
 
         .back-to-app {
             display: inline-block;
-            background: linear-gradient(45deg, #D84315, #FF6F00);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 25px;
+            background: #93C5FD;
+            color: #6C757D;
+            padding: 5px 12px;
+            border-radius: 15px;
             text-decoration: none;
-            font-weight: bold;
+            font-weight: normal;
+            font-size: 10px;
             margin-top: 15px;
             transition: transform 0.3s ease;
         }
@@ -394,32 +526,93 @@
     </style>
 </head>
 <body>
+    <!-- Optimizer Dropdown Menu - Standardized -->
+    <div class="optimizer-nav-bar">
+        <div class="nav-toolbar">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <span class="nav-icon">🏠</span>
+                <a href="/auth-demo" class="nav-title" style="text-decoration: none; color: #FFFFFF; cursor: pointer;">Optimizer</a>
+            </div>
+            
+            <!-- Menu Categories -->
+            <div class="nav-categories">
+                <!-- CBA Category -->
+                <div class="nav-category">
+                    <button class="nav-category-button">
+                        CBA
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="/" class="nav-dropdown-item">Current Persona Selector</a>
+                        <a href="/schedule" class="nav-dropdown-item">Schedule</a>
+                        <a href="/tuner" class="nav-dropdown-item">Tuner</a>
+                    </div>
+                </div>
+                
+                <!-- Dev Category -->
+                <div class="nav-category">
+                    <button class="nav-category-button">
+                        Dev
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="/navigation-guide" class="nav-dropdown-item active">Dev Guide</a>
+                        <a href="/auth-demo" class="nav-dropdown-item">All Test Links</a>
+                    </div>
+                </div>
+                
+                <!-- Admin Category -->
+                <div class="nav-category">
+                    <button class="nav-category-button">
+                        Admin
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="/auth-activity" class="nav-dropdown-item">Security</a>
+                        <a href="/users" class="nav-dropdown-item">Users</a>
+                        <a href="/database-query" class="nav-dropdown-item">Database</a>
+                    </div>
+                </div>
+                
+                <!-- Sign-up/In Category -->
+                <div class="nav-category">
+                    <button class="nav-category-button">
+                        Sign-up/In
+                    </button>
+                    <div class="nav-dropdown">
+                        <a href="/signup" class="nav-dropdown-item">User Creation</a>
+                        <a href="/auth-demo" class="nav-dropdown-item">Authentication</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🧭 Optimizer Development Hub</h1>
+            <h1>Optimizer Development Hub</h1>
             <p>Central Hub for Development Progress, Testing, and Module Functionality</p>
-            <p style="color: #e74c3c; font-weight: bold; margin-top: 10px;">📋 UPDATED BEFORE EVERY COMMIT - ALWAYS CURRENT</p>
-            <p style="color: #27ae60; font-weight: bold; margin-top: 5px;">🕒 Last System Update: <span id="last-updated-title">December 19, 2024 - 15:45</span></p>
-            <a href="https://optimizer.kervinapps.com" class="live-url" target="_blank">🚀 Live Application</a>
+            <div class="header-break"></div>
+            <p style="color: #6C757D; font-weight: bold; margin-top: 10px;">Updated before every commit - always current</p>
+            <p style="color: #212529; font-weight: bold; margin-top: 5px;">🕒 Last System Update: <span id="last-updated-title">December 19, 2024 - 15:45</span></p>
+            <a href="https://optimizer.kervinapps.com" class="live-url" target="_blank">Live Application</a>
             
             <!-- Quick Action Buttons -->
             <div style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-                <a href="/" class="live-url" target="_blank" style="font-size: 0.9rem; padding: 8px 16px;">🏠 Personas</a>
-                <a href="/tuner" class="live-url" target="_blank" style="font-size: 0.9rem; padding: 8px 16px;">⚙️ Tuner</a>
-                <a href="/schedule" class="live-url" target="_blank" style="font-size: 0.9rem; padding: 8px 16px;">📅 Schedule</a>
-                <a href="/analytics" class="live-url" target="_blank" style="font-size: 0.9rem; padding: 8px 16px;">📊 Analytics</a>
-                <a href="/auth-demo" class="live-url" target="_blank" style="font-size: 0.9rem; padding: 8px 16px;">🔧 Demo</a>
-                <a href="/users" class="live-url" target="_blank" style="font-size: 0.9rem; padding: 8px 16px;">👥 Users</a>
+                <a href="/" class="live-url" target="_blank">Personas</a>
+                <a href="/tuner" class="live-url" target="_blank">Tuner</a>
+                <a href="/schedule" class="live-url" target="_blank">Schedule</a>
+                <a href="/analytics" class="live-url" target="_blank">Analytics</a>
+                <a href="/auth-demo" class="live-url" target="_blank">Demo</a>
+                <a href="/users" class="live-url" target="_blank">Users</a>
             </div>
         </div>
 
         <!-- Development Status Overview -->
         <div class="nav-menu">
-            <h2>📊 Development Status Overview</h2>
+            <h2>Development Status Overview</h2>
             <div class="nav-grid">
                 <div class="nav-section">
-                    <h3>🏠 Core Modules Status</h3>
+                    <h3>Core Modules Status</h3>
                     <ul>
                         <li><a href="/" target="_blank">🚀 Persona Selection - ✅ WORKING</a></li>
                         <li><a href="/tuner" target="_blank">⚙️ Time Allocation Tuner - ✅ WORKING</a></li>
@@ -428,7 +621,7 @@
                     </ul>
                 </div>
                 <div class="nav-section">
-                    <h3>🔐 Authentication & Security</h3>
+                    <h3>Authentication & Security</h3>
                     <ul>
                         <li><a href="/auth-activity" target="_blank">🛡️ Authentication Activity - ✅ WORKING</a></li>
                         <li><a href="/auth-demo" target="_blank">✉️ Email Verification Demo - ✅ WORKING</a></li>
@@ -436,7 +629,7 @@
                     </ul>
                 </div>
                 <div class="nav-section">
-                    <h3>🛠️ Development & Testing</h3>
+                    <h3>Development & Testing</h3>
                     <ul>
                         <li><a href="/auth-demo" target="_blank">🔧 Authentication Demo - ✅ WORKING</a></li>
                         <li><a href="#services-overview">📋 Services Overview - 📊 DOCUMENTED</a></li>
@@ -447,12 +640,12 @@
         </div>
 
         <!-- Next Steps Recommendations -->
-        <div class="module-card new-section">
+        <div class="module-card">
             <div class="module-header">
-                <span class="module-icon">🎯</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Next Steps Recommendations</h2>
-                    <span class="module-status status-functional">PRIORITY ACTIONS</span>
+                    <span class="module-status status-functional">Priority Actions</span>
                     <span class="new-badge">NEW</span>
                 </div>
             </div>
@@ -493,12 +686,12 @@
         </div>
 
         <!-- Current Issues & Development Notes -->
-        <div class="module-card new-section">
+        <div class="module-card">
             <div class="module-header">
-                <span class="module-icon">⚠️</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Current Development Issues</h2>
-                    <span class="module-status status-partial">ACTIVE ISSUES</span>
+                    <span class="module-status status-partial">Active Issues</span>
                     <span class="new-badge">NEW</span>
                 </div>
             </div>
@@ -533,11 +726,11 @@
         <!-- Core Modules -->
         <div class="module-card" id="persona-selection">
             <div class="module-header">
-                <span class="module-icon">🏠</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Persona Selection</h2>
                     <span class="module-route">Route: /</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> PersonaSelector</p>
@@ -551,18 +744,18 @@
                     <li>Context-aware scheduling based on personal preferences</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/" class="live-url" target="_blank">🚀 Open Persona Selection</a>
+                    <a href="/" class="live-url" target="_blank">Open Persona Selection</a>
                 </div>
             </div>
         </div>
 
         <div class="module-card" id="time-tuner">
             <div class="module-header">
-                <span class="module-icon">⚙️</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Time Allocation Tuner</h2>
                     <span class="module-route">Route: /tuner</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> TimeAllocationTuner</p>
@@ -577,18 +770,18 @@
                     <li>Reset to default allocations</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/tuner" class="live-url" target="_blank">⚙️ Open Time Allocation Tuner</a>
+                    <a href="/tuner" class="live-url" target="_blank">Open Time Allocation Tuner</a>
                 </div>
             </div>
         </div>
 
         <div class="module-card" id="schedule-viewer">
             <div class="module-header">
-                <span class="module-icon">📅</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Schedule Viewer</h2>
                     <span class="module-route">Route: /schedule</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> ScheduleViewer</p>
@@ -603,18 +796,18 @@
                     <li>Visual schedule representation</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/schedule" class="live-url" target="_blank">📅 Open Schedule Viewer</a>
+                    <a href="/schedule" class="live-url" target="_blank">Open Schedule Viewer</a>
                 </div>
             </div>
         </div>
 
         <div class="module-card" id="analytics">
             <div class="module-header">
-                <span class="module-icon">📊</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Analytics Dashboard</h2>
                     <span class="module-route">Route: /analytics</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> AnalyticsDashboard</p>
@@ -629,7 +822,7 @@
                     <li>Data visualization components</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/analytics" class="live-url" target="_blank">📊 Open Analytics Dashboard</a>
+                    <a href="/analytics" class="live-url" target="_blank">Open Analytics Dashboard</a>
                 </div>
             </div>
         </div>
@@ -637,11 +830,11 @@
         <!-- Security Modules -->
         <div class="module-card" id="auth-activity">
             <div class="module-header">
-                <span class="module-icon">🛡️</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Authentication Activity</h2>
                     <span class="module-route">Route: /auth-activity</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> AuthActivity</p>
@@ -656,18 +849,18 @@
                     <li>Configurable event display limits</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/auth-activity" class="live-url" target="_blank">🛡️ Open Authentication Activity</a>
+                    <a href="/auth-activity" class="live-url" target="_blank">Open Authentication Activity</a>
                 </div>
             </div>
         </div>
 
         <div class="module-card" id="email-verification">
             <div class="module-header">
-                <span class="module-icon">✉️</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Email Verification</h2>
                     <span class="module-route">Route: /verify-email/:token</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> EmailVerification</p>
@@ -682,18 +875,18 @@
                     <li>Integration with email services</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/auth-demo" class="live-url" target="_blank">✉️ Test Email Verification</a>
+                    <a href="/auth-demo" class="live-url" target="_blank">Test Email Verification</a>
                 </div>
             </div>
         </div>
 
         <div class="module-card" id="user-management">
             <div class="module-header">
-                <span class="module-icon">👥</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">User Management</h2>
                     <span class="module-route">Route: /users</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> UserManagement</p>
@@ -708,7 +901,7 @@
                     <li>Account settings and preferences</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/users" class="live-url" target="_blank">👥 Open User Management</a>
+                    <a href="/users" class="live-url" target="_blank">Open User Management</a>
                 </div>
             </div>
         </div>
@@ -716,11 +909,11 @@
         <!-- Development -->
         <div class="module-card" id="auth-demo">
             <div class="module-header">
-                <span class="module-icon">🔧</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Authentication Demo</h2>
                     <span class="module-route">Route: /auth-demo</span>
-                    <span class="module-status status-functional">✅ FULLY FUNCTIONAL</span>
+                    <span class="module-status status-functional">Fully Functional</span>
                 </div>
             </div>
             <p><strong>Component:</strong> AuthDemo</p>
@@ -735,7 +928,7 @@
                     <li>Development utilities</li>
                 </ul>
                 <div style="text-align: center; margin-top: 15px;">
-                    <a href="/auth-demo" class="live-url" target="_blank">🔧 Open Authentication Demo</a>
+                    <a href="/auth-demo" class="live-url" target="_blank">Open Authentication Demo</a>
                 </div>
             </div>
         </div>
@@ -743,7 +936,7 @@
         <!-- Services Overview -->
         <div class="module-card" id="services-overview">
             <div class="module-header">
-                <span class="module-icon">🛠️</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Services Overview</h2>
                 </div>
@@ -796,7 +989,7 @@
         <!-- Module Integration Status -->
         <div class="module-card" id="module-status">
             <div class="module-header">
-                <span class="module-icon">📦</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Module Integration Status</h2>
                 </div>
@@ -850,7 +1043,7 @@
         <!-- Quick Commands -->
         <div class="module-card">
             <div class="module-header">
-                <span class="module-icon">🚀</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Quick Start Commands</h2>
                 </div>
@@ -875,9 +1068,9 @@
         </div>
 
         <!-- Testing Results & Demos -->
-        <div class="module-card new-section">
+        <div class="module-card">
             <div class="module-header">
-                <span class="module-icon">🧪</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Testing Results & Demo Links</h2>
                     <span class="new-badge">NEW</span>
@@ -913,12 +1106,12 @@
         </div>
 
         <!-- Project Structure & File Analysis -->
-        <div class="module-card new-section">
+        <div class="module-card">
             <div class="module-header">
-                <span class="module-icon">📁</span>
+                <span class="module-icon"></span>
                 <div>
                     <h2 class="module-title">Project Structure & File Analysis</h2>
-                    <span class="module-status status-functional">LIVE ANALYSIS</span>
+                    <span class="module-status status-functional">Live Analysis</span>
                     <span class="new-badge">NEW</span>
                 </div>
             </div>
@@ -1172,8 +1365,8 @@
             <p>✅ Core functionality: 100% working | ✅ Production deployment: Live and functional</p>
             <p>⚠️ Module integration: 80% complete | 🚧 TypeScript errors: Active issues</p>
             <p><strong>Last System Update:</strong> <span id="last-updated">December 19, 2024 - 15:45</span></p>
-            <a href="https://optimizer.kervinapps.com" class="back-to-app" target="_blank">🚀 Back to Optimizer App</a>
-            <p style="margin-top: 20px; color: #999;">Development Hub - Always up-to-date with progress, testing, and functionality status</p>
+            <a href="https://optimizer.kervinapps.com" class="back-to-app" target="_blank">Back to Optimizer App</a>
+            <p style="margin-top: 20px; color: #6C757D;">Development Hub - Always up-to-date with progress, testing, and functionality status</p>
         </div>
     </div>
 

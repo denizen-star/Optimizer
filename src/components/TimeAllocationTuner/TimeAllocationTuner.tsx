@@ -21,6 +21,7 @@ import {
   Refresh
 } from '@mui/icons-material';
 import { TimeAllocation } from '../../types';
+import { useDesignSystem } from '../../design-system';
 
 interface TimeAllocationTunerProps {
   timeAllocation: TimeAllocation;
@@ -37,6 +38,7 @@ const TimeAllocationTuner: React.FC<TimeAllocationTunerProps> = ({
   onResetDefaults,
   loading = false
 }) => {
+  const { colors, helpers } = useDesignSystem();
   const totalPercentage = 
     timeAllocation.individual_activities_percent +
     timeAllocation.networking_social_percent +
@@ -95,12 +97,17 @@ const TimeAllocationTuner: React.FC<TimeAllocationTunerProps> = ({
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h4" component="h1" gutterBottom align="center">
-        🎛️ Time Allocation Tuner
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontSize: '15px', fontWeight: 'normal' }}>
+        Time Allocation Tuner
       </Typography>
-      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
+      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom sx={{ fontSize: '12px' }}>
         Adjust time percentages and automatically refactor your entire schedule
       </Typography>
+      
+      <Box sx={{ 
+        borderTop: '0.05px solid #2c3e50', 
+        margin: '30px 0' 
+      }} />
 
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {/* Left Panel - Controls */}

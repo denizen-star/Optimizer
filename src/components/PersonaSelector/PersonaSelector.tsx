@@ -17,6 +17,7 @@ import {
   Star
 } from '@mui/icons-material';
 import { UserPersona } from '../../types';
+import { useDesignSystem } from '../../design-system';
 
 interface PersonaSelectorProps {
   personas: UserPersona[];
@@ -31,6 +32,7 @@ const PersonaSelector: React.FC<PersonaSelectorProps> = ({
   onPersonaSelect,
   loading = false
 }) => {
+  const { colors, helpers } = useDesignSystem();
   const getPersonaIcon = (persona: UserPersona) => {
     if (persona.persona_id === 'kevin_job_search') return <TrendingUp />;
     if (persona.persona_id === 'kevin_working') return <Work />;
@@ -45,12 +47,17 @@ const PersonaSelector: React.FC<PersonaSelectorProps> = ({
 
   return (
     <Box sx={{ p: 3 }}>
-      <Typography variant="h4" component="h1" gutterBottom align="center">
-        🎯 Kevin's LifePlanner
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontSize: '15px', fontWeight: 'normal' }}>
+        Kevin's LifePlanner
       </Typography>
-      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom>
+      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom sx={{ fontSize: '12px' }}>
         Choose your current life situation - Job Search Kevin is recommended and pre-selected
       </Typography>
+      
+      <Box sx={{ 
+        borderTop: '0.05px solid #2c3e50', 
+        margin: '30px 0' 
+      }} />
 
       <Grid container spacing={3} sx={{ mt: 2 }}>
         {personas.map((persona) => (
@@ -192,14 +199,15 @@ const PersonaSelector: React.FC<PersonaSelectorProps> = ({
                   fullWidth
                   disabled={loading}
                   sx={{
-                    backgroundColor: selectedPersona?.persona_id === persona.persona_id ? 
-                      getPersonaColor(persona) : 'transparent',
-                    borderColor: getPersonaColor(persona),
+                    ...helpers.getButtonStyles(selectedPersona?.persona_id === persona.persona_id ? 'contained' : 'outlined'),
+                    borderColor: selectedPersona?.persona_id === persona.persona_id ? 
+                      colors.button.background : colors.button.background,
                     color: selectedPersona?.persona_id === persona.persona_id ? 
-                      'white' : getPersonaColor(persona),
+                      colors.background.default : colors.button.text,
                     '&:hover': {
                       backgroundColor: selectedPersona?.persona_id === persona.persona_id ? 
-                        getPersonaColor(persona) : `${getPersonaColor(persona)}10`,
+                        colors.button.hover : colors.button.background,
+                      color: colors.background.default,
                     }
                   }}
                 >

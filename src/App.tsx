@@ -1,62 +1,24 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import { CssBaseline, Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
+import { Box, AppBar, Toolbar, Typography, Button } from '@mui/material';
 import { Home, Person, Tune, Schedule, Analytics, Security, AdminPanelSettings, MenuBook } from '@mui/icons-material';
 import PersonaSelector from './components/PersonaSelector/PersonaSelector';
 import TimeAllocationTuner from './components/TimeAllocationTuner/TimeAllocationTuner';
 import ScheduleViewer from './components/ScheduleViewer/ScheduleViewer';
 import AnalyticsDashboard from './components/AnalyticsDashboard/AnalyticsDashboard';
+import NavigationGuide from './components/NavigationGuide/NavigationGuide';
 import { AuthDemo, EnhancedSignup, EmailTest, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
 import DatabaseQuery from './modules/authentication-module/components/DatabaseQuery/DatabaseQuery';
 import { useStore } from './store/useStore';
+import { DesignSystemProvider, useDesignSystem, DropdownMenu } from './design-system';
 import './App.css';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#2c3e50',
-    },
-    secondary: {
-      main: '#3498db',
-    },
-    background: {
-      default: '#f5f5f5',
-    },
-  },
-  typography: {
-    fontFamily: '"Segoe UI", Tahoma, Geneva, Verdana, sans-serif',
-    h4: {
-      fontWeight: 700,
-    },
-    h6: {
-      fontWeight: 600,
-    },
-  },
-  components: {
-    MuiCard: {
-      styleOverrides: {
-        root: {
-          borderRadius: 12,
-          boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
-        },
-      },
-    },
-    MuiButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: 8,
-          textTransform: 'none',
-          fontWeight: 500,
-        },
-      },
-    },
-  },
-});
+// Design system theme is now imported from design-system/theme.ts
 
 function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
+  const { colors, helpers } = useDesignSystem();
   
   const {
     selectedPersona,
@@ -124,104 +86,11 @@ function AppContent() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" elevation={0}>
-        <Toolbar>
-          <Home sx={{ mr: 2 }} />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Optimizer
-          </Typography>
-          <Button
-            color="inherit"
-            startIcon={<MenuBook />}
-            onClick={() => window.open('/navigation-guide.html', '_blank')}
-            sx={{ mr: 2 }}
-          >
-            Dev Guide
-          </Button>
-          {selectedPersona && (
-            <>
-              <Button
-                color="inherit"
-                startIcon={<Person />}
-                onClick={() => navigate('/')}
-                sx={{ mr: 2 }}
-              >
-                {selectedPersona.persona_name}
-              </Button>
-              <Button
-                color="inherit"
-                startIcon={<Tune />}
-                onClick={() => navigate('/tuner')}
-                sx={{ 
-                  mr: 1,
-                  backgroundColor: location.pathname === '/tuner' ? 'rgba(255,255,255,0.1)' : 'transparent'
-                }}
-              >
-                Tuner
-              </Button>
-                  <Button
-                    color="inherit"
-                    startIcon={<Schedule />}
-                    onClick={() => navigate('/schedule')}
-                    sx={{ 
-                      mr: 1,
-                      backgroundColor: location.pathname === '/schedule' ? 'rgba(255,255,255,0.1)' : 'transparent'
-                    }}
-                  >
-                    Schedule
-                  </Button>
-                  <Button
-                    color="inherit"
-                    startIcon={<Analytics />}
-                    onClick={() => navigate('/analytics')}
-                    sx={{ 
-                      mr: 1,
-                      backgroundColor: location.pathname === '/analytics' ? 'rgba(255,255,255,0.1)' : 'transparent'
-                    }}
-                  >
-                    Analytics
-                  </Button>
-                  <Button
-                    color="inherit"
-                    startIcon={<Security />}
-                    onClick={() => navigate('/auth-activity')}
-                    sx={{ 
-                      mr: 1,
-                      backgroundColor: location.pathname === '/auth-activity' ? 'rgba(255,255,255,0.1)' : 'transparent'
-                    }}
-                  >
-                    Security
-                  </Button>
-                  <Button
-                    color="inherit"
-                    startIcon={<AdminPanelSettings />}
-                    onClick={() => navigate('/users')}
-                    sx={{ 
-                      mr: 2,
-                      backgroundColor: location.pathname === '/users' ? 'rgba(255,255,255,0.1)' : 'transparent'
-                    }}
-                  >
-                    Users
-                  </Button>
-                  <Button
-                    color="inherit"
-                    startIcon={<MenuBook />}
-                    onClick={() => navigate('/database-query')}
-                    sx={{ 
-                      mr: 2,
-                      backgroundColor: location.pathname === '/database-query' ? 'rgba(255,255,255,0.1)' : 'transparent'
-                    }}
-                  >
-                    Database
-                  </Button>
-            </>
-          )}
-        </Toolbar>
-      </AppBar>
+      <DropdownMenu />
 
       <Box sx={{ 
         minHeight: '100vh', 
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+        backgroundColor: colors.background.default, // #FFFFFF from Navigation Guide
         py: 0
       }}>
         <Routes>
@@ -235,6 +104,10 @@ function AppContent() {
                     loading={isLoading}
                   />
                 } 
+              />
+              <Route 
+                path="/navigation-guide" 
+                element={<NavigationGuide />} 
               />
           <Route 
             path="/tuner" 
@@ -328,12 +201,11 @@ function AppContent() {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
+    <DesignSystemProvider>
       <Router>
         <AppContent />
       </Router>
-    </ThemeProvider>
+    </DesignSystemProvider>
   );
 }
 

@@ -185,10 +185,21 @@ const UserManagement: React.FC = () => {
 
   return (
     <Box sx={{ p: 3 }}>
+      {/* Header */}
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontSize: '15px', fontWeight: 'normal' }}>
+        User Management
+      </Typography>
+      <Typography variant="subtitle1" align="center" color="text.secondary" gutterBottom sx={{ fontSize: '12px' }}>
+        Manage user accounts, permissions, and system access
+      </Typography>
+      
+      <Box sx={{ 
+        borderTop: '0.05px solid #2c3e50', 
+        margin: '30px 0' 
+      }} />
+
+      {/* Controls */}
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3 }}>
-        <Typography variant="h5" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-          <AdminPanelSettings /> User Management
-        </Typography>
         <Box sx={{ display: 'flex', gap: 1 }}>
           <Button
             onClick={addTestUsers}

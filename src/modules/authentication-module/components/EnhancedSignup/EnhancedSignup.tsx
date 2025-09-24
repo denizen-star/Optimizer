@@ -201,9 +201,15 @@ const EnhancedSignup: React.FC = () => {
 
   return (
     <Box sx={{ maxWidth: 600, mx: 'auto', p: 3 }}>
-      <Typography variant="h4" gutterBottom align="center">
+      <Typography variant="h4" component="h1" gutterBottom align="center" sx={{ fontSize: '15px', fontWeight: 'normal' }}>
         Create Your Account
       </Typography>
+      
+      <Box sx={{ 
+        borderTop: '0.05px solid #2c3e50', 
+        margin: '30px 0' 
+      }} />
+      
       <Typography variant="body1" color="text.secondary" align="center" paragraph>
         Join Optimizer and start optimizing your daily routine
       </Typography>
