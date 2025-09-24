@@ -23,6 +23,8 @@
 - [Authentication Activity](#-authentication-activity)
 - [Email Verification](#-email-verification)
 - [User Management](#-user-management)
+- [Enhanced Signup](#-enhanced-signup)
+- [Email Test Center](#-email-test-center)
 
 ### 🛠️ **Development & Testing**
 - [Authentication Demo](#-authentication-demo)
@@ -156,6 +158,40 @@
 
 ---
 
+### 🔐 **Enhanced Signup**
+**Route**: `/signup`  
+**Component**: `EnhancedSignup`  
+**Purpose**: Multi-step user registration with improved UX
+
+**Features**:
+- Step-by-step registration process
+- Real-time form validation
+- Password strength requirements
+- Terms and conditions acceptance
+- Email verification integration
+- Secure password hashing
+
+**Current Status**: ✅ **FULLY FUNCTIONAL**
+
+---
+
+### 📧 **Email Test Center**
+**Route**: `/email-test`  
+**Component**: `EmailTest`  
+**Purpose**: Test email functionality with SendGrid integration
+
+**Features**:
+- SendGrid configuration status
+- Test verification emails
+- Test welcome emails
+- Real email sending via SendGrid
+- Dynamic template integration
+- Console fallback for development
+
+**Current Status**: ✅ **FULLY FUNCTIONAL**
+
+---
+
 ## 🛠️ **Services Overview**
 
 ### 📊 **Activity & Tracking Services**
@@ -173,6 +209,12 @@
 - **`exportService.ts`** - Data export functionality
 - **`simpleEmailService.ts`** - Email communication service
 - **`urlService.ts`** - Environment-aware URL generation
+
+### 🔐 **Authentication Services**
+- **`sendGridEmailService.ts`** - SendGrid email integration
+- **`tokenService.ts`** - Secure token management
+- **`passwordUtils.ts`** - Password hashing and validation
+- **`validationUtils.ts`** - Input validation utilities
 
 ---
 
@@ -221,6 +263,8 @@ npm run build               # Build for production
 - **Analytics**: `/analytics` - Analytics Dashboard
 - **Security**: `/auth-activity` - Authentication Activity
 - **Users**: `/users` - User Management
+- **Signup**: `/signup` - Enhanced User Registration
+- **Email Test**: `/email-test` - Email Testing Center
 
 ---
 
