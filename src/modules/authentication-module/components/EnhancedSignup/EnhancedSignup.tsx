@@ -24,7 +24,6 @@ import {
 } from '@mui/material';
 import { 
   PersonAdd, 
-  CheckCircle, 
   Security, 
   Email,
   Person,
