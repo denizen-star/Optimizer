@@ -46,6 +46,7 @@ export interface AuthHookReturn extends AuthState {
   enableTwoFactor: () => Promise<boolean>;
   disableTwoFactor: (password: string) => Promise<boolean>;
   refreshToken: () => Promise<boolean>;
+  refreshUserData: () => Promise<void>;
   getAuthEvents: () => any[];
   getAuthStats: () => any;
 }
