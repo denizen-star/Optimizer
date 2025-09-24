@@ -22,6 +22,8 @@ export class SendGridEmailService {
   private static readonly SENDGRID_API_URL = 'https://api.sendgrid.com/v3/mail/send';
   private static readonly FROM_EMAIL = process.env.REACT_APP_FROM_EMAIL || 'noreply@optimizer.kervinapps.com';
   private static readonly FROM_NAME = 'Optimizer';
+  // Fallback API key - add your SendGrid API key here for production
+  private static readonly FALLBACK_API_KEY = process.env.NODE_ENV === 'production' ? 'YOUR_SENDGRID_API_KEY_HERE' : null;
 
   /**
    * Send email verification using SendGrid
@@ -43,7 +45,7 @@ export class SendGridEmailService {
       const verificationUrl = UrlService.generateEmailVerificationUrl(verificationToken);
       
       // Check if SendGrid is configured
-      const apiKey = process.env.REACT_APP_SENDGRID_API_KEY;
+      const apiKey = process.env.REACT_APP_SENDGRID_API_KEY || this.FALLBACK_API_KEY;
       if (!apiKey) {
         console.warn('⚠️ SendGrid API key not configured. Falling back to console logging.');
         return this.fallbackToConsoleLogging(data, verificationUrl, verificationToken);
@@ -96,7 +98,7 @@ export class SendGridEmailService {
       const resetUrl = UrlService.generatePasswordResetUrl(data.resetToken);
       
       // Check if SendGrid is configured
-      const apiKey = process.env.REACT_APP_SENDGRID_API_KEY;
+      const apiKey = process.env.REACT_APP_SENDGRID_API_KEY || this.FALLBACK_API_KEY;
       if (!apiKey) {
         console.warn('⚠️ SendGrid API key not configured. Falling back to console logging.');
         return this.fallbackToPasswordResetLogging(data, resetUrl);
@@ -147,7 +149,7 @@ export class SendGridEmailService {
   static async sendWelcomeEmail(email: string, name: string): Promise<boolean> {
     try {
       // Check if SendGrid is configured
-      const apiKey = process.env.REACT_APP_SENDGRID_API_KEY;
+      const apiKey = process.env.REACT_APP_SENDGRID_API_KEY || this.FALLBACK_API_KEY;
       if (!apiKey) {
         console.warn('⚠️ SendGrid API key not configured. Falling back to console logging.');
         return this.fallbackToWelcomeLogging(email, name);
