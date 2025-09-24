@@ -141,6 +141,14 @@ export class AuthTrackingService {
   }
 
   /**
+   * Get all authentication events
+   */
+  public getAllEvents(): AuthEvent[] {
+    return this.events
+      .sort((a, b) => b.timestamp.getTime() - a.timestamp.getTime());
+  }
+
+  /**
    * Get recent failed login attempts for security monitoring
    */
   public getRecentFailedAttempts(email: string, minutes: number = 15): AuthEvent[] {

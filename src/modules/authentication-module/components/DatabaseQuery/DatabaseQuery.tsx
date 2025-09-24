@@ -98,9 +98,9 @@ const DatabaseQuery: React.FC = () => {
       } else if (queryLower.includes('count') || queryLower.includes('statistics')) {
         queryResults.stats = UserDatabase.getUserStats();
       } else if (queryLower.includes('auth_events') || queryLower.includes('events')) {
-        queryResults.events = authTrackingService.getAuthEvents();
+        queryResults.events = authTrackingService.getAllEvents();
       } else if (queryLower.includes('email_verification')) {
-        queryResults.events = authTrackingService.getAuthEvents().filter(
+        queryResults.events = authTrackingService.getAllEvents().filter(
           (event: any) => event.action.includes('EMAIL_VERIFICATION')
         );
       } else {
@@ -381,7 +381,7 @@ const DatabaseQuery: React.FC = () => {
             </CardContent>
           </Card>
         </Box>
-      </Grid>
+      </Box>
     </Box>
   );
 };
