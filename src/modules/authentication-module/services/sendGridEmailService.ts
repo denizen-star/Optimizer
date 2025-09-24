@@ -51,36 +51,38 @@ export class SendGridEmailService {
         return this.fallbackToConsoleLogging(data, verificationUrl, verificationToken);
       }
 
-      // Send real email via SendGrid using Dynamic Template
-      const emailData = {
-        personalizations: [{
-          to: [{ email: data.email, name: data.name }],
-          dynamic_template_data: {
+      // Use Netlify Function instead of direct API call
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: data.email,
+          from: this.FROM_EMAIL,
+          subject: 'Verify Your Email - Optimizer',
+          html: this.getVerificationEmailHTML(data.name, verificationUrl, data.email),
+          templateId: 'd-3ee64b454500491c8e5a2cbae5040ced',
+          dynamicTemplateData: {
             name: data.name,
             verification_url: verificationUrl,
             email: data.email
           }
-        }],
-        from: { email: this.FROM_EMAIL, name: this.FROM_NAME },
-        template_id: 'd-3ee64b454500491c8e5a2cbae5040ced', // Your Email Verification Template ID
-        reply_to: { email: this.FROM_EMAIL, name: this.FROM_NAME }
-      };
-
-      const response = await fetch(this.SENDGRID_API_URL, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(emailData)
+        }),
       });
 
       if (response.ok) {
-        console.log('✅ Verification email sent successfully via SendGrid');
-        return true;
+        const result = await response.json();
+        if (result.success) {
+          console.log('✅ Verification email sent successfully via Netlify Function');
+          return true;
+        } else {
+          console.error('❌ Netlify Function error:', result.error);
+          return this.fallbackToConsoleLogging(data, verificationUrl, verificationToken);
+        }
       } else {
         const errorData = await response.text();
-        console.error('❌ SendGrid API error:', response.status, errorData);
+        console.error('❌ Netlify Function error:', response.status, errorData);
         return this.fallbackToConsoleLogging(data, verificationUrl, verificationToken);
       }
 
@@ -104,36 +106,38 @@ export class SendGridEmailService {
         return this.fallbackToPasswordResetLogging(data, resetUrl);
       }
 
-      // Send real email via SendGrid using Dynamic Template
-      const emailData = {
-        personalizations: [{
-          to: [{ email: data.email, name: data.name }],
-          dynamic_template_data: {
+      // Use Netlify Function instead of direct API call
+      const response = await fetch('/.netlify/functions/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: data.email,
+          from: this.FROM_EMAIL,
+          subject: 'Reset Your Password - Optimizer',
+          html: this.getPasswordResetEmailHTML(data.name, resetUrl),
+          templateId: 'd-dbf9789afd6b44de8b0c16708852142c',
+          dynamicTemplateData: {
             name: data.name,
             reset_url: resetUrl,
             email: data.email
           }
-        }],
-        from: { email: this.FROM_EMAIL, name: this.FROM_NAME },
-        template_id: 'd-dbf9789afd6b44de8b0c16708852142c', // Your Password Reset Template ID
-        reply_to: { email: this.FROM_EMAIL, name: this.FROM_NAME }
-      };
-
-      const response = await fetch(this.SENDGRID_API_URL, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(emailData)
+        }),
       });
 
       if (response.ok) {
-        console.log('✅ Password reset email sent successfully via SendGrid');
-        return true;
+        const result = await response.json();
+        if (result.success) {
+          console.log('✅ Password reset email sent successfully via Netlify Function');
+          return true;
+        } else {
+          console.error('❌ Netlify Function error:', result.error);
+          return this.fallbackToPasswordResetLogging(data, resetUrl);
+        }
       } else {
         const errorData = await response.text();
-        console.error('❌ SendGrid API error:', response.status, errorData);
+        console.error('❌ Netlify Function error:', response.status, errorData);
         return this.fallbackToPasswordResetLogging(data, resetUrl);
       }
 
@@ -155,35 +159,32 @@ export class SendGridEmailService {
         return this.fallbackToWelcomeLogging(email, name);
       }
 
-      // Send real email via SendGrid (using simple HTML since no welcome template)
-      const emailData = {
-        personalizations: [{
-          to: [{ email, name }],
-          subject: 'Welcome to Optimizer!'
-        }],
-        from: { email: this.FROM_EMAIL, name: this.FROM_NAME },
-        content: [{
-          type: 'text/html',
-          value: this.getWelcomeEmailHTML(name, email)
-        }],
-        reply_to: { email: this.FROM_EMAIL, name: this.FROM_NAME }
-      };
-
-      const response = await fetch(this.SENDGRID_API_URL, {
+      // Use Netlify Function instead of direct API call
+      const response = await fetch('/.netlify/functions/send-email', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${apiKey}`,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify(emailData)
+        body: JSON.stringify({
+          to: email,
+          from: this.FROM_EMAIL,
+          subject: 'Welcome to Optimizer!',
+          html: this.getWelcomeEmailHTML(name, email)
+        }),
       });
 
       if (response.ok) {
-        console.log('✅ Welcome email sent successfully via SendGrid');
-        return true;
+        const result = await response.json();
+        if (result.success) {
+          console.log('✅ Welcome email sent successfully via Netlify Function');
+          return true;
+        } else {
+          console.error('❌ Netlify Function error:', result.error);
+          return this.fallbackToWelcomeLogging(email, name);
+        }
       } else {
         const errorData = await response.text();
-        console.error('❌ SendGrid API error:', response.status, errorData);
+        console.error('❌ Netlify Function error:', response.status, errorData);
         return this.fallbackToWelcomeLogging(email, name);
       }
 
