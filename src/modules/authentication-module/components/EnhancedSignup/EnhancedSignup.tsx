@@ -59,12 +59,14 @@ const EnhancedSignup: React.FC = () => {
 
   const { signup } = useAuth();
 
+  // Steps configuration (commented out for now)
   // const steps = [
   //   {
   //     label: 'Personal Information',
   //     icon: <Person />,
   //     description: 'Tell us about yourself'
   //   },
+  //   {
   //     label: 'Account Security',
   //     icon: <Security />,
   //     description: 'Create a secure password'
@@ -167,8 +169,8 @@ const EnhancedSignup: React.FC = () => {
       
       if (success) {
         setSubmitStatus('success');
-        setSubmitMessage('Account created successfully! Welcome to Optimizer.');
-        setActiveStep(3); // Move to completion step
+        setSubmitMessage('Account created! Please check your email for verification instructions.');
+        setActiveStep(3); // Move to email verification step
       } else {
         setSubmitStatus('error');
         setSubmitMessage('Failed to create account. Please try again.');
@@ -391,24 +393,25 @@ const EnhancedSignup: React.FC = () => {
           </StepContent>
         </Step>
 
-        {/* Step 4: Complete */}
+        {/* Step 4: Email Verification */}
         <Step>
-          <StepLabel icon={<CheckCircle />}>
-            <Typography variant="h6">Welcome to Optimizer!</Typography>
+          <StepLabel icon={<Email />}>
+            <Typography variant="h6">Email Verification</Typography>
             <Typography variant="body2" color="text.secondary">
-              Your account has been created
+              Check your email to complete setup
             </Typography>
           </StepLabel>
           <StepContent>
             <Card>
               <CardContent>
                 <Box sx={{ textAlign: 'center', py: 3 }}>
-                  <CheckCircle sx={{ fontSize: 64, color: 'success.main', mb: 2 }} />
+                  <Email sx={{ fontSize: 64, color: 'primary.main', mb: 2 }} />
                   <Typography variant="h5" gutterBottom>
-                    Account Created Successfully!
+                    Check Your Email!
                   </Typography>
                   <Typography variant="body1" color="text.secondary" paragraph>
-                    Welcome to Optimizer, {formData.name}! Your account has been created and you're ready to start optimizing your daily routine.
+                    We've sent a verification email to <strong>{formData.email}</strong>. 
+                    Please check your inbox and click the verification link to activate your account.
                   </Typography>
                   
                   {submitStatus === 'success' && (
@@ -417,13 +420,23 @@ const EnhancedSignup: React.FC = () => {
                     </Alert>
                   )}
                   
+                  <Typography variant="body2" color="text.secondary" sx={{ mt: 2 }}>
+                    Didn't receive the email? Check your spam folder or{' '}
+                    <Button 
+                      variant="text" 
+                      onClick={() => window.location.href = '/email-test'}
+                    >
+                      test email functionality
+                    </Button>
+                  </Typography>
+                  
                   <Box sx={{ mt: 3 }}>
                     <Button
                       variant="contained"
                       size="large"
                       onClick={() => window.location.href = '/auth-demo'}
                     >
-                      Start Using Optimizer
+                      Go to Login
                     </Button>
                   </Box>
                 </Box>
