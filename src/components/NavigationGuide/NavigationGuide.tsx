@@ -1997,7 +1997,7 @@ const NavigationGuide: React.FC = () => {
               Fix build errors in DatabaseQuery component
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
-              - Fixed JSX closing tag mismatch (Grid -> Box)
+              - Fixed JSX closing tag mismatch (Grid → Box)
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
               - Added getAllEvents() method to AuthTrackingService
