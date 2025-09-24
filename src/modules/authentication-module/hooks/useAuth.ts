@@ -10,6 +10,7 @@ import { User, LoginCredentials, SignupData, AuthState, AuthHookReturn } from '.
 import { PasswordUtils } from '../utils/passwordUtils';
 import { ValidationUtils } from '../utils/validationUtils';
 import { TokenService } from '../services/tokenService';
+import { UserDatabase } from '../services/userDatabase';
 // import { UrlService } from '../services/urlService'; // Will be used for email URL generation
 
 // User interface is now imported from ../types
@@ -258,8 +259,23 @@ export const useAuth = (): AuthHookReturn => {
 
         if (emailSent) {
           console.log('Verification email sent successfully');
+          // Track email verification sent event
+          await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SENT, {
+            userId: user.id,
+            email: user.email,
+            success: true,
+            metadata: { name: user.name, emailType: 'verification' }
+          });
         } else {
           console.warn('Failed to send verification email, but user account created');
+          // Track email verification failure
+          await authTrackingService.trackAuthEvent(AuthAction.EMAIL_VERIFICATION_SENT, {
+            userId: user.id,
+            email: user.email,
+            success: false,
+            errorReason: 'Failed to send verification email',
+            metadata: { name: user.name, emailType: 'verification' }
+          });
         }
 
         // Track successful signup
@@ -426,19 +442,20 @@ export const useAuth = (): AuthHookReturn => {
 
       const tokenData = tokenResult.tokenData!;
       
-      // Update user verification status
-      const users = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
-      const userToVerify = users.find((u: any) => u.id === tokenData.userId);
+      // Update user verification status using UserDatabase
+      const userToVerify = UserDatabase.getUserById(tokenData.userId);
       
       if (userToVerify) {
-        userToVerify.emailVerified = true;
-        localStorage.setItem('optimizer_users_registry', JSON.stringify(users));
+        // Verify the user's email
+        const success = UserDatabase.verifyUserEmail(tokenData.userId);
         
-        // Update current user if logged in
-        if (authState.user && authState.user.id === tokenData.userId) {
-          const updatedUser = { ...authState.user, emailVerified: true };
-          localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
-          setAuthState(prev => ({ ...prev, user: updatedUser }));
+        if (success) {
+          // Update current user if logged in
+          if (authState.user && authState.user.id === tokenData.userId) {
+            const updatedUser = { ...authState.user, emailVerified: true };
+            UserDatabase.setCurrentUser(updatedUser);
+            setAuthState(prev => ({ ...prev, user: updatedUser }));
+          }
         }
 
         // Send welcome email
@@ -609,16 +626,27 @@ export const useAuth = (): AuthHookReturn => {
   }, [authState.user]);
 
   const getAuthStats = useCallback(() => {
-    return authTrackingService.getAuthStats();
+    const authStats = authTrackingService.getAuthStats();
+    const userStats = UserDatabase.getUserStats();
+    
+    return {
+      ...authStats,
+      userStats: {
+        totalUsers: userStats.totalUsers,
+        verifiedUsers: userStats.verifiedUsers,
+        unverifiedUsers: userStats.unverifiedUsers,
+        adminUsers: userStats.adminUsers,
+        regularUsers: userStats.regularUsers
+      }
+    };
   }, []);
 
   const refreshUserData = useCallback(async () => {
     if (!authState.user) return;
     
     try {
-      // Get fresh user data from localStorage
-      const users = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
-      const freshUser = users.find((u: any) => u.id === authState.user!.id);
+      // Get fresh user data from UserDatabase
+      const freshUser = UserDatabase.getUserById(authState.user.id);
       
       if (freshUser) {
         const updatedUser = {
@@ -627,7 +655,7 @@ export const useAuth = (): AuthHookReturn => {
           lastLoginAt: new Date(freshUser.lastLoginAt)
         };
         
-        localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
+        UserDatabase.setCurrentUser(updatedUser);
         setAuthState(prev => ({ ...prev, user: updatedUser }));
       }
     } catch (error) {
@@ -661,14 +689,12 @@ async function simulateAuthAPI(endpoint: string, data: any): Promise<any> {
 
   switch (endpoint) {
     case 'login':
-      // Check against stored users
-      const storedUsers = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
-      const user = storedUsers.find((u: any) => u.email === data.email);
+      // Check against stored users using UserDatabase
+      const user = UserDatabase.getUserByEmail(data.email);
       
       if (user && PasswordUtils.verifyPassword(data.password, user.passwordHash)) {
-        // Update last login
-        user.lastLoginAt = new Date();
-        localStorage.setItem('optimizer_users_registry', JSON.stringify(storedUsers));
+        // Update last login using UserDatabase
+        UserDatabase.updateUser(user.id, { lastLoginAt: new Date().toISOString() });
         
         return {
           success: true,
@@ -688,29 +714,22 @@ async function simulateAuthAPI(endpoint: string, data: any): Promise<any> {
       return { success: false, error: 'Invalid credentials' };
 
     case 'signup':
-      // Check if user already exists
-      const existingUsers = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
-      const existingUser = existingUsers.find((u: any) => u.email === data.email);
+      // Check if user already exists using UserDatabase
+      const existingUser = UserDatabase.getUserByEmail(data.email);
       
       if (existingUser) {
         return { success: false, error: 'User already exists with this email' };
       }
 
-      // Create new user with hashed password
-      const newUser = {
-        id: 'user_' + Math.random().toString(36).substr(2, 9),
+      // Create new user with hashed password using UserDatabase
+      const newUser = UserDatabase.createUser({
         email: data.email,
         name: data.name,
-        passwordHash: PasswordUtils.hashPassword(data.password), // Store hashed password
+        passwordHash: PasswordUtils.hashPassword(data.password),
         emailVerified: false,
         twoFactorEnabled: false,
-        createdAt: new Date().toISOString(),
-        lastLoginAt: new Date().toISOString(),
         role: 'user'
-      };
-
-      existingUsers.push(newUser);
-      localStorage.setItem('optimizer_users_registry', JSON.stringify(existingUsers));
+      });
 
       return {
         success: true,
