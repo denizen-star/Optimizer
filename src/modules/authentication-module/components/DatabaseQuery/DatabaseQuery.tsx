@@ -98,10 +98,10 @@ const DatabaseQuery: React.FC = () => {
       } else if (queryLower.includes('count') || queryLower.includes('statistics')) {
         queryResults.stats = UserDatabase.getUserStats();
       } else if (queryLower.includes('auth_events') || queryLower.includes('events')) {
-        queryResults.events = authTrackingService.getAllEvents();
+        queryResults.events = authTrackingService.getAuthEvents();
       } else if (queryLower.includes('email_verification')) {
-        queryResults.events = authTrackingService.getAllEvents().filter(
-          event => event.action.includes('EMAIL_VERIFICATION')
+        queryResults.events = authTrackingService.getAuthEvents().filter(
+          (event: any) => event.action.includes('EMAIL_VERIFICATION')
         );
       } else {
         // Default: get all users
@@ -135,9 +135,9 @@ const DatabaseQuery: React.FC = () => {
         Query the user database and authentication events. This interface provides access to all stored data.
       </Typography>
 
-      <Grid container spacing={3}>
+      <Box sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
         {/* Query Input */}
-        <Grid item xs={12} md={6}>
+        <Box sx={{ flex: 1 }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -181,10 +181,10 @@ const DatabaseQuery: React.FC = () => {
               )}
             </CardContent>
           </Card>
-        </Grid>
+        </Box>
 
         {/* Predefined Queries */}
-        <Grid item xs={12} md={6}>
+        <Box sx={{ flex: 1 }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -217,10 +217,12 @@ const DatabaseQuery: React.FC = () => {
               ))}
             </CardContent>
           </Card>
-        </Grid>
+        </Box>
 
-        {/* Results */}
-        <Grid item xs={12}>
+      </Box>
+
+      {/* Results */}
+      <Box sx={{ mt: 3 }}>
           <Card>
             <CardContent>
               <Typography variant="h6" gutterBottom>
@@ -236,40 +238,40 @@ const DatabaseQuery: React.FC = () => {
                       <Typography variant="h6" gutterBottom>
                         User Statistics
                       </Typography>
-                      <Grid container spacing={2}>
-                        <Grid item xs={6} sm={3}>
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2 }}>
+                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
                           <Paper sx={{ p: 2, textAlign: 'center' }}>
                             <Typography variant="h4" color="primary">
                               {results.stats.totalUsers || 0}
                             </Typography>
                             <Typography variant="body2">Total Users</Typography>
                           </Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
+                        </Box>
+                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
                           <Paper sx={{ p: 2, textAlign: 'center' }}>
                             <Typography variant="h4" color="success.main">
                               {results.stats.verifiedUsers || 0}
                             </Typography>
                             <Typography variant="body2">Verified</Typography>
                           </Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
+                        </Box>
+                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
                           <Paper sx={{ p: 2, textAlign: 'center' }}>
                             <Typography variant="h4" color="warning.main">
                               {results.stats.unverifiedUsers || 0}
                             </Typography>
                             <Typography variant="body2">Unverified</Typography>
                           </Paper>
-                        </Grid>
-                        <Grid item xs={6} sm={3}>
+                        </Box>
+                        <Box sx={{ flex: '1 1 200px', minWidth: '200px' }}>
                           <Paper sx={{ p: 2, textAlign: 'center' }}>
                             <Typography variant="h4" color="info.main">
                               {results.stats.adminUsers || 0}
                             </Typography>
                             <Typography variant="body2">Admins</Typography>
                           </Paper>
-                        </Grid>
-                      </Grid>
+                        </Box>
+                      </Box>
                     </Box>
                   )}
 
@@ -378,7 +380,7 @@ const DatabaseQuery: React.FC = () => {
               )}
             </CardContent>
           </Card>
-        </Grid>
+        </Box>
       </Grid>
     </Box>
   );
