@@ -4,6 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "18"
+  SECRETS_SCAN_OMIT_KEYS = "NODE_ENV,REACT_APP_FROM_EMAIL,REACT_APP_SENDGRID_API_KEY"
 
 # React Router SPA configuration
 [[redirects]]
