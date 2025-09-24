@@ -21,7 +21,7 @@ import { useAuth } from '../../hooks/useAuth';
 const EmailVerification: React.FC = () => {
   const { token } = useParams<{ token: string }>();
   const navigate = useNavigate();
-  const { verifyEmail, resendVerificationEmail } = useAuth();
+  const { verifyEmail, resendVerificationEmail, refreshUserData } = useAuth();
   
   const [status, setStatus] = useState<'verifying' | 'success' | 'error'>('verifying');
   const [errorMessage, setErrorMessage] = useState('');
@@ -46,6 +46,12 @@ const EmailVerification: React.FC = () => {
       
       if (success) {
         setStatus('success');
+        // Refresh user data to show updated verification status
+        await refreshUserData();
+        // Show success message for 3 seconds, then redirect to auth demo
+        setTimeout(() => {
+          navigate('/auth-demo');
+        }, 3000);
       } else {
         setStatus('error');
         setErrorMessage('Verification failed. The link may be expired or invalid.');

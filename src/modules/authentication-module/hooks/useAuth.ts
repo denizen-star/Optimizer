@@ -612,6 +612,29 @@ export const useAuth = (): AuthHookReturn => {
     return authTrackingService.getAuthStats();
   }, []);
 
+  const refreshUserData = useCallback(async () => {
+    if (!authState.user) return;
+    
+    try {
+      // Get fresh user data from localStorage
+      const users = JSON.parse(localStorage.getItem('optimizer_users_registry') || '[]');
+      const freshUser = users.find((u: any) => u.id === authState.user!.id);
+      
+      if (freshUser) {
+        const updatedUser = {
+          ...freshUser,
+          createdAt: new Date(freshUser.createdAt),
+          lastLoginAt: new Date(freshUser.lastLoginAt)
+        };
+        
+        localStorage.setItem('optimizer_user_data', JSON.stringify(updatedUser));
+        setAuthState(prev => ({ ...prev, user: updatedUser }));
+      }
+    } catch (error) {
+      console.error('Failed to refresh user data:', error);
+    }
+  }, [authState.user]);
+
   return {
     ...authState,
     login,
@@ -625,6 +648,7 @@ export const useAuth = (): AuthHookReturn => {
     enableTwoFactor,
     disableTwoFactor,
     refreshToken,
+    refreshUserData,
     getAuthEvents,
     getAuthStats
   };
