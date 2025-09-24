@@ -9,12 +9,13 @@ import NavigationGuide from './components/NavigationGuide/NavigationGuide';
 import { AuthDemo, EnhancedSignup, EmailTest, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
 import DatabaseQuery from './modules/authentication-module/components/DatabaseQuery/DatabaseQuery';
 import { useStore } from './store/useStore';
-import { DesignSystemProvider, DropdownMenu } from './design-system';
+import { DesignSystemProvider, useDesignSystem, DropdownMenu } from './design-system';
 import './App.css';
 
 // Design system theme is now imported from design-system/theme.ts
 
 function AppContent() {
+  const { colors } = useDesignSystem();
   
   const {
     selectedPersona,
