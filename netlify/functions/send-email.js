@@ -34,14 +34,15 @@ exports.handler = async (event, context) => {
     // Parse request body
     const { to, from, subject, html, templateId, dynamicTemplateData } = JSON.parse(event.body);
 
-    // Prepare email data
+    // Prepare email data - use HTML content for verification emails
     const msg = {
       to,
       from: from || process.env.REACT_APP_FROM_EMAIL,
-      subject,
-      html,
-      templateId,
-      dynamicTemplateData,
+      subject: subject || 'Verify Your Email - Optimizer',
+      content: [{
+        type: 'text/html',
+        value: html
+      }]
     };
 
     console.log('Sending email with data:', {
