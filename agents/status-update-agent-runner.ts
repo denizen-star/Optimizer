@@ -102,9 +102,10 @@ class StatusUpdateAgentRunner {
   }
 
   /**
-   * Generate recent commits section for NavigationGuide
+   * Generate recent commits section for NavigationGuide (ordered by release timestamp desc)
    */
   private generateRecentCommitsSection(commits: any[]): string {
+    // Commits are already sorted by timestamp desc in the agent
     const commitsList = commits.slice(0, 10).map(commit => `
       <ListItem>
         <ListItemText 
@@ -119,6 +120,61 @@ class StatusUpdateAgentRunner {
     return `
       <List dense>
         ${commitsList}
+      </List>
+    `;
+  }
+
+  /**
+   * Generate module status section with completion timestamps
+   */
+  private generateModuleStatusSection(modules: any): string {
+    const sortedModules = Object.entries(modules)
+      .sort(([, a], [, b]) => {
+        // Sort by completion timestamp (completed items first)
+        if (a.completionTimestamp && !b.completionTimestamp) return -1;
+        if (!a.completionTimestamp && b.completionTimestamp) return 1;
+        if (a.completionTimestamp && b.completionTimestamp) {
+          return new Date(b.completionTimestamp).getTime() - new Date(a.completionTimestamp).getTime();
+        }
+        // Then by completion percentage
+        return b.completion - a.completion;
+      });
+
+    return sortedModules.map(([name, module]) => `
+      <Grid size={{ xs: 12, sm: 6, md: 3 }}>
+        <Paper sx={{ p: 2, textAlign: 'center', backgroundColor: module.completion === 100 ? 'colors.status.success' : module.completion >= 70 ? 'colors.status.partial' : 'colors.status.error' }}>
+          <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>
+            ${name.charAt(0).toUpperCase() + name.slice(1)} Module
+          </Typography>
+          <Typography variant="body2" sx={{ fontSize: '10px', color: 'colors.text.secondary' }}>
+            ${module.completion}% Complete
+          </Typography>
+          <Typography variant="body2" sx={{ fontSize: '9px', color: 'colors.text.secondary', mt: 1 }}>
+            ${module.completionTimestamp ? `Completed: ${new Date(module.completionTimestamp).toLocaleString()}` : `Last Updated: ${new Date(module.lastUpdated).toLocaleString()}`}
+          </Typography>
+        </Paper>
+      </Grid>
+    `).join('');
+  }
+
+  /**
+   * Generate recommendations section with proper prioritization
+   */
+  private generateRecommendationsSection(recommendations: any[]): string {
+    const recommendationsList = recommendations.map(rec => `
+      <ListItem>
+        <ListItemText 
+          primary="[${rec.priority.toUpperCase()}] ${rec.description}"
+          secondary="${rec.category} | Status: ${rec.status} | Updated: ${new Date(rec.lastUpdated).toLocaleString()}"
+          primaryTypographyProps={{ fontSize: '12px' }}
+          secondaryTypographyProps={{ fontSize: '10px' }}
+        />
+      </ListItem>
+    `).join('');
+
+    return `
+      <List dense>
+        ${recommendationsList}
       </List>
     `;
   }

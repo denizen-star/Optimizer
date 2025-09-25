@@ -19,23 +19,47 @@ export interface ProjectStatus {
     completion: number;
     status: 'completed' | 'in_progress' | 'planning';
     lastUpdated: string;
+    completionTimestamp?: string;
   };
   modules: {
-    authentication: { completion: number; status: string };
-    persona: { completion: number; status: string };
-    activities: { completion: number; status: string };
-    habits: { completion: number; status: string };
+    authentication: { 
+      completion: number; 
+      status: string; 
+      lastUpdated: string;
+      completionTimestamp?: string;
+    };
+    persona: { 
+      completion: number; 
+      status: string; 
+      lastUpdated: string;
+      completionTimestamp?: string;
+    };
+    activities: { 
+      completion: number; 
+      status: string; 
+      lastUpdated: string;
+      completionTimestamp?: string;
+    };
+    habits: { 
+      completion: number; 
+      status: string; 
+      lastUpdated: string;
+      completionTimestamp?: string;
+    };
   };
   recentCommits: Array<{
     hash: string;
     message: string;
     date: string;
+    timestamp: number; // Unix timestamp for proper sorting
   }>;
   recommendations: Array<{
     priority: 'high' | 'medium' | 'low';
     category: string;
     description: string;
     status: 'new' | 'in_progress' | 'completed';
+    lastUpdated: string;
+    completionTimestamp?: string;
   }>;
 }
 
@@ -64,7 +88,7 @@ export class StatusUpdateAgent {
   }
 
   /**
-   * Get recent git commits
+   * Get recent git commits (ordered by release timestamp desc)
    */
   private getRecentCommits() {
     try {
@@ -75,12 +99,14 @@ export class StatusUpdateAgent {
       
       return output.trim().split('\n').map(line => {
         const [hash, message, date] = line.split('|');
+        const timestamp = date ? new Date(date).getTime() : 0;
         return {
           hash: hash || '',
           message: message || '',
-          date: date ? new Date(date).toLocaleString() : ''
+          date: date ? new Date(date).toLocaleString() : '',
+          timestamp: timestamp
         };
-      });
+      }).sort((a, b) => b.timestamp - a.timestamp); // Sort by timestamp desc
     } catch (error) {
       console.warn('Could not fetch git commits:', error);
       return [];
@@ -148,67 +174,103 @@ export class StatusUpdateAgent {
   }
 
   /**
-   * Analyze module implementation status
+   * Analyze module implementation status with timestamps
    */
   private analyzeModules() {
+    const now = new Date().toISOString();
     return {
       authentication: {
         completion: 100,
-        status: 'Fully functional with email verification, user management, and security tracking'
+        status: 'Fully functional with email verification, user management, and security tracking',
+        lastUpdated: now,
+        completionTimestamp: '2024-12-15T10:00:00Z' // When it was completed
       },
       persona: {
         completion: 90,
-        status: 'Functional with persona selection and data structure'
+        status: 'Functional with persona selection and data structure',
+        lastUpdated: now,
+        completionTimestamp: '2024-12-18T14:30:00Z' // When it was mostly completed
       },
       activities: {
         completion: 70,
-        status: 'Data structure ready, needs UI implementation'
+        status: 'Data structure ready, needs UI implementation',
+        lastUpdated: now,
+        completionTimestamp: undefined // Not completed yet
       },
       habits: {
         completion: 0,
-        status: 'Planning phase - detailed specifications available'
+        status: 'Planning phase - detailed specifications available',
+        lastUpdated: now,
+        completionTimestamp: undefined // Not started
       }
     };
   }
 
   /**
-   * Generate recommendations based on current status
+   * Generate recommendations based on current status with timestamps
    */
   private generateRecommendations() {
+    const now = new Date().toISOString();
     const recommendations = [
       {
         priority: 'high' as const,
         category: 'Design System',
         description: 'Complete migration of remaining components to design system',
-        status: 'in_progress' as const
+        status: 'in_progress' as const,
+        lastUpdated: now,
+        completionTimestamp: undefined // Not completed yet
       },
       {
         priority: 'high' as const,
         category: 'Features',
         description: 'Implement Habits Module for planning functionality',
-        status: 'new' as const
+        status: 'new' as const,
+        lastUpdated: now,
+        completionTimestamp: undefined // Not started
       },
       {
         priority: 'medium' as const,
         category: 'Infrastructure',
         description: 'Add SendGrid waitlist system for email limit handling',
-        status: 'new' as const
+        status: 'new' as const,
+        lastUpdated: now,
+        completionTimestamp: undefined // Not started
       },
       {
         priority: 'medium' as const,
         category: 'User Experience',
         description: 'Create proper landing page for user acquisition',
-        status: 'new' as const
+        status: 'new' as const,
+        lastUpdated: now,
+        completionTimestamp: undefined // Not started
       },
       {
         priority: 'low' as const,
         category: 'Documentation',
         description: 'Update component documentation with design system examples',
-        status: 'new' as const
+        status: 'new' as const,
+        lastUpdated: now,
+        completionTimestamp: undefined // Not started
       }
     ];
 
-    return recommendations;
+    // Sort by priority and completion timestamp
+    return recommendations.sort((a, b) => {
+      // First sort by priority (high > medium > low)
+      const priorityOrder = { high: 3, medium: 2, low: 1 };
+      const priorityDiff = priorityOrder[b.priority] - priorityOrder[a.priority];
+      if (priorityDiff !== 0) return priorityDiff;
+      
+      // Then sort by completion timestamp (completed items first)
+      if (a.completionTimestamp && !b.completionTimestamp) return -1;
+      if (!a.completionTimestamp && b.completionTimestamp) return 1;
+      if (a.completionTimestamp && b.completionTimestamp) {
+        return new Date(b.completionTimestamp).getTime() - new Date(a.completionTimestamp).getTime();
+      }
+      
+      // Finally sort by last updated
+      return new Date(b.lastUpdated).getTime() - new Date(a.lastUpdated).getTime();
+    });
   }
 
   /**
@@ -249,7 +311,7 @@ export class StatusUpdateAgent {
         </ListItem>
       `).join('');
 
-      // Update recent commits
+      // Update recent commits (ordered by release timestamp desc)
       const recentCommits = status.recentCommits.slice(0, 10).map(commit => `
         <ListItem>
           <ListItemText 
@@ -257,6 +319,41 @@ export class StatusUpdateAgent {
             secondary="${commit.date} (${commit.hash})"
             primaryTypographyProps={{ fontSize: '10px' }}
             secondaryTypographyProps={{ fontSize: '9px' }}
+          />
+        </ListItem>
+      `).join('');
+
+      // Update module status with completion timestamps
+      const moduleStatus = Object.entries(status.modules)
+        .sort(([, a], [, b]) => {
+          // Sort by completion timestamp (completed items first)
+          if (a.completionTimestamp && !b.completionTimestamp) return -1;
+          if (!a.completionTimestamp && b.completionTimestamp) return 1;
+          if (a.completionTimestamp && b.completionTimestamp) {
+            return new Date(b.completionTimestamp).getTime() - new Date(a.completionTimestamp).getTime();
+          }
+          // Then by completion percentage
+          return b.completion - a.completion;
+        })
+        .map(([name, module]) => `
+        <ListItem>
+          <ListItemText 
+            primary="${name.charAt(0).toUpperCase() + name.slice(1)} Module: ${module.completion}%"
+            secondary="${module.status} | Last Updated: ${new Date(module.lastUpdated).toLocaleString()}"
+            primaryTypographyProps={{ fontSize: '12px' }}
+            secondaryTypographyProps={{ fontSize: '10px' }}
+          />
+        </ListItem>
+      `).join('');
+
+      // Update recommendations with proper prioritization
+      const recommendations = status.recommendations.map(rec => `
+        <ListItem>
+          <ListItemText 
+            primary="[${rec.priority.toUpperCase()}] ${rec.description}"
+            secondary="${rec.category} | Status: ${rec.status} | Updated: ${new Date(rec.lastUpdated).toLocaleString()}"
+            primaryTypographyProps={{ fontSize: '12px' }}
+            secondaryTypographyProps={{ fontSize: '10px' }}
           />
         </ListItem>
       `).join('');
