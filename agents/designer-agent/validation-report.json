@@ -1,0 +1,3023 @@
+{
+  "totalFiles": 6,
+  "totalViolations": 425,
+  "filesWithViolations": 6,
+  "averageScore": 30,
+  "violationsByType": {
+    "warning": 52,
+    "error": 373
+  },
+  "results": [
+    {
+      "file": "src/components/AnalyticsDashboard/AnalyticsDashboard.tsx",
+      "violations": [
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 114,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Paper sx={{ p: 2, mb: 3, background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 233,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ p: 2, border: '2px solid #4CAF50' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 241,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Star sx={{ color: '#FFD700', fontSize: 16 }} />"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 254,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ p: 2, border: '2px solid #FF9800' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 280,
+          "message": "Hardcoded color found - should use design system",
+          "content": "backgroundColor: index === 0 ? '#4CAF50' : index === 1 ? '#FF9800' : '#2196F3',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 305,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ p: 2, backgroundColor: '#E3F2FD' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 319,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ p: 2, backgroundColor: '#E8F5E8' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 333,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ p: 2, backgroundColor: '#FFF3E0' }}>"
+        }
+      ],
+      "score": 20
+    },
+    {
+      "file": "src/components/DesignSystemDemo/DesignSystemDemo.tsx",
+      "violations": [
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 158,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h6\" sx={{ fontSize: '12px', fontWeight: 'bold', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 179,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h6\" sx={{ fontSize: '12px', fontWeight: 'bold', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 198,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h6\" sx={{ fontSize: '12px', fontWeight: 'bold', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 220,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h6\" sx={{ fontSize: '12px', fontWeight: 'bold', mb: 1 }}>"
+        }
+      ],
+      "score": 60
+    },
+    {
+      "file": "src/components/NavigationGuide/NavigationGuide.tsx",
+      "violations": [
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 88,
+          "message": "No icons in titles or headings",
+          "content": "🆕 Status Update Agent Enhanced with Timestamp Sorting"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 108,
+          "message": "No icons in titles or headings",
+          "content": "🆕 What's New in This Update"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 114,
+          "message": "No icons in titles or headings",
+          "content": "📊 Design System Status Updated to 85% Complete"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 117,
+          "message": "No icons in titles or headings",
+          "content": "🔄 Recent Commits Now Ordered by Release Timestamp (Newest First)"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 120,
+          "message": "No icons in titles or headings",
+          "content": "📋 Comprehensive Requirements Document Added to Backlog"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 123,
+          "message": "No icons in titles or headings",
+          "content": "🎯 Module Status Prioritized by Completion Timestamp"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 559,
+          "message": "No icons in titles or headings",
+          "content": "primary=\"🎉 Design system is 85% standardized (UPDATED)\""
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 595,
+          "message": "No icons in titles or headings",
+          "content": "🆕 Updated Priorities (December 19, 2024):"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 608,
+          "message": "No icons in titles or headings",
+          "content": "primary=\"🎯 Complete Activities Module UI: Finish the 70% complete module with user interface\""
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 616,
+          "message": "No icons in titles or headings",
+          "content": "primary=\"🏗️ Implement Habits Module: Core feature for planning functionality (0% → 100%)\""
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 624,
+          "message": "No icons in titles or headings",
+          "content": "primary=\"🌐 Create Landing Page: User acquisition and conversion optimization\""
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 1361,
+          "message": "No icons in titles or headings",
+          "content": "🆕 Updated Status"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 1966,
+          "message": "No icons in titles or headings",
+          "content": "🆕 Updated Backlog (December 19, 2024):"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 1998,
+          "message": "No icons in titles or headings",
+          "content": "📋 442 lines of comprehensive specifications"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 2247,
+          "message": "No icons in titles or headings",
+          "content": "🚀 MAJOR RELEASE: Complete Navigation Guide & Design System Overhaul"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 2253,
+          "message": "No icons in titles or headings",
+          "content": "🎨 DESIGN SYSTEM: Centralized design system with theme, hooks, and provider, DropdownMenu component with 4 categories, Standardized typography (Plus Jakarta Sans), Consistent color palette with soft blues, Reusable component architecture"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 2256,
+          "message": "No icons in titles or headings",
+          "content": "🔧 TECHNICAL IMPROVEMENTS: TypeScript errors fixed, Optimizer logo now links to auth page, Standardized page titles and subtitles across all pages, Break lines after subtitles, Removed icons from titles and buttons, Consistent navigation across all pages"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 26,
+          "message": "No ALL CAPS text",
+          "content": "// Add CSS animation for pulse effect"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 419,
+          "message": "No ALL CAPS text",
+          "content": "<Chip label=\"NEW\" color=\"success\" size=\"small\" sx={{ ml: 1 }} />"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 436,
+          "message": "No ALL CAPS text",
+          "content": "Priority: HIGH - Affects all pages"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 449,
+          "message": "No ALL CAPS text",
+          "content": "Priority: MEDIUM - Consistency improvement"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 462,
+          "message": "No ALL CAPS text",
+          "content": "Priority: MEDIUM - Layout standardization"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 475,
+          "message": "No ALL CAPS text",
+          "content": "Priority: LOW - Specialized component"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 488,
+          "message": "No ALL CAPS text",
+          "content": "Priority: LOW - Specialized component"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 500,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"HIGH: PageHeader component (affects all pages)\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 506,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"MEDIUM: Move hardcoded colors to design system\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 512,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"MEDIUM: StatusChip and ContentCard components\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 518,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"LOW: Specialized components for unique use cases\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 559,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"🎉 Design system is 85% standardized (UPDATED)\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 575,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"Status: COMPLETED - Ready for production\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 591,
+          "message": "No ALL CAPS text",
+          "content": "<Chip label=\"UPDATED\" color=\"success\" size=\"small\" sx={{ ml: 1 }} />"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 600,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"✅ Status Update Agent: COMPLETED - Enhanced with timestamp sorting and real-time updates\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 601,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"COMPLETED TODAY\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 609,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"HIGH PRIORITY - NEXT\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 617,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"HIGH PRIORITY\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 625,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"HIGH PRIORITY\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 633,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"MEDIUM PRIORITY\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 682,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"API Integration: Real external service integration (calendar, weather)\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 701,
+          "message": "No ALL CAPS text",
+          "content": "✅ RECENTLY COMPLETED:"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 718,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"Navigation Guide React Migration: Complete HTML to React conversion with all content\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 740,
+          "message": "No ALL CAPS text",
+          "content": "<Chip label=\"UPDATED\" color=\"success\" size=\"small\" sx={{ ml: 1 }} />"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 744,
+          "message": "No ALL CAPS text",
+          "content": "✅ TypeScript Compilation Errors: RESOLVED"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 749,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"✅ Import declaration conflicts in authentication-module/hooks/useAuth.ts - RESOLVED\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 755,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"Missing urlService module in authentication-module/services - STILL PENDING\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 761,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"✅ Type mismatch in disableTwoFactor function - RESOLVED\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 767,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"✅ Unused imports in AuthenticationModule.ts - RESOLVED\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 899,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"Export schedules in multiple formats (PDF, images)\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1327,
+          "message": "No ALL CAPS text",
+          "content": "URL Management"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1330,
+          "message": "No ALL CAPS text",
+          "content": "urlService.ts - Environment-aware URL generation"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1408,
+          "message": "No ALL CAPS text",
+          "content": "Activities Module - FULLY INTEGRATED"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1450,
+          "message": "No ALL CAPS text",
+          "content": "Persona Module - PARTIALLY INTEGRATED (70%)"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1473,
+          "message": "No ALL CAPS text",
+          "content": "primary=\"Onboarding Wizard (475-line XML configuration not implemented)\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1506,
+          "message": "No ALL CAPS text",
+          "content": "<Chip label=\"NEW\" color=\"success\" size=\"small\" />"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1692,
+          "message": "No ALL CAPS text",
+          "content": "<Chip label=\"NEW\" color=\"success\" size=\"small\" sx={{ ml: 1 }} />"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1744,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"NEW\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1752,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"NEW\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1760,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"NEW\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1768,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"NEW\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1776,
+          "message": "No ALL CAPS text",
+          "content": "secondary=\"NEW\""
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1961,
+          "message": "No ALL CAPS text",
+          "content": "<Chip label=\"NEW\" color=\"success\" size=\"small\" sx={{ ml: 1 }} />"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 1995,
+          "message": "No ALL CAPS text",
+          "content": "Status: COMPLETED TODAY"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2019,
+          "message": "No ALL CAPS text",
+          "content": "Priority: HIGH - Core feature enhancement"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2050,
+          "message": "No ALL CAPS text",
+          "content": "Priority: MEDIUM - Service reliability improvement"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2081,
+          "message": "No ALL CAPS text",
+          "content": "Priority: HIGH - User acquisition and onboarding"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2196,
+          "message": "No ALL CAPS text",
+          "content": "fix: Resolve JSX parsing error with arrow symbol in commit message"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2199,
+          "message": "No ALL CAPS text",
+          "content": "- Replace problematic arrow symbol (→) with HTML entity (&gt;) in commit message"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2220,
+          "message": "No ALL CAPS text",
+          "content": "feat: Add git commit timestamps to React NavigationGuide and cleanup HTML version"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2232,
+          "message": "No ALL CAPS text",
+          "content": "- Remove unused static HTML version in favor of React component"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2247,
+          "message": "No ALL CAPS text",
+          "content": "🚀 MAJOR RELEASE: Complete Navigation Guide & Design System Overhaul"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2250,
+          "message": "No ALL CAPS text",
+          "content": "✨ NEW FEATURES: Complete React Navigation Guide with all HTML content migrated, Usage Workflow (5-step process), Development Hub Status with real-time indicators, Design System Backlog with reusable component roadmap, Core Modules & Components with detailed descriptions, Services Overview with 10 service cards, Module Integration Status with progress tracking, Testing Results & Demo Links, Quick Start Commands with monospace styling, Project Structure & File Analysis"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2253,
+          "message": "No ALL CAPS text",
+          "content": "🎨 DESIGN SYSTEM: Centralized design system with theme, hooks, and provider, DropdownMenu component with 4 categories, Standardized typography (Plus Jakarta Sans), Consistent color palette with soft blues, Reusable component architecture"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2256,
+          "message": "No ALL CAPS text",
+          "content": "🔧 TECHNICAL IMPROVEMENTS: TypeScript errors fixed, Optimizer logo now links to auth page, Standardized page titles and subtitles across all pages, Break lines after subtitles, Removed icons from titles and buttons, Consistent navigation across all pages"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2295,
+          "message": "No ALL CAPS text",
+          "content": "Fix JSX structure errors in DatabaseQuery component"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2298,
+          "message": "No ALL CAPS text",
+          "content": "- Completely rewrote component with proper JSX structure"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2301,
+          "message": "No ALL CAPS text",
+          "content": "- Fixed adjacent JSX elements error, removed problematic Grid components"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2325,
+          "message": "No ALL CAPS text",
+          "content": "- Fixed JSX closing tag mismatch (Grid → Box)"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 2352,
+          "message": "No ALL CAPS text",
+          "content": "- Replaced Grid components with Box components to fix Material-UI Grid API issues"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1627,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1632,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1637,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1649,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1654,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1659,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1664,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1669,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "fontFamilyConsistency",
+          "severity": "error",
+          "line": 1674,
+          "message": "Use Plus Jakarta Sans font family",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 55,
+          "message": "Hardcoded color found - should use design system",
+          "content": "borderTop: '0.05px solid #2c3e50',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 64,
+          "message": "Hardcoded color found - should use design system",
+          "content": "border: '2px solid #4CAF50',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 74,
+          "message": "Hardcoded color found - should use design system",
+          "content": "color: '#4CAF50',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 83,
+          "message": "Hardcoded color found - should use design system",
+          "content": "color: '#4CAF50',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 96,
+          "message": "Hardcoded color found - should use design system",
+          "content": "backgroundColor: '#FFF3E0',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 97,
+          "message": "Hardcoded color found - should use design system",
+          "content": "border: '2px solid #FF9800',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 104,
+          "message": "Hardcoded color found - should use design system",
+          "content": "color: '#E65100',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 110,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '10px', color: '#E65100', mb: 1 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 113,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '10px', color: '#E65100', mb: 1 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 116,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '10px', color: '#E65100', mb: 1 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 119,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '10px', color: '#E65100', mb: 1 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 122,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '10px', color: '#E65100' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 553,
+          "message": "Hardcoded color found - should use design system",
+          "content": "backgroundColor: '#E8F5E8',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 555,
+          "message": "Hardcoded color found - should use design system",
+          "content": "border: '1px solid #4CAF50',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 562,
+          "message": "Hardcoded color found - should use design system",
+          "content": "color: '#2E7D32',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 598,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<ListItem sx={{ backgroundColor: '#E8F5E8', borderRadius: '4px', mb: 1 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 606,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<ListItem sx={{ backgroundColor: '#E3F2FD', borderRadius: '4px', mb: 1 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 610,
+          "message": "Hardcoded color found - should use design system",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: '#1976D2', fontWeight: 'bold' }}"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 614,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<ListItem sx={{ backgroundColor: '#FFF3E0', borderRadius: '4px', mb: 1 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 618,
+          "message": "Hardcoded color found - should use design system",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: '#F57C00', fontWeight: 'bold' }}"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 1351,
+          "message": "Hardcoded color found - should use design system",
+          "content": "border: '2px solid #FF9800',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 1360,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '9px', color: '#F57C00', mt: 0.5 }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 1983,
+          "message": "Hardcoded color found - should use design system",
+          "content": "backgroundColor: '#E8F5E8',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 1985,
+          "message": "Hardcoded color found - should use design system",
+          "content": "border: '2px solid #4CAF50',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 1988,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: '#2E7D32' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 1994,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '10px', color: '#2E7D32', mb: 1, fontWeight: 'bold' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 2158,
+          "message": "Hardcoded color found - should use design system",
+          "content": "backgroundColor: '#E3F2FD',"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 2160,
+          "message": "Hardcoded color found - should use design system",
+          "content": "border: '2px solid #2196F3',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 47,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" component=\"h1\" gutterBottom align=\"center\" sx={{ fontSize: '15px', fontWeight: 'normal' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 50,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"subtitle1\" align=\"center\" color=\"text.secondary\" gutterBottom sx={{ fontSize: '12px' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 82,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '9px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 102,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '13px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 128,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" gutterBottom sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 146,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '14px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 151,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 173,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '14px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 178,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 200,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '14px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 205,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 227,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '14px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 232,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 254,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '14px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 259,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 271,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" gutterBottom sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 339,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" gutterBottom sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 348,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" gutterBottom sx={{ fontSize: '12px', fontWeight: 'normal' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 365,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" gutterBottom sx={{ fontSize: '12px', fontWeight: 'normal' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 381,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" gutterBottom sx={{ fontSize: '12px', fontWeight: 'normal' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 397,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" gutterBottom sx={{ fontSize: '12px', fontWeight: 'normal' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 415,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 422,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 429,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 442,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 455,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 468,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 481,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 494,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 501,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 507,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 513,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 519,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'info.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 524,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 531,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 537,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 543,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 549,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 561,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '12px',"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 570,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 576,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main', fontWeight: 'bold' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 587,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 594,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 602,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main', fontWeight: 'bold' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 610,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: '#1976D2', fontWeight: 'bold' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 618,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: '#F57C00', fontWeight: 'bold' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 626,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 634,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 640,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 647,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 653,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 659,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 665,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 670,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 677,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 683,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 689,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 695,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 700,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 3, color: 'success.main' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 707,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 713,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 719,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 725,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 736,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 743,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: 'success.main' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 750,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 756,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 762,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 768,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 773,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 780,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 786,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 792,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 798,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 806,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" gutterBottom sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 816,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 822,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 825,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 828,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 835,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 841,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 847,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 869,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 875,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 878,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 881,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 888,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 894,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 900,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 906,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 928,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 934,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 937,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 940,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 947,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 953,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 959,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 965,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 987,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 993,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 996,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 999,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1006,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1012,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1018,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1024,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1043,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" gutterBottom sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1053,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1059,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1062,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1065,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1072,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1078,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1084,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1090,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1112,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1118,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1121,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1124,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1131,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1137,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1143,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1149,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1171,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h3\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1177,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1180,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1183,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1190,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1196,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1202,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1208,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1229,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1236,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1246,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1256,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1266,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1276,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1286,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1296,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1306,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1316,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1326,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1341,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1354,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1360,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '9px', color: '#F57C00', mt: 0.5 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1367,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1377,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1387,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1397,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1407,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1414,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1420,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1426,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1432,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1438,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1444,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1449,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1456,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1462,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1468,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1474,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1480,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1486,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1492,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1503,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1509,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1517,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1525,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1533,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1539,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1546,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1552,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1558,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1564,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1570,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1576,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1581,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1588,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1594,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1600,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1606,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'success.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1616,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1622,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1627,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1632,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1637,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1644,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1649,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1654,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1659,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1664,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1669,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1674,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography sx={{ fontSize: '12px', fontFamily: 'monospace' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1688,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1695,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1702,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1708,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1714,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1720,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1726,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1732,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1737,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1745,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1753,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1761,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1769,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1777,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1784,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1790,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'info.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1795,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1802,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1808,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1814,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1820,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1826,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1832,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1838,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1844,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1854,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1872,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', color: 'success.main' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1888,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', color: 'success.main' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1906,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', color: 'warning.main' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1922,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"body2\" sx={{ fontSize: '12px', color: 'error.main' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1957,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mr: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1965,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 1988,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: '#2E7D32' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2006,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2037,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2068,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2097,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2104,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'info.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2110,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'info.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2116,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'info.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2121,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1, mt: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2128,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2134,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'error.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2140,
+          "message": "Buttons should use 10px font size",
+          "content": "primaryTypographyProps={{ fontSize: '12px', color: 'warning.main' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2150,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h2\" sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2164,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2171,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2188,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2195,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2212,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2219,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2239,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2246,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2263,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2270,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2287,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2294,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2314,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2321,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2341,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2348,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2368,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2375,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2398,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 2405,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography variant=\"h4\" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>"
+        }
+      ],
+      "score": 0
+    },
+    {
+      "file": "src/components/PersonaSelector/PersonaSelector.tsx",
+      "violations": [
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 78,
+          "message": "Hardcoded color found - should use design system",
+          "content": "badgeContent={<Star sx={{ fontSize: 16, color: '#fff' }} />}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 118,
+          "message": "Buttons should use 10px font size",
+          "content": "sx={{ fontSize: '0.7rem' }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 143,
+          "message": "Buttons should use 10px font size",
+          "content": "sx={{ fontSize: '0.7rem' }}"
+        }
+      ],
+      "score": 70
+    },
+    {
+      "file": "src/components/ScheduleViewer/ScheduleViewer.tsx",
+      "violations": [
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 554,
+          "message": "No icons in titles or headings",
+          "content": "case 'individual': return '🏃';"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 556,
+          "message": "No icons in titles or headings",
+          "content": "case 'couple': return '💕';"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 557,
+          "message": "No icons in titles or headings",
+          "content": "default: return '📅';"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 706,
+          "message": "No icons in titles or headings",
+          "content": "📍 {creativeSuggestion.location}"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 709,
+          "message": "No icons in titles or headings",
+          "content": "🌐 Website: <a href={creativeSuggestion.website} target=\"_blank\" rel=\"noopener noreferrer\" style={{ color: 'white', textDecoration: 'underline' }}>"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 715,
+          "message": "No icons in titles or headings",
+          "content": "📝 Register: <a href={creativeSuggestion.registrationLink} target=\"_blank\" rel=\"noopener noreferrer\" style={{ color: 'white', textDecoration: 'underline' }}>"
+        },
+        {
+          "rule": "noIconsInTitles",
+          "severity": "error",
+          "line": 722,
+          "message": "No icons in titles or headings",
+          "content": "📞 Contact: {creativeSuggestion.contactInfo}"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 72,
+          "message": "No ALL CAPS text",
+          "content": "const dayName = format(date, 'EEEE').toLowerCase();"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 515,
+          "message": "No ALL CAPS text",
+          "content": "console.error('PDF export failed:', error);"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 525,
+          "message": "No ALL CAPS text",
+          "content": "console.log('CSV export function available:', handleExportCSV); // Using the function"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 635,
+          "message": "No ALL CAPS text",
+          "content": "PDF"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 656,
+          "message": "No ALL CAPS text",
+          "content": "`Week of ${format(new Date(mockScheduleData.week_start), 'MMM dd, yyyy')}` :"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 657,
+          "message": "No ALL CAPS text",
+          "content": "format(currentDate, 'EEEE, MMM dd, yyyy')"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 796,
+          "message": "No ALL CAPS text",
+          "content": "{format(new Date(2025, monthIndex, 1), 'MMMM yyyy')}"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 816,
+          "message": "No ALL CAPS text",
+          "content": "{format(currentDate, 'MMMM yyyy')} - Monthly Overview"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 842,
+          "message": "No ALL CAPS text",
+          "content": "{format(new Date(day.date), 'EEEE')}"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 851,
+          "message": "No ALL CAPS text",
+          "content": "{format(new Date(day.date), 'MMM dd, yyyy')}"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 920,
+          "message": "No ALL CAPS text",
+          "content": "Daily Schedule - {format(new Date(selectedDay.date), 'EEEE, MMM dd, yyyy')}"
+        },
+        {
+          "rule": "noAllCaps",
+          "severity": "error",
+          "line": 974,
+          "message": "No ALL CAPS text",
+          "content": "<ListItemText primary={slot.activity.cost_cad === 0 ? 'Free' : `$${slot.activity.cost_cad} CAD`} />"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 668,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Paper sx={{ p: 2, mb: 3, backgroundColor: '#FFF3E0', border: '1px solid #FF9800' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 669,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"h6\" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: '#F57C00' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 685,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Paper sx={{ p: 3, mb: 3, background: 'linear-gradient(45deg, #9C27B0 30%, #E91E63 90%)', color: 'white' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 763,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"h4\" sx={{ color: '#4CAF50' }}>{mockScheduleData.weekly_summary.individual_activities}</Typography>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 769,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"h4\" sx={{ color: '#2196F3' }}>{mockScheduleData.weekly_summary.networking_activities}</Typography>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 775,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Typography variant=\"h4\" sx={{ color: '#E91E63' }}>{mockScheduleData.weekly_summary.couple_activities}</Typography>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 826,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Box sx={{ width: 8, height: 8, backgroundColor: '#4CAF50', borderRadius: '50%', mx: 'auto', mb: 0.5 }} />"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 827,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Box sx={{ width: 8, height: 8, backgroundColor: '#2196F3', borderRadius: '50%', mx: 'auto', mb: 0.5 }} />"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 828,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Box sx={{ width: 8, height: 8, backgroundColor: '#E91E63', borderRadius: '50%', mx: 'auto' }} />"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 676,
+          "message": "Buttons should use 10px font size",
+          "content": "<Typography key={index} variant=\"body2\" sx={{ fontSize: '0.85rem', color: 'text.secondary' }}>"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 880,
+          "message": "Buttons should use 10px font size",
+          "content": "sx={{ fontSize: '0.7rem', height: 20 }}"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 889,
+          "message": "Buttons should use 10px font size",
+          "content": "fontSize: '0.7rem',"
+        }
+      ],
+      "score": 0
+    },
+    {
+      "file": "src/components/TimeAllocationTuner/TimeAllocationTuner.tsx",
+      "violations": [
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 173,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ mb: 3, borderLeft: '4px solid #4CAF50' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 227,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ mb: 3, borderLeft: '4px solid #2196F3' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 281,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Card sx={{ mb: 3, borderLeft: '4px solid #E91E63' }}>"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 395,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Box sx={{ width: 12, height: 12, backgroundColor: '#4CAF50', borderRadius: '50%' }} />"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 405,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Box sx={{ width: 12, height: 12, backgroundColor: '#2196F3', borderRadius: '50%' }} />"
+        },
+        {
+          "rule": "hardcodedColors",
+          "severity": "warning",
+          "line": 415,
+          "message": "Hardcoded color found - should use design system",
+          "content": "<Box sx={{ width: 12, height: 12, backgroundColor: '#E91E63', borderRadius: '50%' }} />"
+        },
+        {
+          "rule": "buttonFontSize",
+          "severity": "error",
+          "line": 168,
+          "message": "Buttons should use 10px font size",
+          "content": "sx={{ fontSize: '1.1rem', fontWeight: 'bold', px: 2, py: 1 }}"
+        }
+      ],
+      "score": 30
+    }
+  ]
+}

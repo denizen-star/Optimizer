@@ -100,3 +100,4 @@ src/services/urlService.ts
 
 # Temporary documentation
 MODULE_INTEGRATION_STATUS.md
+docs/app-management/credentials.md
