@@ -2123,7 +2123,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 21:42
                   </Typography>
                 }
@@ -2140,7 +2140,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 21:37
                   </Typography>
                 }
@@ -2157,7 +2157,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 18:58
                   </Typography>
                 }
@@ -2174,7 +2174,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 18:57
                   </Typography>
                 }
@@ -2191,7 +2191,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 18:49
                   </Typography>
                 }
@@ -2208,7 +2208,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 18:47
                   </Typography>
                 }
@@ -2225,7 +2225,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 18:46
                   </Typography>
                 }
@@ -2242,7 +2242,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 18:39
                   </Typography>
                 }
@@ -2259,7 +2259,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 16:40
                   </Typography>
                 }
@@ -2276,7 +2276,7 @@ const NavigationGuide: React.FC = () => {
                   </Box>
                 }
                 secondary={
-                  <Typography sx={{ fontSize: '9px', color: colors.text.secondary, mt: 0.5 }}>
+                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
                     2025-09-24 16:33
                   </Typography>
                 }
