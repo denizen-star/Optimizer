@@ -2152,7 +2152,7 @@ const NavigationGuide: React.FC = () => {
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                     <Chip label="35c5db0" size="small" sx={{ fontSize: '9px', height: '18px' }} />
                     <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Fix JSX parsing error: Replace -> with → arrow symbol
+                      Fix JSX parsing error: Replace -&gt; with arrow symbol
                     </Typography>
                   </Box>
                 }
