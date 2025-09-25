@@ -1837,23 +1837,23 @@ const NavigationGuide: React.FC = () => {
           <Paper sx={{ p: 2, mb: 2, backgroundColor: colors.background.light, borderRadius: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
               <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>
-                12e52b0
+                afaef27
               </Typography>
               <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
-                denizen-star, 4 minutes ago
+                2025-09-24 21:55
               </Typography>
             </Box>
             <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>
-              🔧 Fix final ESLint warning: Remove unused useDesignSystem import
+              fix: Make git commit timestamps more visible in NavigationGuide
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
-              - Remove unused useDesignSystem import from TimeAllocationTuner.tsx
+              - Increase timestamp font size from 9px to 10px
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
-              - This was the last ESLint warning preventing production deployment
+              - Change timestamp color from secondary to primary for better visibility
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
-              - All components now have clean imports with no unused variables
+              - Add fontWeight normal for consistent styling
             </Typography>
           </Paper>
 
@@ -1861,23 +1861,23 @@ const NavigationGuide: React.FC = () => {
           <Paper sx={{ p: 2, mb: 2, backgroundColor: colors.background.light, borderRadius: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
               <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>
-                3536e0c
+                90337b9
               </Typography>
               <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
-                denizen-star, 6 minutes ago
+                2025-09-24 21:51
               </Typography>
             </Box>
             <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>
-              🔧 Fix TypeScript error: Add back useDesignSystem hook to access colors
+              fix: Resolve JSX parsing error with arrow symbol in commit message
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
-              - Re-added useDesignSystem import to App.tsx
+              - Replace problematic arrow symbol (→) with HTML entity (&gt;) in commit message
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
-              - Added colors destructuring in AppContent function
+              - Fix compilation error preventing NavigationGuide from rendering
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
-              - Fixes TS2304 error: Cannot find name 'colors'
+              - Ensure timestamps are properly displayed in git commits section
             </Typography>
           </Paper>
 
@@ -1885,26 +1885,26 @@ const NavigationGuide: React.FC = () => {
           <Paper sx={{ p: 2, mb: 2, backgroundColor: colors.background.light, borderRadius: 1 }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
               <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mr: 2, color: colors.accent.teal }}>
-                4b60f76
+                49dd72e
               </Typography>
               <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
-                denizen-star, 7 minutes ago
+                2025-09-24 21:48
               </Typography>
             </Box>
             <Typography variant="h4" sx={{ fontSize: '12px', fontWeight: 'normal', mb: 1 }}>
-              🔧 Fix ESLint warnings: Remove unused imports and variables
+              feat: Add git commit timestamps to React NavigationGuide and cleanup HTML version
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary }}>
-              - Remove unused imports from App.tsx (AppBar, Toolbar, Typography, Button, icons)
+              - Add Recent Git Commits (Last 10) section with timestamps to React NavigationGuide
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
-              - Remove unused imports from AnalyticsDashboard.tsx (Analytics icon)
+              - Display commit hash, message, and timestamp for each commit
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
-              - Remove unused imports from NavigationGuide.tsx (Divider, Link)
+              - Delete navigation-guide.html from public/ and build/ folders
             </Typography>
             <Typography variant="body2" sx={{ fontSize: '10px', color: colors.text.secondary, mt: 1 }}>
-              - Remove unused imports from ScheduleViewer.tsx (CalendarToday icon)
+              - Remove unused static HTML version in favor of React component
             </Typography>
           </Paper>
 
@@ -2105,186 +2105,6 @@ const NavigationGuide: React.FC = () => {
         </CardContent>
       </Card>
 
-      {/* Recent Git Commits */}
-      <Card sx={{ mb: 3, ...helpers.getCardStyles() }}>
-        <CardContent>
-          <Typography variant="h6" sx={{ fontSize: '13px', fontWeight: 'normal', mb: 2 }}>
-            Recent Git Commits (Last 10)
-          </Typography>
-          <List sx={{ py: 0 }}>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="6ab1efc" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      fix: Update navigation-guide.html with modern menu design
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 21:42
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="aa2c5d1" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      feat: Modernize menu with improved hover behavior and navigation
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 21:37
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="35c5db0" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Fix JSX parsing error: Replace -&gt; with arrow symbol
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 18:58
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="e3a4905" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Update Navigation Guide: Last 10 commits + TypeScript issues resolved
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 18:57
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="12e52b0" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Fix final ESLint warning: Remove unused useDesignSystem import
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 18:49
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="3536e0c" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Fix TypeScript error: Add back useDesignSystem hook to access colors
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 18:47
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="4b60f76" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Fix ESLint warnings: Remove unused imports and variables
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 18:46
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="5cffdea" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      MAJOR RELEASE: Complete Navigation Guide & Design System Overhaul
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 18:39
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="ab7ca30" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Fix ESLint warning: remove unused useEffect import
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 16:40
-                  </Typography>
-                }
-              />
-            </ListItem>
-            <ListItem sx={{ px: 0, py: 0.5 }}>
-              <ListItemText
-                primary={
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                    <Chip label="551e7b2" size="small" sx={{ fontSize: '9px', height: '18px' }} />
-                    <Typography sx={{ fontSize: '10px', fontWeight: 'normal' }}>
-                      Fix JSX structure errors in DatabaseQuery component
-                    </Typography>
-                  </Box>
-                }
-                secondary={
-                  <Typography sx={{ fontSize: '10px', color: colors.text.primary, mt: 0.5, fontWeight: 'normal' }}>
-                    2025-09-24 16:33
-                  </Typography>
-                }
-              />
-            </ListItem>
-          </List>
-        </CardContent>
-      </Card>
 
       {/* Footer */}
       <Paper sx={{ p: 3, textAlign: 'center', ...helpers.getCardStyles() }}>
