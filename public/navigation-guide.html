@@ -134,6 +134,27 @@
             margin: 0;
         }
 
+        .nav-item-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .nav-item-title {
+            font-weight: 500;
+            font-size: 12px;
+        }
+
+        .nav-item-desc {
+            font-size: 10px;
+            color: #6C757D;
+            line-height: 1.2;
+        }
+
+        .nav-dropdown-item:hover .nav-item-desc {
+            color: #FFFFFF;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -531,55 +552,110 @@
         <div class="nav-toolbar">
             <!-- Logo -->
             <div class="nav-logo">
-                <span class="nav-icon">🏠</span>
                 <a href="/auth-demo" class="nav-title" style="text-decoration: none; color: #FFFFFF; cursor: pointer;">Optimizer</a>
             </div>
             
             <!-- Menu Categories -->
             <div class="nav-categories">
-                <!-- CBA Category -->
+                <!-- Core Features Category -->
                 <div class="nav-category">
                     <button class="nav-category-button">
-                        CBA
+                        Core Features
                     </button>
                     <div class="nav-dropdown">
-                        <a href="/" class="nav-dropdown-item">Current Persona Selector</a>
-                        <a href="/schedule" class="nav-dropdown-item">Schedule</a>
-                        <a href="/tuner" class="nav-dropdown-item">Tuner</a>
+                        <a href="/" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Persona Selector</div>
+                                <div class="nav-item-desc">Choose your lifestyle persona</div>
+                            </div>
+                        </a>
+                        <a href="/schedule" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Schedule Viewer</div>
+                                <div class="nav-item-desc">View your optimized schedule</div>
+                            </div>
+                        </a>
+                        <a href="/tuner" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Time Tuner</div>
+                                <div class="nav-item-desc">Adjust time allocations</div>
+                            </div>
+                        </a>
+                        <a href="/analytics" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Analytics</div>
+                                <div class="nav-item-desc">Track your progress and insights</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Dev Category -->
+                <!-- Development Category -->
                 <div class="nav-category">
                     <button class="nav-category-button">
-                        Dev
+                        Development
                     </button>
                     <div class="nav-dropdown">
-                        <a href="/navigation-guide" class="nav-dropdown-item active">Dev Guide</a>
-                        <a href="/auth-demo" class="nav-dropdown-item">All Test Links</a>
+                        <a href="/navigation-guide" class="nav-dropdown-item active">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Development Guide</div>
+                                <div class="nav-item-desc">Comprehensive development documentation</div>
+                            </div>
+                        </a>
+                        <a href="/auth-demo" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Test Suite</div>
+                                <div class="nav-item-desc">Authentication and testing tools</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Admin Category -->
+                <!-- Administration Category -->
                 <div class="nav-category">
                     <button class="nav-category-button">
-                        Admin
+                        Administration
                     </button>
                     <div class="nav-dropdown">
-                        <a href="/auth-activity" class="nav-dropdown-item">Security</a>
-                        <a href="/users" class="nav-dropdown-item">Users</a>
-                        <a href="/database-query" class="nav-dropdown-item">Database</a>
+                        <a href="/auth-activity" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Security Monitor</div>
+                                <div class="nav-item-desc">Authentication activity tracking</div>
+                            </div>
+                        </a>
+                        <a href="/users" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">User Management</div>
+                                <div class="nav-item-desc">Manage user accounts and permissions</div>
+                            </div>
+                        </a>
+                        <a href="/database-query" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Database Tools</div>
+                                <div class="nav-item-desc">Database query and management tools</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
                 
-                <!-- Sign-up/In Category -->
+                <!-- Authentication Category -->
                 <div class="nav-category">
                     <button class="nav-category-button">
-                        Sign-up/In
+                        Authentication
                     </button>
                     <div class="nav-dropdown">
-                        <a href="/signup" class="nav-dropdown-item">User Creation</a>
-                        <a href="/auth-demo" class="nav-dropdown-item">Authentication</a>
+                        <a href="/signup" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Create Account</div>
+                                <div class="nav-item-desc">Register a new user account</div>
+                            </div>
+                        </a>
+                        <a href="/auth-demo" class="nav-dropdown-item">
+                            <div class="nav-item-content">
+                                <div class="nav-item-title">Sign In</div>
+                                <div class="nav-item-desc">Access your account</div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
