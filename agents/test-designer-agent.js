@@ -79,8 +79,14 @@ class MockDesignerAgent {
   findLine(content, pattern) {
     const lines = content.split('\n');
     for (let i = 0; i < lines.length; i++) {
-      if (lines[i].includes(pattern)) {
-        return i + 1;
+      if (typeof pattern === 'string') {
+        if (lines[i].includes(pattern)) {
+          return i + 1;
+        }
+      } else if (pattern instanceof RegExp) {
+        if (pattern.test(lines[i])) {
+          return i + 1;
+        }
       }
     }
     return 1;

@@ -3,6 +3,7 @@ export { optimizerTheme, DESIGN_SYSTEM, DESIGN_GUIDELINES } from './theme';
 export { useDesignSystem } from './hooks';
 export { DesignSystemProvider } from './provider';
 export { default as DropdownMenu } from './DropdownMenu';
+export { default as ModernDropdownMenu } from './ModernDropdownMenu';
 
 // Design System Documentation
 export const DESIGN_SYSTEM_VERSION = '1.0.0';

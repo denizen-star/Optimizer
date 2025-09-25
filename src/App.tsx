@@ -9,7 +9,7 @@ import NavigationGuide from './components/NavigationGuide/NavigationGuide';
 import { AuthDemo, EnhancedSignup, EmailTest, EmailVerification, UserManagement, AuthActivity } from './modules/authentication-module';
 import DatabaseQuery from './modules/authentication-module/components/DatabaseQuery/DatabaseQuery';
 import { useStore } from './store/useStore';
-import { DesignSystemProvider, useDesignSystem, DropdownMenu } from './design-system';
+import { DesignSystemProvider, useDesignSystem, ModernDropdownMenu } from './design-system';
 import './App.css';
 
 // Design system theme is now imported from design-system/theme.ts
@@ -83,13 +83,21 @@ function AppContent() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <DropdownMenu />
+      <ModernDropdownMenu />
 
-      <Box sx={{ 
-        minHeight: '100vh', 
-        backgroundColor: colors.background.default, // #FFFFFF from Navigation Guide
-        py: 0
-      }}>
+      <Box 
+        component="main"
+        tabIndex={-1}
+        sx={{ 
+          minHeight: '100vh', 
+          backgroundColor: colors.background.default, // #FFFFFF from Navigation Guide
+          py: 0,
+          outline: 'none',
+          '&:focus': {
+            outline: 'none'
+          }
+        }}
+      >
         <Routes>
               <Route 
                 path="/" 
