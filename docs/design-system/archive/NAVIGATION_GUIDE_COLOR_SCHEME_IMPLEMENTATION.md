@@ -34,7 +34,7 @@ The centralized design system now uses the **exact color palette from the Naviga
 - ✅ `src/design-system/theme.ts` - Updated with Navigation Guide color palette
 - ✅ `src/design-system/hooks.ts` - Updated helper functions with new colors
 - ✅ `src/design-system/index.ts` - Updated quick reference with new colors
-- ✅ `src/design-system/README.md` - Updated documentation
+- ✅ `docs/tech-stack/design-system.md` - Updated documentation
 
 #### **Key Updates Made**
 1. **Added Navigation Colors Section** - Preserved current nav bar colors

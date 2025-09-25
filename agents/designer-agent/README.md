@@ -374,9 +374,18 @@ npx ts-node index.ts --verbose
 
 MIT License - see LICENSE file for details.
 
+## Design System Documentation
+
+The Designer Agent validates compliance with the Optimizer Design System. For complete design system documentation, refer to:
+
+- **Master Design Documentation**: [../../docs/design-system/design-system-master.md](../../docs/design-system/design-system-master.md) - Consolidated design system reference
+- **Technical Implementation**: [../../docs/design-system/design-system.md](../../docs/design-system/design-system.md) - Technical implementation details
+- **Design System Overview**: [../../docs/design-system/index.md](../../docs/design-system/index.md) - Complete documentation index
+
 ## Support
 
 For questions or issues:
 - Create an issue in the repository
 - Check the troubleshooting section
 - Review the design system documentation
+- Consult the master design documentation for design decisions

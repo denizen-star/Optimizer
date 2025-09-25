@@ -341,7 +341,7 @@ npx ts-node agents/designer-agent/index.ts --verbose
 ## 📚 Documentation
 
 - [Designer Agent Documentation](./designer-agent/README.md)
-- [Design System Documentation](../src/design-system/README.md)
+- [Design System Documentation](../docs/tech-stack/design-system.md)
 - [API Reference](./designer-agent/README.md#api-reference)
 
 ## 🤝 Contributing

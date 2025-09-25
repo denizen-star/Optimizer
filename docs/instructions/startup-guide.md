@@ -109,6 +109,6 @@ The app is configured for Netlify deployment with `netlify.toml`.
 ## Support
 
 For issues or questions, check the documentation in:
-- `src/modules/authentication-module/README.md`
+- `docs/app-management/authentication-module.md`
 - `EMAIL_SETUP_GUIDE.md`
 - `DYNAMIC_TEMPLATES_SETUP.md`

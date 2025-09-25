@@ -201,7 +201,9 @@ This module is designed to be self-contained and portable. It can be easily move
 
 ## Version
 
-Current version: 1.0.0
+Current version: 1.0.0  
+**Created:** December 19, 2024 - 19:32  
+**Last Updated:** December 19, 2024 - 19:32
 
 ## License
 
